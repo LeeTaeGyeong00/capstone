@@ -21,6 +21,7 @@ public class UserInfo implements Serializable {
     @EmbeddedId
     private UserPk id;
 
+    @MapsId
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private User user;
 
