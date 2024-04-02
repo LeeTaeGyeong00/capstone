@@ -10,12 +10,13 @@
 <form action="/bangbang/auth/sign-in" method="post">
     아이디: <input type="text" name="person_id" id="user-id"><br>
     비밀번호: <input type="password" name="passwd" id="user-passwd"><br>
-    비밀번호 확인: <input type="password"><br>
+    비밀번호 확인: <input type="password" id="user-passwd-same"><br>
     닉네임: <input type="text" name="user_name" id="user-name"><br>
     나이: <input type="text" name="old" id="user-old"><br>
     전화번호: <input type="text" name="phone_num" id="user-phone"><br>
     <button type="button" id="join-btn">회원가입</button>
 </form>
+<a href="/bangbang/auth/sign-up">로그인 하기</a>
 
 <script>
 
@@ -51,6 +52,8 @@
             window.location.href = "/bangbang/auth/sign-up";
         })
     })
+
+
 </script>
 
 </body>
