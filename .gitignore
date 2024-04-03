@@ -1,1 +1,6 @@
 application.properties
+.idea
+.gradle
+build.gradle
+
+capstone\df
