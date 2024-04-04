@@ -1,9 +1,11 @@
 package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
+import com.example.bangbang_gotgot.member.entity.AutoPk;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.entity.UserInfo;
 import com.example.bangbang_gotgot.member.entity.UserPk;
+import com.example.bangbang_gotgot.member.repository.AutoPkRepository;
 import com.example.bangbang_gotgot.member.repository.UserInfoRepository;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -25,17 +28,28 @@ public class MemberService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private AutoPkRepository autoPkRepository;
 
-    private int i = 0;
+
+
+
     @Transactional
     public void createUser(AllUserInfoDto userAllInfoDto) {
 
-        i++;
 
+        User user = new User();
         UserPk userPk = new UserPk();
-        userPk.setId(i);
+        AutoPk autoPk = new AutoPk();
 
-        Boolean exists = userRepository.existsById(userPk);
+        // autoPk : 자동증가 id 저장하는 DB, 복합키는 Generatedvalue 제공 안됨
+        int idd = autoPkRepository.findMaxId().orElse(0);
+        userPk.setId(idd+1);
+        autoPk.setId(idd+1);
+
+
+
+        boolean exists = userRepository.existsById(userPk);
         // 예외 발생
         if (exists)
             try {
@@ -43,8 +57,6 @@ public class MemberService {
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
-
-        User user = new User();
 
         user.setId(userPk);
         user.setPerson_id(userAllInfoDto.getPerson_id());
@@ -54,6 +66,7 @@ public class MemberService {
         user.setLast_passwd_changed(LocalDateTime.now());
 
         userRepository.save(user);
+        autoPkRepository.save(autoPk);
 
         UserInfo userInfo = UserInfo.toEntity(userAllInfoDto, user);
         userInfoRepository.save(userInfo);
