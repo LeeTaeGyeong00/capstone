@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,8 +15,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class User {
 
-    @EmbeddedId
-    private UserPk id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(nullable = false)
     private String person_id;
@@ -35,6 +33,20 @@ public class User {
 
     @Column(nullable = false)
     private LocalDateTime last_passwd_changed;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    @Column(nullable = false)
+    private String user_name;
+
+    @Column(nullable = false)
+    private int old;
+
+    @Column(nullable = false)
+    private String phone_num;
 
 
 }

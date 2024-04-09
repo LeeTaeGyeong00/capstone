@@ -38,4 +38,3 @@ application-jwt.properties
 /dist/
 /nbdist/
 /.nb-gradle/
-

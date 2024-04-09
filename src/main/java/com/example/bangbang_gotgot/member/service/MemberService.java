@@ -1,10 +1,8 @@
 package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
+import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
-import com.example.bangbang_gotgot.member.entity.UserInfo;
-import com.example.bangbang_gotgot.member.entity.UserPk;
-import com.example.bangbang_gotgot.member.repository.UserInfoRepository;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,22 +18,16 @@ public class MemberService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserInfoRepository userInfoRepository;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    private int i = 0;
+
     @Transactional
     public void createUser(AllUserInfoDto userAllInfoDto) {
 
-        i++;
+        User user = new User();
 
-        UserPk userPk = new UserPk();
-        userPk.setId(i);
-
-        Boolean exists = userRepository.existsById(userPk);
+        boolean exists = userRepository.existsById(userAllInfoDto.getId());
         // 예외 발생
         if (exists)
             try {
@@ -44,19 +36,18 @@ public class MemberService {
                 throw new RuntimeException(e);
             }
 
-        User user = new User();
 
-        user.setId(userPk);
         user.setPerson_id(userAllInfoDto.getPerson_id());
         user.setPasswd(bCryptPasswordEncoder.encode(userAllInfoDto.getPasswd()));
         user.setCreated_at(LocalDateTime.now());
         user.setLast_id_changed(LocalDateTime.now());
         user.setLast_passwd_changed(LocalDateTime.now());
+        user.setRole(Role.ROLE_USER);
+        user.setUser_name(userAllInfoDto.getUser_name());
+        user.setOld(userAllInfoDto.getOld());
+        user.setPhone_num(userAllInfoDto.getPhone_num());
 
         userRepository.save(user);
-
-        UserInfo userInfo = UserInfo.toEntity(userAllInfoDto, user);
-        userInfoRepository.save(userInfo);
 
 
     }
