@@ -23,6 +23,9 @@ public class User {
     private String person_id;
 
     @Column(nullable = false)
+    private String nick_name;
+
+    @Column(nullable = false)
     private String passwd;
 
     @Column(nullable = false)
