@@ -43,7 +43,7 @@ public class MemberService {
         user.setLast_id_changed(LocalDateTime.now());
         user.setLast_passwd_changed(LocalDateTime.now());
         user.setRole(Role.ROLE_USER);
-        user.setUser_name(userAllInfoDto.getUser_name());
+        user.setNick_name(userAllInfoDto.getNick_name());
         user.setOld(userAllInfoDto.getOld());
         user.setPhone_num(userAllInfoDto.getPhone_num());
 
