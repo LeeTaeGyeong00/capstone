@@ -26,6 +26,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: 30px;
 
     h3{
         font-size: 32px;
@@ -43,6 +44,13 @@
 .text-primary{
     font-family: 'BMHANNAPro', 'sans-serif';
 }
+
+.main_search_box{
+    width: 120px; height: 50px;
+
+}
+
+
 /** MAIN End**/
 /** Body Start **/
 body {
@@ -637,7 +645,7 @@ body {
 }
 /*** Login Page End***/
 
-header.index {
+header.main_header {
     width: 100vw; height: 130px;
     justify-content: center;
     display: flex;
@@ -900,6 +908,12 @@ input{
 
 .tab-name {
     display: flex;
+}
+.notice-item{
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 
