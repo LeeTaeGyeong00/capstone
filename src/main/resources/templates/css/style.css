@@ -19,6 +19,24 @@
       font-weight: 600;
       font-style: normal;
     }
+
+.main_index_article{
+    font-family: 'BMJUA', sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    h3{
+        font-size: 32px;
+    }
+    a{
+        font-size: 20px;
+    }
+
+
+}
+
 /** Font End**/
 
 /** MAIN Start**/
@@ -55,9 +73,14 @@ body {
     width: 45px;
     height: 45px;
     text-align: center;
-    line-height: 37px;
     transition: 0.5s;
     z-index: 99;
+    
+    i{
+        position: absolute;
+        bottom: 50%; right: 50%;
+        transform: translate(50%, 50%);
+    }
 }
 /*** Spinner End ***/
 
@@ -891,6 +914,7 @@ input{
 }
 .notice-top {
     display: flex;
+    justify-content: space-between;
 }
 .notice-list{
     list-style: none;
