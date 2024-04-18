@@ -130,6 +130,19 @@
     });
 
 
+    $(document).ready(function(){
+        $('.accordion .button').click(function(){
+          // 클릭한 버튼의 부모 요소인 li를 선택하여 active 클래스를 토글합니다.
+          $(this).parent('li').toggleClass('active');
+          // 클릭한 버튼의 다음 sibling 요소인 .submenu를 찾아서 slideToggle을 적용합니다.
+          $(this).parent('li').find('.submenu').slideToggle();
+          // 클릭한 버튼을 제외한 다른 버튼의 부모 요소인 li의 active 클래스를 제거하고 해당 버튼 다음 요소를 숨깁니다.
+          $('.accordion .button').not(this).parent('li').removeClass('active').find('.submenu').slideUp();
+        });
+      });
+      
+
+
 
     // Product Quantity
     $('.quantity button').on('click', function () {
@@ -147,5 +160,10 @@
         button.parent().parent().find('input').val(newVal);
     });
 
+
+
+
+
+    
 })(jQuery);
 
