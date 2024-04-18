@@ -713,6 +713,17 @@ input{
     border: 1px solid #C5C2C2;
     border-radius: 3px;
 }
+    .header_effect::before{
+        content: '';
+        position: absolute;
+        top:130px; left: 0;
+        width: 100vw; height: 265px;
+    
+        background: #F55E08;
+        z-index: -999;
+    }
+
+
 .joinContainer {
     display: flex;
     flex-direction: column;
@@ -722,15 +733,6 @@ input{
     left: 50%;
     transform: translateX(-50%);
 
-    header::before{
-        content: '';
-        position: absolute;
-        top:130px; left: 0;
-        width: 100%; height: 265px;
-
-        background: #F55E08;
-        z-index: -999;
-    }
     header {
         width: 100vw; height: 130px;
         justify-content: center;
@@ -1000,6 +1002,154 @@ input{
 }
 
 /*** Main page End***/
+
+/** Local Category Start */
+
+.content_box{
+    font-family: "BMJUA";
+    display: flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1280px;
+    margin-top: 65px;
+    background: #fff;
+    border-radius: 5px 5px 0px 0px;
+    justify-content: space-evenly;
+    padding: 110px 0 70px;
+}
+
+.local_category {
+    
+    .local_menu {
+        border: 1px solid blue;
+        display: flex;
+        height: 1000px;
+
+        ul {
+
+            li {
+                border: 1px solid #45595B;
+                .title {
+                    color: #FFFFFF;
+                    font-size: 32px;
+                    background-color: #F55E08;
+                }
+                .button {
+                    color: #000000;
+                    font-size: 24px;
+                }
+                p {
+                    padding: 20px 75px;
+                }
+            }
+        }
+    }
+    .section {
+        border: 1px solid red;
+        width: 1000px;
+
+        .page_filter{
+            display: flex;
+            background-color: #F55E08;
+            height: 70px;
+            margin-bottom: 25px;
+            justify-content: flex-end;
+            align-content: center;
+            flex-wrap: wrap;
+
+            .filter_box {
+                display: flex;
+                line-height: 50px;
+                flex-flow: wrap;
+                width: 290px;
+                height: 50px;
+                margin-right: 20px;
+                padding: 0 10px 0 60px;
+                vertical-align: middle;
+            }
+        }
+        .page_swap {
+            background-color: #F55E08;
+            height: 70px;
+            margin-top: 25px;
+            justify-content: flex-end;
+            align-content: center;
+            flex-wrap: wrap;
+
+            .swap_button {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 20px;
+                
+                ul {
+                    display: flex;
+
+                    li {
+                        font-size: 16px;
+
+                        a {
+                            padding: 20px;
+                            background-color: #FFFFFF;
+                            color: #000000;
+                        }
+
+                        .act {
+                            background-color: #FFCD6D;
+                            color: #FFFFFF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .page_list {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        border: 1px solid orange;
+
+        .page {
+            border: 1px solid purple;
+
+            width: 300px;
+            margin: 10px;
+    
+            img {
+                background-color: #D9D9D9;
+                width: 300px;
+                height: 300px;
+            }
+            dl {
+                margin-left: 15px;
+    
+                dt {
+                    color: #000000;
+                    font-size: 24px;
+                    margin-top: 20px;
+                }
+                dd {
+                    color: #707070;
+                }
+    
+                .description {
+                    opacity: 0.8;
+                    font-size: 15px;
+                    margin-top: 15px;
+                }
+                .rating {
+                    font-size: 8px;
+                    margin-top: 25px;
+                }
+            }
+        }
+    }
+    
+}
+
+/* Local Category End */
+
+
 
 /*** Footer Start ***/
 .footer {

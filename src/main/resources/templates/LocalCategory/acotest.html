@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accordion</title>
-    <style>
-        /* 스타일 */
-        .accordion *{
-        }
-        .accordion-header {
-            background-color: #f4f4f4;
-            padding: 10px;
-            cursor: pointer;
-            transition: 0.5S ease-in-out;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accordion</title>
+<style>
+  /* 스타일 */
+  .accordion *{
+  }
+  .accordion-header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.5S ease-in-out;
+  }
+
+  .accordion-content {
+    visibility: hidden;
+    opacity: 0;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    overflow: hidden; /* 내용이 넘칠 경우를 대비하여 오버플로우를 숨김 */
+    max-height: 0; /* 초기에는 내용이 보이지 않도록 높이를 0으로 설정 */
+  }
+
+  .accordion-content.active {
+    visibility: visible;
+    opacity: 1;
+    max-height: 50000px; /* 내용이 확장될 최대 높이 설정 */
+  }
+  .accordion {
+        border: 1px solid blue;
 
         .accordion-content {
-            visibility: hidden;
-            opacity: 0;
-            padding: 10px;
-            transition: 0.5s ease-in-out;
-            overflow: hidden; /* 내용이 넘칠 경우를 대비하여 오버플로우를 숨김 */
-            max-height: 0; /* 초기에는 내용이 보이지 않도록 높이를 0으로 설정 */
-        }
-
-        .accordion-content.active {
-            visibility: visible;
-            opacity: 1;
-            max-height: 50000px; /* 내용이 확장될 최대 높이 설정 */
-        }
-        .accordion {
-            border: 1px solid blue;
-
-            .accordion-content {
-                border: 1px solid #45595B;
-                .title {
-                    color: #FFFFFF;
-                    font-size: 32px;
-                    background-color: #F55E08;
-                }
-                p {
-                    color: #000000;
-                    font-size: 24px;
-                    padding: 20px 75px;
-                }
+            border: 1px solid #45595B;
+            .title {
+                color: #FFFFFF;
+                font-size: 32px;
+                background-color: #F55E08;
+            }
+            p {
+                color: #000000;
+                font-size: 24px;
+                padding: 20px 75px;
             }
         }
-    </style>
+    }
+</style>
 </head>
 <body>
 
@@ -95,27 +95,27 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.accordion-header').forEach(function(header) {
-            header.addEventListener('click', function() {
-                var accordionItem = this.parentElement;
-                var accordionContent = accordionItem.querySelector('.accordion-content');
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.accordion-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var accordionItem = this.parentElement;
+      var accordionContent = accordionItem.querySelector('.accordion-content');
 
-                // 현재 선택된 아코디언의 상태를 확인
-                var isActive = accordionContent.classList.contains('active');
+      // 현재 선택된 아코디언의 상태를 확인
+      var isActive = accordionContent.classList.contains('active');
 
-                // 모든 아코디언 섹션에서 'active' 클래스를 제거
-                document.querySelectorAll('.accordion-content').forEach(function(content) {
-                    content.classList.remove('active');
-                });
+      // 모든 아코디언 섹션에서 'active' 클래스를 제거
+      document.querySelectorAll('.accordion-content').forEach(function(content) {
+        content.classList.remove('active');
+      });
 
-                // 현재 선택된 아코디언 섹션에만 'active' 클래스 추가
-                if (!isActive) {
-                    accordionContent.classList.add('active');
-                }
-            });
-        });
+      // 현재 선택된 아코디언 섹션에만 'active' 클래스 추가
+      if (!isActive) {
+        accordionContent.classList.add('active');
+      }
     });
+  });
+});
 </script>
 
 </body>
