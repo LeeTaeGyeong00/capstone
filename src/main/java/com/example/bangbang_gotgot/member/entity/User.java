@@ -43,9 +43,6 @@ public class User {
     private Role role;
 
     @Column(nullable = false)
-    private String user_name;
-
-    @Column(nullable = false)
     private int old;
 
     @Column(nullable = false)

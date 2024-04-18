@@ -11,7 +11,7 @@ public class AllUserInfoDto {
 
     private  String passwd;
 
-    private String user_name;
+    private String nick_name;
 
     private int old;
 
