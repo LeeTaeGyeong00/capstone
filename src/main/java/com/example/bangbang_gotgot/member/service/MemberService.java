@@ -1,9 +1,11 @@
 package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
+import com.example.bangbang_gotgot.member.dto.MemberDto;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,14 +15,26 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Transactional
+    public MemberDto login(String personId, String rawPassword) {
+        User member = userRepository.findByPersonId(personId);
+        if (member == null) {
+            throw new IllegalArgumentException("Invalid personId or password");
+        }
+
+        if (!bCryptPasswordEncoder.matches(rawPassword, member.getPasswd())) {
+            throw new IllegalArgumentException("Invalid personId or password");
+        }
+
+        return MemberDto.from(member);
+    }
 
 
     public void createUser(AllUserInfoDto userAllInfoDto) {
