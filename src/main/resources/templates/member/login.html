@@ -10,120 +10,101 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link rel="stylesheet" href="../css/reset.css">
-    <link href="../css/style.css" rel="stylesheet">
-    <script type="text/javascript">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link href="/css/style.css" rel="stylesheet">
 
-        function check(){
-            /* 아이디 유효성 검사 */
-            if(myform.person_id.value.length === 0){
-                alert("아이디를 입력해주세요.");
-                myform.person_id.focus();
-                return false;
-            }
-
-
-            /* 비밀번호 및 비밀번호 확인 유효성 검사 */
-            if(myform.passwd.value.length === 0){
-                alert("비밀번호를 입력해주세요.");
-                myform.passwd.focus();
-                return false;
-            }
-
-
-        } 
-    </script>
 </head>
 <body>
-    <div class="wrap">
-            <!-- Spinner Start -->
-            <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-                <div class="spinner-grow text-primary" role="status"></div>
-            </div>
-            <!-- Spinner End -->
-        <div id="container" class="container loginContainer">
-            <header class="header">
-                <a href="../index.html" class="logo">
-                    <h1>LOGO</h1>
-                </a>
-            </header>
-            <div class="content">
-                <div class="login_wrap">
-                    <h2 class="guideLogin">로그인</h2>
-                    <form action="bangbang/auth/sign-up" method="post" name="myform">
-                        <input type="text" name="person_id" class="login_input login_C" placeholder="이메일 또는 아이디"><br>
-                        <input type="password" name="passwd" class="login_input login_C"placeholder="비밀번호"><br>
-                        <div class="login_keep_wrap">
-                            <input type="checkbox" id="keep" class="input_keep">
-                            <label for="keep" class="keep_text">로그인 유지</label>
-                        </div>
-                        <button type="button" class="btn_login login_C">로그인</button>
-                    </form>
-                </div>
-                <ul class="find_wrap">
-                    <li><a href="" class="find_text" >아이디 찾기</a></li>
-                    <li><a href="" class="find_text">비밀번호 찾기</a></li>
-                    <li><a href="/bangbang/auth/sign-in" class="find_text" >회원가입</a></li>
-                </ul>
-                <ul class="social_sign_in">
-                    <li class="social_btn_wrap">
-                        <button id="Kakao_btn" class="social_btn_Kakao" data-provider="Kakao" >Kakao</button>
-                    </li>
-                    <li class="social_btn_wrap">
-                        <button id="Google_btn" class="social_btn_Google" data-provider="Google" >Google</button>
-                    </li>
-                    <li class="social_btn_wrap">
-                        <button id="Facebook_btn" class="social_btn_Facebook" data-provider="Facebook" >Facebook</button>
-                    </li>
-                    <li class="social_btn_wrap">
-                        <button id="toss_btn" class="social_btn_toss" data-provider="toss" >toss</button>
-                    </li>
-                    <li class="social_btn_wrap">
-                        <button id="naver_btn" class="social_btn_naver" data-provider="naver" >naver</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-            
-            <footer class="footer">
-                <ul class="footer_inner">
-                    <li><a href="" class="footer_item">회사소개</a></li>
-                    <li><a href="" class="footer_item">인재채용</a></li>
-                    <li><a href="" class="footer_item">제휴제안</a></li>
-                    <li><a href="" class="footer_item">이용약관</a></li>
-                    <li><a href="" class="footer_item"><b>개인정보처리방침</b></a></li>
-                    <li><a href="" class="footer_item">청소년보호정책</a></li>
-                    <li><a href="" class="footer_item">고객센터</a></li>
-                </ul>
-            </footer>
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+<div class="wrap">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
     </div>
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- Spinner End -->
+    <div id="container" class="container loginContainer">
+        <header class="header">
+            <a href="../index.html" class="logo">
+                <h1>LOGO</h1>
+            </a>
+        </header>
+        <div class="content">
+            <div class="login_wrap">
+                <h2 class="guideLogin">로그인</h2>
+                <form action="bangbang/auth/sign-up" method="post" name="myform">
+                    <input type="text" name="person_id" class="login_input login_C" placeholder="아이디"><br>
+                    <input type="password" name="passwd" class="login_input login_C"placeholder="비밀번호"><br>
+                    <div class="login_keep_wrap">
+                        <input type="checkbox" id="keep" class="input_keep">
+                        <label for="keep" class="keep_text">로그인 유지</label>
+                    </div>
+                    <button type="button" class="btn_login login_C" onclick="return check()">로그인</button>
+                </form>
+            </div>
+            <ul class="find_wrap">
+                <li><a href="" class="find_text" >아이디 찾기</a></li>
+                <li><a href="" class="find_text">비밀번호 찾기</a></li>
+                <li><a href="/bangbang/auth/sign-in" class="find_text" >회원가입</a></li>
+            </ul>
+            <ul class="social_sign_in">
+                <li class="social_btn_wrap">
+                    <button id="Kakao_btn" class="social_btn_Kakao" data-provider="Kakao" >Kakao</button>
+                </li>
+                <li class="social_btn_wrap">
+                    <button id="Google_btn" class="social_btn_Google" data-provider="Google" >Google</button>
+                </li>
+                <li class="social_btn_wrap">
+                    <button id="Facebook_btn" class="social_btn_Facebook" data-provider="Facebook" >Facebook</button>
+                </li>
+                <li class="social_btn_wrap">
+                    <button id="toss_btn" class="social_btn_toss" data-provider="toss" >toss</button>
+                </li>
+                <li class="social_btn_wrap">
+                    <button id="naver_btn" class="social_btn_naver" data-provider="naver" >naver</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    </body>
+    <footer class="footer">
+        <ul class="footer_inner">
+            <li><a href="" class="footer_item">회사소개</a></li>
+            <li><a href="" class="footer_item">인재채용</a></li>
+            <li><a href="" class="footer_item">제휴제안</a></li>
+            <li><a href="" class="footer_item">이용약관</a></li>
+            <li><a href="" class="footer_item"><b>개인정보처리방침</b></a></li>
+            <li><a href="" class="footer_item">청소년보호정책</a></li>
+            <li><a href="" class="footer_item">고객센터</a></li>
+        </ul>
+    </footer>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+</div>
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/lib/easing/easing.min.js"></script>
+<script src="/lib/waypoints/waypoints.min.js"></script>
+<script src="/lib/lightbox/js/lightbox.min.js"></script>
+<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+
+<!-- Template Javascript -->
+<script src="/js/main.js"></script>
+</body>
 
 </html>

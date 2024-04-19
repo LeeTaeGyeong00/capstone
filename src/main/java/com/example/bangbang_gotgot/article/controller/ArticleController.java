@@ -41,10 +41,12 @@ public class ArticleController {
 
     @GetMapping("/list")
     public String list(Model model,
-                       @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-                       String searchKeyword
-    ) {
+                       @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                       String searchKeyword)
+     {
+
         Page<Article> list = null;
+
         if (searchKeyword == null) {
             list = articleService.list(pageable);
 
@@ -52,16 +54,19 @@ public class ArticleController {
             list = articleService.searchList(searchKeyword, pageable);
         }
 
-        int nowPage = list.getPageable().getPageNumber() + 1;
-        int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 5, list.getTotalPages());
+         int nowPage = list.getPageable().getPageNumber()+1; // or Pageable.getPageNumber() 현재페이지
+         int totalPage = list.getTotalPages(); // 총 페이지
+         int pageSize = 5; // 한 페이지에 보여질 페이지 수
+
+         int startPage = ((nowPage-1) / pageSize) * pageSize + 1;
+         int endPage = Math.min(startPage + pageSize - 1, totalPage);
 
         model.addAttribute("list", list);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
 
-        return "board/list";
+        return "LocalCategory/LocalCategory";
     }
 
     @GetMapping("/view/{id}")
