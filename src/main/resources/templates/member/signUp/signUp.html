@@ -2,23 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원가입</title>
 
 </head>
 <body>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-회원가입<br><br>
+<div class="wrap">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
 
-<form action="/bangbang/auth/sign-in" method="post" name="myform">
-    아이디: <input type="text" name="person_id" id="user-id" value="11111"><br>
-    비밀번호: <input type="password" name="passwd" id="user-passwd" value="123456!a"><br>
-    비밀번호 확인: <input type="password" name="passwd2" value="123456!a"><br>
-    닉네임: <input type="text" name="user_name" id="user-name" value="11"><br>
-    나이: <input type="text" name="old" id="user-old" value="11"><br>
-    전화번호: <input type="text" name="phone_num" id="user-phone" value="01011112222"><br>
-    <button type="button" id="join-btn">회원가입</button>
-</form>
-<a href="/bangbang/auth/sign-up">로그인 하기</a>
+
+    <div id="container" class="container joinContainer">
+        <div th:include="layout/header :: #header"></div>
+        <div class="tap">
+            <ul class="step_wrap">
+                <li class="step act"><span class="textNum">1</span><span class="text">개인정보 입력</span></li>
+                <li class="step"><span class="textNum">2</span><span class="text">최종 확인</span></li>
+            </ul>
+        </div>
+        <div class="joinInput_wrap">
+            <div class="content_summary">
+                <h3>step 1</h3>
+                <p>정보를 입력해주세요.</p>
+            </div>
+
+            <form class="join_form" action="/bangbang/auth/sign-in" method="post" name="myform">
+                <div class="form_id">
+                    <span class="form_item"> 아이디</span> <br>
+                    <input type="text" class="joinInput" name="person_id" id="user-id" value="11111" placeholder="아이디를 입력해주세요."> <input class="id_chk" type="button" value="중복확인"  onclick="checkIdProceed()"><br>
+                    <div id="matchId"></div>
+                </div>
+                <div class="form_id form_nickname">
+                    <span class="form_item"> 닉네임</span> <br>
+                    <input type="text" class="joinInput" name="nick_name" id="nick_name" value="11" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" onclick="checkNickProceed()">
+                    <div id="matchNickname"></div>
+                </div>
+                <div class="form_pw">
+                    <span class="form_item"> 비밀번호</span><br>
+                    <input type="password" class="joinInput" name="passwd" id="user-passwd" value="123456!a" placeholder="비밀번호를 입력해주세요.">
+                </div>
+                <div class="form_pwChk">
+                    <span class="form_item"> 비밀번호 확인</span><br>
+                    <input type="password" class="joinInput" name="passwd2" value="123456!a">
+                </div>
+                <div class="join_form2">
+                    <div class="form_tel">
+                        <span class="form_item"> 전화번호</span><br>
+                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="예시&#41;01012345678">
+                    </div>
+                    <div class="form_birth">
+                        <span class="form_item"> 생년월일</span><br>
+                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="예시&#41;19990101">
+                    </div>
+                </div>
+                <button type="submit" class="next-step step_btn" id="check">다음</button>
+            </form>
+
+        </div>
+    </div>
+    <div th:include="layout/footer :: #footer"></div>
+
+</div>
 
 <script type="text/javascript" src="/js/signUp.js"></script>
 

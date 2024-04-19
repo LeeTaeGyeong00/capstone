@@ -5,7 +5,9 @@ import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.entity.Review;
 import com.example.bangbang_gotgot.article.repository.ArticleRepository;
 import com.example.bangbang_gotgot.article.repository.ReviewRepository;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

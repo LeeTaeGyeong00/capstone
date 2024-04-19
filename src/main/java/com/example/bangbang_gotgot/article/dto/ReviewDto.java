@@ -1,6 +1,5 @@
 package com.example.bangbang_gotgot.article.dto;
 
-
 import com.example.bangbang_gotgot.article.entity.Review;
 
 import java.time.LocalDateTime;
@@ -22,10 +21,11 @@ public class ReviewDto{
         return createdAt;
     }
     public static ReviewDto from(Review review) {
-            ReviewDto dto = new ReviewDto();
-            dto.id = review.getId();
-            dto.content = review.getContent();
-            dto.createdAt = review.getCreatedAt();
-            return dto;
+
+        ReviewDto dto = new ReviewDto();
+        dto.id = review.getId();
+        dto.content = review.getContent();
+        dto.createdAt = review.getCreatedAt();
+        return dto;
     }
 }

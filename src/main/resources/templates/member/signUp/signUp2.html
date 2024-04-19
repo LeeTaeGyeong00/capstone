@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원가입</title>
 </head>
 <body>
+ <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
-</body>
+
+
+<!-- 오류확인용 -->
+
+
+<div class="wrap">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <div id="container" class="container joinContainer">
+
+        <div th:include="layout/header :: #header"></div>
+
+        <div class="tap">
+            <ul class="step_wrap">
+                <li class="step"><span class="textNum">1</span><span class="text">개인정보 입력</span></li>
+                <li class="step act"><span class="textNum">2</span><span class="text">최종 확인</span></li>
+            </ul>
+        </div>
+        <div class="joinInput_wrap">
+            <div class="content_summary">
+                <h3>step 2</h3>
+                <p>이대로 가입하시겠습니까?</p>
+            </div>
+            <div class="Profile">
+                <table>
+                    <tr>
+                        <th>닉네임</th>
+                        <td th:text="${uesrInfo.nick_name}"></td>
+                    </tr>
+                    <tr>
+                        <th>아이디</th>
+                        <td th:text="${uesrInfo.person_id}"></td>
+                    </tr>
+                    <tr>
+                        <th>전화번호</th>
+                        <td id="js-phoneNum"></td>
+                    </tr>
+                    <tr>
+                        <th>생년월일</th>
+                        <td id="js-birth"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="join_control_box">
+                <button type="submit" id="signUp-back" class="Prev-step step_btn">이전</button>
+                <form action="/bangbang/auth/sign-in" method="post" name="myform">
+                    <input type="hidden" id="user-id" th:value="${uesrInfo.person_id}">
+                    <input type="hidden"id="user-passwd" th:value="${uesrInfo.passwd}">
+                    <input type="hidden" id="nick-name" th:value="${uesrInfo.nick_name}">
+                    <input type="hidden" id="user-old" th:value="${uesrInfo.old}">
+                    <input type="hidden" id="user-phone" th:value="${uesrInfo.phone_num}">
+                    <button type="button" id="join-btn" class="next-step step_btn">회원가입</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:include="layout/footer :: #footer"></div>
+
+</div>
+
+ <script type="text/javascript" src="/js/signUp2.js"></script>
+
+
+    </body>
 </html>
