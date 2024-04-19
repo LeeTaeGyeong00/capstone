@@ -1,3 +1,5 @@
+var checkUse = 0
+
 function check(){
     /* 아이디 유효성 검사 */
     if(myform.person_id.value.length === 0){
@@ -98,6 +100,9 @@ function check(){
         return regex.test(value);
     }
 
+    // 유효성 검사 통과
+    return true;
+
 
 }
 
@@ -125,7 +130,10 @@ function checkIdProceed() {
                 if (response === true) {
                     alert("사용 가능한 아이디입니다")
                     // document.querySelector("#matchId").textContent = "사용 가능한 아이디입니다"
+                    // 추후에 사용가능한 아이디면 택스트 쓰지 못하도록 하자
                     checkId = 1
+                } else {
+                    alert("중복된 아이디 입니다")
                 }
             },
             error: function (error) {
@@ -161,6 +169,8 @@ function checkNickProceed() {
                     alert("사용 가능한 닉네임입니다")
                     // document.querySelector("#matchNickname").textContent = "사용 가능한 닉네임입니다"
                     checkNick = 1
+                } else {
+                    alert("중복된 닉네임 입니다")
                 }
             },
             error: function (error) {
@@ -175,6 +185,11 @@ function checkNickProceed() {
 const checkBtn = document.querySelector("#check")
 
 checkBtn.addEventListener("click", function (event) {
+
+    if(!check()) {
+        event.preventDefault()
+    }
+
     if(checkId === 0){
         alert("아이디 중복을 체크해 주세요")
         event.preventDefault()
