@@ -64,7 +64,7 @@ public class MemberController {
     @PostMapping("/bangbang/auth/sign-up")
     public String login(MemberDto memberDto) {
         try {
-            MemberDto loggedInMember = memberService.login(memberDto.getPersonId(), memberDto.getPassWd());
+            MemberDto loggedInMember = memberService.login(memberDto.getPerson_id(), memberDto.getPasswd());
             // 세션에 로그인 정보 저장
             // ...
             return "redirect:/"; // 메인 페이지로 리디렉션

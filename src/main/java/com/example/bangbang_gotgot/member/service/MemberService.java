@@ -41,15 +41,14 @@ public class MemberService {
 
         User user = new User();
 
-        boolean exists = userRepository.existsById(userAllInfoDto.getId());
-        // 예외 발생
-        if (exists)
-            try {
-                throw new IllegalAccessException("회원의 id가 없어야 합니다.");
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-
+//        boolean exists = userRepository.existsById(userAllInfoDto.getId());
+//        // 예외 발생
+//        if (exists)
+//            try {
+//                throw new IllegalAccessException("회원의 id가 없어야 합니다.");
+//            } catch (IllegalAccessException e) {
+//                throw new RuntimeException(e);
+//            }
 
         user.setPerson_id(userAllInfoDto.getPerson_id());
         user.setPasswd(bCryptPasswordEncoder.encode(userAllInfoDto.getPasswd()));

@@ -36,7 +36,7 @@ public class MemberApiController {
     }
 
 
-    @PostMapping("/bangbang/auth/sign-up")
+    @PostMapping("/sign-up")
     public ResponseEntity<String> loginProc(@RequestBody LoginDto loginDto) {
 
         return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
