@@ -23,7 +23,6 @@ public class MemberService {
 
 
 
-    @Transactional
     public void createUser(AllUserInfoDto userAllInfoDto) {
 
         User user = new User();
