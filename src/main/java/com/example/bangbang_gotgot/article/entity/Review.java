@@ -40,4 +40,5 @@ public class Review {
 
     // 기본 생성자
 //    protected Review() {}
+
 }

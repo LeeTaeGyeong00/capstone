@@ -21,6 +21,7 @@ public class ReviewDto{
         return createdAt;
     }
     public static ReviewDto from(Review review) {
+
         ReviewDto dto = new ReviewDto();
         dto.id = review.getId();
         dto.content = review.getContent();
