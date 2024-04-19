@@ -7,6 +7,7 @@ import com.example.bangbang_gotgot.member.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -52,4 +53,22 @@ public class MemberService {
 
     }
 
+    public boolean checkId(String person_id) {
+        boolean existId = userRepository.existsByPersonId(person_id);
+        if(existId){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public boolean checkNick(String nickName) {
+        boolean existId = userRepository.existsByNickname(nickName);
+        if(existId){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

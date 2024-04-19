@@ -13,11 +13,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
-@Getter
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="articleId", updatable = false)
+    @Column(name="article_id", updatable = false)
     private Long id;
 
     @Column(name="title", nullable = false)

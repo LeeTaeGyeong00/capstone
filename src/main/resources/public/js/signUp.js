@@ -18,11 +18,30 @@ function check(){
         return false;
     }
 
+    /* 닉네임 유효성 검사 */
+    if(myform.nick_name.value.length === 0){
+        alert("닉네임을 입력해주세요.");
+        myform.nick_name.focus();
+        return false;
+    }
+
+    if(myform.nick_name.value.length < 2 || myform.nick_name.value.length > 10){
+        alert("닉네임은 2자 이상, 10자 이하로 입력이 가능합니다. ");
+        myform.nick_name.focus();
+        return false;
+    }
+
 
     /* 비밀번호 및 비밀번호 확인 유효성 검사 */
     if(myform.passwd.value.length === 0){
         alert("비밀번호를 입력해주세요.");
         myform.passwd.focus();
+        return false;
+    }
+
+    if(myform.passwd.value.length < 8 || !checkEngNumSpeChar(myform.passwd.value)){
+        alert("비밀번호는 영문,숫자,특수문자 포함 8자이상 입력해야 합니다.");
+        myform.passwd.select();
         return false;
     }
 
@@ -38,40 +57,6 @@ function check(){
         return false;
     }
 
-    if(myform.passwd.value.length < 8 || !checkEngNumSpeChar(myform.passwd.value)){
-        alert("비밀번호는 영문,숫자,특수문자 포함 8자이상 입력해야 합니다.");
-        myform.passwd.select();
-        return false;
-    }
-
-
-    /* 닉네임 유효성 검사 */
-    if(myform.nick_name.value.length === 0){
-        alert("닉네임을 입력해주세요.");
-        myform.nick_name.focus();
-        return false;
-    }
-
-    if(myform.nick_name.value.length < 2 || myform.nick_name.value.length > 10){
-        alert("닉네임은 2자 이상, 10자 이하로 입력이 가능합니다. ");
-        myform.nick_name.focus();
-        return false;
-    }
-
-
-    /* 나이 유효성 검사 */
-    if(myform.old.value.length === 0) {
-        alert("나이를 입력해주세요.");
-        myform.old.focus();
-        return false
-    }
-
-    if(isNaN(myform.old.value)){
-        alert("나이는 숫자만 입력가능합니다.");
-        myform.old.focus();
-        return false;
-    }
-
 
     /* 전화번호 유효성 검사 */
     if(myform.phone_num.value.length === 0){
@@ -84,6 +69,20 @@ function check(){
     if(isNaN(myform.phone_num.value) || myform.phone_num.value.length !== 11){
         alert("전화번호는 형식에 맞춰 숫자로만 입력해주세요.");
         myform.phone_num.focus();
+        return false;
+    }
+
+
+    /* 나이 유효성 검사 */
+    if(myform.old.value.length !== 8) {
+        alert("생년월일을 입력해주세요.");
+        myform.old.focus();
+        return false
+    }
+
+    if(isNaN(myform.old.value)){
+        alert("숫자만 입력가능합니다.");
+        myform.old.focus();
         return false;
     }
 
@@ -104,53 +103,89 @@ function check(){
 
 
 
-    //댓글 생성 버튼 변수화
-    const commentCreateBtn = document.querySelector("#join-btn");
 
-    //버튼 클릭 이벤트 감지
-    commentCreateBtn.addEventListener("click",function () {
+// 아이디 중복 체크
 
+var checkId = 0
 
-    // check 함수 호출하여 반환값 받음
-    const validationResult = check();
+function checkIdProceed() {
+    {
 
-    // 반환값에 따라 동작 분기
-    if (validationResult === false) {
+        // 보낼 JSON 데이터 생성
+        var jsonData = {
+            "person_id": document.querySelector("#user-id").value
+        };
 
-} else {
-    // 보낼 JSON 데이터 생성
-    var jsonData = {
-    person_id: document.querySelector("#user-id").value,
-    passwd: document.querySelector("#user-passwd").value,
-    nick_name: document.querySelector("#nick-name").value,
-    old: document.querySelector("#user-old").value,
-    phone_num: document.querySelector("#user-phone").value
-};
+        // Ajax 요청
+        $.ajax({
+            type: "POST",
+            url: "/bangbang/check/id",  // Spring Boot 어플리케이션의 URL로 변경
+            data: jsonData,
+            success: function (response) {
+                if (response === true) {
+                    alert("사용 가능한 아이디입니다")
+                    // document.querySelector("#matchId").textContent = "사용 가능한 아이디입니다"
+                    checkId = 1
+                }
+            },
+            error: function (error) {
 
-    // Ajax 요청
-    $.ajax({
-    type: "POST",
-    url: "/bangbang/auth/sign-in",  // Spring Boot 어플리케이션의 URL로 변경
-    contentType: "application/json",
-    data: JSON.stringify(jsonData),
-    success: function(response) {
+            }
+        });
 
-    // 서버에서의 응답을 처리
-    console.log(response);
-    const msg =  "회원가입이 되었습니다"
-    alert(msg);
-    window.location.href = "/bangbang/auth/sign-up";
-},
-    error: function(error) {
-
-    const msg =  "회원가입 실패"
-    alert(msg);
-    console.error("에러 발생:", error);
-    window.location.href = "/bangbang/auth/sign-in";
-}
-});
+    }
 }
 
 
+
+
+// 닉네임 중복 체크 
+
+var checkNick = 0
+
+function checkNickProceed() {
+    {
+
+        // 보낼 JSON 데이터 생성
+        var jsonData = {
+            "nick_name": document.querySelector("#nick_name").value
+        };
+
+        // Ajax 요청
+        $.ajax({
+            type: "POST",
+            url: "/bangbang/check/nickname",  // Spring Boot 어플리케이션의 URL로 변경
+            data: jsonData,
+            success: function (response) {
+                if (response === true) {
+                    alert("사용 가능한 닉네임입니다")
+                    // document.querySelector("#matchNickname").textContent = "사용 가능한 닉네임입니다"
+                    checkNick = 1
+                }
+            },
+            error: function (error) {
+
+            }
+        });
+
+    }
+}
+
+// 중복 체크 구현
+const checkBtn = document.querySelector("#check")
+
+checkBtn.addEventListener("click", function (event) {
+    if(checkId === 0){
+        alert("아이디 중복을 체크해 주세요")
+        event.preventDefault()
+    }
+    else if(checkNick === 0){
+        alert("닉네임 중복을 체크해 주세요")
+        event.preventDefault()
+    }
 
 })
+
+
+
+

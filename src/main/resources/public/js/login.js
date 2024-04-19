@@ -16,9 +16,3 @@ function check(){
 
 
 }
-
-const signBtn = document.querySelector("#sign-btn")
-
-signBtn.addEventListener("click",function () {
-    check();
-})
