@@ -44,6 +44,7 @@ public class ArticleController {
                        @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
                        String searchKeyword)
      {
+         System.out.println(searchKeyword);
 
         Page<Article> list = null;
 
