@@ -1,39 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">    
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <title>방방곡곡</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link href="./css/style.css" rel="stylesheet">
-
-    <!-- fontawesone -->
-    <script src="https://kit.fontawesome.com/4c3f1790ae.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+
+<div th:include="layout/header :: #header"></div>
 
 <!-- Spinner Start -->
 <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -41,22 +17,6 @@
 </div>
 <!-- Spinner End -->
 
-<header class="main_header">
-    <h1>LOGO</h1>
-    <form class="search-box" name="search" action="" method="get">
-        <input class="search-txt" type="search">
-        <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-    <div class="map nav-btn">
-        <button class="map-btn" type="button"><i class="fa-solid fa-location-dot"></i></button>
-    </div>
-    <div class="menu nav-btn">
-        <button class="menu-btn" type="button"><i class="fa-solid fa-bars"></i></button>
-    </div>
-    <div class="user nav-btn">
-        <button class="user-btn" type="button"><i class="fa-regular fa-circle-user"></i></button>
-    </div>
-</header>
 
 <!-- Hero Start -->
 <div class="container-fluid py-5 mb-5 hero-header">
@@ -73,10 +33,10 @@
                 <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active rounded">
-                            <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                            <img src="/img/store_photo.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
                         </div>
                         <div class="carousel-item rounded">
-                            <img src="img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                            <img src="/img/store_photo.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
@@ -113,7 +73,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -132,7 +92,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -151,7 +111,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -170,7 +130,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -189,7 +149,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-3.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -208,7 +168,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -227,7 +187,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -246,7 +206,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
@@ -273,7 +233,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -288,7 +248,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -311,7 +271,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -326,7 +286,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -349,7 +309,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -364,7 +324,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -387,7 +347,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-3.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Banana</h4>
@@ -401,7 +361,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -416,7 +376,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -484,45 +444,18 @@
     </div>
     <!-- Notice board End-->
     <!-- video start-->
-    <div class="popular-video-wrap">
-        <video class="popular-video" width="420" height="236" controls>
-            <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-          Your browser does not support the video tag.
-        </video>
-    </div>
+<!--    <div class="popular-video-wrap">-->
+<!--        <video class="popular-video" width="420" height="236" controls>-->
+<!--            <source src="movie.mp4" type="video/mp4">-->
+<!--            <source src="movie.ogg" type="video/ogg">-->
+<!--            Your browser does not support the video tag.-->
+<!--        </video>-->
+<!--    </div>-->
     <!-- video end-->
 </div>
 
 
-<!-- Footer Start-->
-<footer class="footer">
-    <ul class="footer_inner">
-        <li><a href="" class="footer_item">회사소개</a></li>
-        <li><a href="" class="footer_item">인재채용</a></li>
-        <li><a href="" class="footer_item">제휴제안</a></li>
-        <li><a href="" class="footer_item">이용약관</a></li>
-        <li><a href="" class="footer_item"><b>개인정보처리방침</b></a></li>
-        <li><a href="" class="footer_item">청소년보호정책</a></li>
-        <li><a href="" class="footer_item">고객센터</a></li>
-    </ul>
-</footer>
-<!-- Footer End-->
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top" ><i class="fa fa-arrow-up"></i></a>
-
-
-<!-- JavaScript Libraries -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
-</body> 
+<div th:include="layout/footer :: #footer"></div>
+</body>
 
 </html>
