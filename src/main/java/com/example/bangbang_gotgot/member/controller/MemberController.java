@@ -32,27 +32,6 @@ public class MemberController {
 
 
 
-//    @GetMapping("/bangbang/auth/sign-up")
-//    public String login(){
-//
-//        return "member/login";
-//    }
-//
-//
-//
-//    @GetMapping("/signup")
-//    public String signupForm(Model model) {
-//        model.addAttribute("memberDto", new MemberDto());
-//        return "signup";
-//    }
-
-//    @PostMapping("/signup")
-//    public String signup(MemberDto memberDto) {
-//        memberService.signup(memberDto);
-//        return "redirect:/login";
-//    }
-
-
     // 로그인
 
     @GetMapping("/bangbang/auth/sign-up")
