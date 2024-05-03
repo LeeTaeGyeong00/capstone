@@ -13,6 +13,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'BMHANNAAir';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .noto-sans {
     font-family: "Noto Sans KR", sans-serif;
     font-optical-sizing: auto;
@@ -554,7 +561,7 @@ body {
 }
 
 .loginContainer {
-    height: calc(100vh - 100px);
+    height: 853px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -589,24 +596,40 @@ body {
 }
 
 .guideLogin {
-    margin: 94px 0px 40px 0px;
+    margin: 94px 0px 30px 0px;
     font-size: 40px;
     display: flex;
     justify-content: center;
 }
 
 .login_keep_wrap {
-    font-family: 'BMHANNAPro', 'sans-serif';
+    font-family: 'BMHANNAAir', 'sans-serif';
     margin: 4px 20px;
+}
+.input_keep{
+    accent-color: #F55E08;
+}
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+input[type="checkbox"]:checked {
+    background: #F55E08;
+    border: none;
 }
 .login_form {
     display: flex;
     flex-direction: column;
 }
-
 .login_C {
     margin: 13px;
-    width: 344px;
+    width: 380px;
     height: 49px;
     border-radius: 4px;
     border-style: none;
@@ -620,7 +643,7 @@ body {
 }
 .btn_login {
     font-family: 'BMJUA', 'sans-serif';
-    font-size: 16px;
+    font-size: 20px;
     background-color: #F55E08;
     color: #fff;
 }
@@ -653,9 +676,9 @@ body {
 }
 
 .find_text{
-    color:#373737;
-    font-family: 'BMHANNAPro', 'sans-serif';
-    font-size: 12px;
+    color:#888888;
+    font-family: 'BMHANNAAir', 'sans-serif';
+    font-size: 15px;
 }
 /*** Login Page End***/
 
@@ -1164,7 +1187,7 @@ input{
 
     .footer_item {
         font-family: 'Noto Sans KR', 'sans-serif';
-        font-size: 16px;
+        font-size: 13px;
         color: rgba(0, 0, 0, 0.3);
 
         b{
