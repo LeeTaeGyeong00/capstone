@@ -1,5 +1,5 @@
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
-values ('더 맛있는 고기집','김영수', '1111', now(), '1111', '1111', 0, 0, now(), now() );
+values ('더 맛있는 고기집','김영수', '1111', now(), '서울', '1111', 0, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
 values ('즐거운 카페','이지은', '2222', now(), '2222', '2222', 0, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
@@ -7,13 +7,13 @@ values ('화려한 레스토랑','박민준', '3333', now(), '3333', '3333', 0, 
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
 values ('아늑한 커피숍','최지혜', '4444', now(), '4444', '4444', 0, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
-values ('신선한 해산물 가게','정승우', '5555', now(), '5555', '5555', 0, 0, now(), now() );
+values ('신선한 해산물 가게','정승우', '5555', now(), '5555', '5555', 1, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
-values ('행복한 파스타집','강수진', '6666', now(), '6666', '6666', 0, 0, now(), now() );
+values ('행복한 파스타집','강수진', '6666', now(), '6666', '6666', 2, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
-values ('고급스러운 스테이크하우스','윤현우', '7777', now(), '7777', '7777', 0, 0, now(), now() );
+values ('고급스러운 스테이크하우스','윤현우', '7777', now(), '7777', '7777', 0, 2, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
-values ('분위기 있는 바','임서연', '8888', now(), '8888', '8888', 0, 0, now(), now() );
+values ('분위기 있는 바','임서연', '8888', now(), '8888', '8888', 0, 1, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
 values ('건강한 샐러드 카페','한준호', '9999', now(), '9999', '9999', 0, 0, now(), now() );
 insert into article(title, writer, content, work_time, address, phone_number, likes, view, reg_date, mod_date  )
