@@ -46,12 +46,56 @@
 
     <div class="local_category content_box">
         <div class="local_menu">
-            <ul class="accordion">
-                <li class="accordion-item"><p class="title">지역</p></li>
-                <li><p class="button">서울</p></li>
-                <li><p class="button">경기</p></li>
-                <li><p class="button">인천</p></li>
-                <li><p class="button">부산</p></li>
+            <ul>
+                <li><p class="title">지역</p></li>
+                <li class="accordion_item">
+                    <div class="accordion_title">서울</div>
+                    <ul class="accordion_content">
+                        <li><a href="">강남구</a></li>
+                        <li><a href="">관악구</a></li>
+                        <li><a href="">마포구</a></li>
+                        <li><a href="">강복구</a></li>
+                        <li><a href="">동작구</a></li>
+                        <li><a href="">영등포구</a></li>
+                        <li><a href="">금천구</a></li>
+                    </ul>
+                </li>
+                <li class="accordion_item">
+                    <div class="accordion_title">경기</div>
+                    <ul class="accordion_content">
+                        <li><a href="">수원시</a></li>
+                        <li><a href="">과천시</a></li>
+                        <li><a href="">광명시</a></li>
+                        <li><a href="">시흥시</a></li>
+                        <li><a href="">부천시</a></li>
+                        <li><a href="">안양시</a></li>
+                        <li><a href="">의정부시</a></li>
+                    </ul>
+                </li>
+                <li class="accordion_item">
+                    <div class="accordion_title">인천</div>
+                    <ul class="accordion_content">
+                        <li><a href="">연수구</a></li>
+                        <li><a href="">남동구</a></li>
+                        <li><a href="">부평구</a></li>
+                        <li><a href="">계양구</a></li>
+                        <li><a href="">서구</a></li>
+                        <li><a href="">강화군</a></li>
+                        <li><a href="">옹진군</a></li>
+                    </ul>
+                </li>
+                <li class="accordion_item">
+                    <div class="accordion_title">부산</div>
+                    <ul class="accordion_content">
+                        <li><a href="">영도구</a></li>
+                        <li><a href="">부산진구</a></li>
+                        <li><a href="">동래구</a></li>
+                        <li><a href="">해운대구</a></li>
+                        <li><a href="">금정구</a></li>
+                        <li><a href="">강서구</a></li>
+                        <li><a href="">연제구</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="section">
@@ -98,6 +142,53 @@
 
 <div th:include="layout/footer :: #footer"></div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const accordionItems = document.querySelectorAll(".accordion_item");
+
+        accordionItems.forEach(item => {
+            const title = item.querySelector(".accordion_title");
+            const content = item.querySelector(".accordion_content");
+
+            title.addEventListener("click", function() {
+                const isOpen = item.classList.toggle("open");
+                content.style.maxHeight = isOpen ? content.scrollHeight + "px" : 0;
+
+                if (isOpen) {
+                    title.style.background = "#FFCD6D";
+                    title.style.color = "#FFFFFF";
+                    title.style.borderBottom = "0.5px solid rgba(0,0,0,0)";
+                    title.style.borderRight = "0.5px solid rgba(0,0,0,0)";
+                    title.style.borderLeft = "0.5px solid rgba(0,0,0,0)";
+                    content.style.borderBottom = "0.5px solid rgba(69, 89, 91, 0.25)";
+                    content.style.borderRight = "0.5px solid rgba(69, 89, 91, 0.25)";
+                    content.style.borderLeft = "0.5px solid rgba(69, 89, 91, 0.25)";
+                } else {
+                    title.style.background = ""; // 원래 배경색으로 변경
+                    title.style.color = "#000000"; // 원래 글자색으로 변경
+                    title.style.borderBottom = "0.5px solid rgba(69, 89, 91, 0.25)";
+                    title.style.borderRight = "0.5px solid rgba(69, 89, 91, 0.25)";
+                    title.style.borderLeft = "0.5px solid rgba(69, 89, 91, 0.25)";
+                    content.style.borderBottom = "";
+                    content.style.borderRight = "";
+                    content.style.borderLeft = "";
+                }
+
+                // Close other sections if open
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains("open")) {
+                        otherItem.classList.remove("open");
+                        otherItem.querySelector(".accordion_content").style.maxHeight = 0;
+                        otherItem.querySelector(".accordion_title").style.background = "";
+                        otherItem.querySelector(".accordion_title").style.color = "#000000";
+
+                    }
+                });
+            });
+        });
+    });
+</script>
+
 
 <script>
 
@@ -105,9 +196,7 @@
         // option 값
         var project_title = document.querySelector('#filter_box');
         var select_project_title = project_title.value;
-        // var selectedOption = project_title.options[project_title.selectedIndex].textContent;
-        // console.log(selectedOption)
-        // $("#filter_box").val(select_project_title).prop("selected", true);
+
 
         $.ajax({
             type: "get",
