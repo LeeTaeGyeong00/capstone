@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
 </head>
 <body>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -35,30 +37,35 @@
                     <input type="text" class="joinInput" name="person_id" id="user-id" value="11111" placeholder="아이디를 입력해주세요."> <input class="id_chk" type="button" value="중복확인"  onclick="checkIdProceed()"><br>
                     <div id="matchId"></div>
                 </div>
+
                 <div class="form_id form_nickname">
                     <span class="form_item"> 닉네임</span> <br>
                     <input type="text" class="joinInput" name="nick_name" id="nick_name" value="11" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" onclick="checkNickProceed()">
                     <div id="matchNickname"></div>
                 </div>
                 <div class="form_pw">
-                    <span class="form_item"> 비밀번호</span><br>
+                    <span class="form_item"> 비밀번호</span> <br>
                     <input type="password" class="joinInput" name="passwd" id="user-passwd" value="123456!a" placeholder="비밀번호를 입력해주세요.">
                 </div>
                 <div class="form_pwChk">
                     <span class="form_item"> 비밀번호 확인</span><br>
                     <input type="password" class="joinInput" name="passwd2" value="123456!a">
                 </div>
+                <div class="form_email">
+                    <span class="form_item"> 이메일</span><br>
+                    <input type="text" class="joinInput" name="email" id="user-email" value="aa@aa.com" placeholder="이메일을 입력해주세요.">
+                </div>
                 <div class="join_form2">
                     <div class="form_tel">
                         <span class="form_item"> 전화번호</span><br>
-                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="예시&#41;01012345678">
+                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="01000000000">
                     </div>
                     <div class="form_birth">
                         <span class="form_item"> 생년월일</span><br>
-                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="예시&#41;19990101">
+                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="YYYYMMDD">
                     </div>
                 </div>
-                <button type="submit" class="next-step step_btn" id="check">다음</button>
+                <button type="submit" class="next-step step_btn" id="check">다 음</button>
             </form>
 
         </div>
