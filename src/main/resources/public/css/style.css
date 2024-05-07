@@ -730,8 +730,8 @@ input{
     align-items: center;
     width: 1280px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
 
     header {
         width: 100vw; height: 130px;
