@@ -31,8 +31,14 @@ public class Article {
     @Column(name="workTime", updatable = false)
     private LocalDateTime workTime;
 
-    @Column(name="address", nullable = false)
-    private String address;
+    @Column(name="address1", nullable = false)
+    private String address1;
+
+    @Column(name="address2", nullable = false)
+    private String address2;
+
+    @Column(name="address3", nullable = false)
+    private String address3;
 
     @Column(name="phoneNumber", nullable = false)
     private String phoneNumber;
@@ -54,12 +60,14 @@ public class Article {
 
 
     @Builder
-    public Article(String title, String content, String writer, LocalDateTime workTime, String address, String phoneNumber){
+    public Article(String title, String content, String writer, LocalDateTime workTime, String address1, String address2, String address3, String phoneNumber){
         this.title = title;
         this.content = content;
         this.writer = writer;
         this.workTime = workTime;
-        this.address = address;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.address3 = address3;
         this.phoneNumber=phoneNumber;
     }
 }

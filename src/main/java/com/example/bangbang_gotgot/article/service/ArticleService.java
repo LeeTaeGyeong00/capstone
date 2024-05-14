@@ -4,12 +4,14 @@ import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.repository.ArticleRepository;
 import com.example.bangbang_gotgot.article.specification.ArticleSpecifications;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -47,15 +49,21 @@ public class ArticleService {
 
     public Page<Article> searchList(String searchKeyword, Pageable pageable, String option) {
         Specification<Article> spec = ArticleSpecifications.searchByKeyword(searchKeyword);
+        Page<Article> result = articleRepository.findAll(spec, pageable);
 
-        if (option.equals("1") || option.isEmpty()) {
-            return articleRepository.findAll(pageable);
-        } else if (option.equals("2")) {
-            return articleRepository.findAllByOrderByViewDesc(pageable);
-        } else if (option.equals("3")) {
-            return articleRepository.findAllByOrderByLikesDesc(pageable);
+
+        if (Objects.equals(option, "1")) {
+            return result;
+        } else if (Objects.equals(option, "2")) {
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("view").descending());
+            return articleRepository.findAll(spec, pageable);
+
+        } else if (Objects.equals(option, "3")) {
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("likes").descending());
+            return articleRepository.findAll(spec, pageable);
         }
-        return articleRepository.findAll(pageable);
+        return result;
+
     }
 
     public Page<Article> searchList2(Pageable pageable) {
@@ -66,5 +74,33 @@ public class ArticleService {
     public Page<Article> searchList3(String searchKeyword, Pageable pageable) {
         Specification<Article> spec = ArticleSpecifications.searchByKeyword(searchKeyword);
         return articleRepository.findAll(spec, pageable);
+    }
+
+    public Page<Article> locate(Pageable pageable, String district, String option) {
+
+        if (Objects.equals(option, "1")) {
+            return articleRepository.findByAddress2(district, pageable);
+        } else if (Objects.equals(option, "2")) {
+            return articleRepository.findByAddress2OrderByViewDesc(district, pageable);
+        } else if (Objects.equals(option, "3")) {
+            return articleRepository.findByAddress2OrderByLikesDesc(district, pageable);
+        }
+        else {
+            return articleRepository.findByAddress2(district, pageable);
+        }
+
+    }
+
+
+    public Page<Article> searchList4(Pageable pageable, String option) {
+
+        if (Objects.equals(option, "1")) {
+            return articleRepository.findAll(pageable);
+        } else if (Objects.equals(option, "2")) {
+            return articleRepository.findAllByOrderByViewDesc(pageable);
+        } else if (Objects.equals(option, "3")) {
+            return articleRepository.findAllByOrderByLikesDesc(pageable);
+        }
+        return articleRepository.findAll(pageable);
     }
 }
