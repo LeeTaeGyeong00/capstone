@@ -8,6 +8,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<Article> findAll(Specification<Article> spec, Pageable pageable);
+    Page<Article> findAll(Pageable pageable);
     Page<Article> findAllByOrderByLikesDesc(Pageable pageable);
-    Page<Article> findAllByOrderByViewDesc(Pageable pageable);
+    Page<Article> findAllByOrderByViewDesc( Pageable pageable);
+    Page<Article> findByAddress2(String district, Pageable pageable);
+    Page<Article> findByAddress2OrderByViewDesc(String district, Pageable pageable);
+    Page<Article> findByAddress2OrderByLikesDesc(String district, Pageable pageable);
+
+
 }

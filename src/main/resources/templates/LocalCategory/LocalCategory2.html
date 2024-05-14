@@ -112,9 +112,6 @@
                         <li><a href="/board/location?district=">연천군</a></li>
                         <li><a href="/board/location?district=">가평군</a></li>
                         <li><a href="/board/location?district=">양평군</a></li>
-
-
-
                     </ul>
                 </li>
                 <li class="accordion_item">
@@ -172,23 +169,23 @@
                 </div>
             </div>
 
-            <input type="hidden" id="searchKeyword" th:value="${searchKeyword}">
+            <input type="hidden" id="district" th:value="${district}">
 
 
             <div class="page_swap">
                 <div class="swap_button">
                     <ul><!-- 이전 링크 활성화 비활성화 -->
-                        <li><a th:if="${!list.first}" th:href="@{/board/list(page = ${nowPage -2}, searchKeyword = ${param.searchKeyword}, option=${param.option})}">&#x3C;</a></li>
+                        <li><a th:if="${!list.first}" th:href="@{/board/location(page = ${nowPage -2}, option=${param.option}, district=${param.district})}">&#x3C;</a></li>
                         <li><a th:if="${list.first}" th:href="@{#}">&#x3C;</a></li>
 
                         <!-- 페이지 처리 -->
                         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-                            <li><a th:if="${page != nowPage}" th:href="@{/board/list(page =  ${page - 1}, searchKeyword = ${param.searchKeyword}, option=${param.option})}" th:text="${page}"></a></li>
+                            <li><a th:if="${page != nowPage}" th:href="@{/board/location(page =  ${page - 1}, option=${param.option}, district=${param.district})}" th:text="${page}"></a></li>
                             <li><a th:if="${page == nowPage}" th:text="${page}" class="act"></a></li>
                         </th:block>
 
                         <!-- 다음 링크 활성화 비활성화 -->
-                        <li><a th:if="${!list.last}" th:href="@{/board/list(page = ${nowPage}, searchKeyword = ${param.searchKeyword}, option=${param.option})}">&#x3E;</a></li>
+                        <li><a th:if="${!list.last}" th:href="@{/board/location(page = ${nowPage}, option=${param.option}, district=${param.district})}">&#x3E;</a></li>
                         <li><a th:if="${list.last}" th:href="@{#}">&#x3E;</a></li>
                     </ul>
                 </div>
@@ -199,23 +196,6 @@
 <div th:include="layout/footer :: #footer"></div>
 
 <script>
-    // $(document).ready(function() {
-    //     var accordionContent = $(".accordion_content");
-    //     var listItems = accordionContent.find("li");
-    //     var listItemHeight = listItems.outerHeight(true); // 한 항목의 높이
-    //
-    //     // 최대 표시할 항목 수
-    //     var maxItems = 8;
-    //
-    //     // 항목 수가 최대 표시할 항목 수보다 많으면 스크롤바를 활성화
-    //     if (listItems.length > maxItems) {
-    //         var maxHeight = listItemHeight * maxItems;
-    //         accordionContent.css({
-    //             "max-height": maxHeight + "px",
-    //             "overflow-y": "auto"
-    //         });
-    //     }
-    // });
 
     document.addEventListener("DOMContentLoaded", function() {
         const accordionItems = document.querySelectorAll(".accordion_item");
@@ -277,15 +257,14 @@
         // option 값
         var project_title = document.querySelector('#filter_box');
         var select_project_title = project_title.value;
-        var searchKeyword = document.querySelector("#searchKeyword").value;
+        var district = document.querySelector('#district').value;
 
 
         $.ajax({
             type: "get",
-            url: "/board/list",
-            data : {
-                "searchKeyword" : searchKeyword,
-                "option" : select_project_title} ,
+            url: "/board/location",
+            data : {"option" : select_project_title,
+                    "district" : district },
             success: function(response) {
                 console.log(select_project_title)
 

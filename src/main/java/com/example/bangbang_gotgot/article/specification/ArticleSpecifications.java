@@ -11,9 +11,10 @@ public class ArticleSpecifications {
         return (root, query, criteriaBuilder) -> {  // criteria: JPA기능 중 하나로 동적 쿼리 생성
             String likeKeyword = "%" + keyword + "%";
             Predicate titlePredicate = criteriaBuilder.like(root.get("title"), likeKeyword); //predicate: sql where절
-            Predicate contentPredicate = criteriaBuilder.like(root.get("address"), likeKeyword);
+            Predicate contentPredicate = criteriaBuilder.like(root.get("address1"), likeKeyword);
+            Predicate contentPredicate2 = criteriaBuilder.like(root.get("address2"), likeKeyword);
 
-            return criteriaBuilder.or(titlePredicate, contentPredicate);
+            return criteriaBuilder.or(titlePredicate, contentPredicate, contentPredicate2);
         };
     }
 }

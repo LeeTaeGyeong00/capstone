@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div th:include="layout/header :: #header"></div>-->
+<h2>비밀번호 찾기</h2><br>
+
+<form method="post" action="/bangbang/find-pwd">
+    아이디: <input type="text" name="personId" placeholder="아이디 입력"><br>
+    닉네임: <input type="text" name="nickname" placeholder="닉네임 입력"><br>
+    전화번호: <input type="text" name="phone" placeholder="전화번호 입력"><br>
+    <button type="submit">비밀번호 찾기</button>
+</form>
+<!--<div th:include="layout/footer :: #footer"></div>-->
+
+</body>
+</html>
