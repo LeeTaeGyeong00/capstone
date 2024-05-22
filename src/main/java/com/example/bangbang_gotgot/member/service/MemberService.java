@@ -5,14 +5,17 @@ import com.example.bangbang_gotgot.member.dto.MemberDto;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
+import com.example.bangbang_gotgot.article.util.SmsUtil;
 import lombok.RequiredArgsConstructor;
+import net.nurigo.sdk.message.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -83,4 +86,25 @@ public class MemberService {
             return true;
         }
     }
+
+//    @Autowired
+//    private SmsUtil smsUtil;
+//
+//    public ResponseEntity<?> sendSmsToFindEmail(FindEmailRequestDto requestDto) {
+//        String name = requestDto.getName();
+//        //수신번호 형태에 맞춰 "-"을 ""로 변환
+//        String phoneNum = requestDto.getPhoneNum().replaceAll("-","");
+//
+//        User foundUser = userRepository.findByNameAndPhone(name, phoneNum).orElseThrow(()->
+//                new NoSuchElementException("회원이 존재하지 않습니다."));
+//
+//        String receiverEmail = foundUser.getEmail();
+//        String verificationCode = validationUtil.createCode();
+//        smsUtil.sendOne(phoneNum, verificationCode);
+//
+//        //인증코드 유효기간 5분 설정
+//        redisUtil.setDataExpire(verificationCode, receiverEmail, 60 * 5L);
+//
+//        return ResponseEntity.ok(new Message("SMS 전송 성공"));
+//    }
 }

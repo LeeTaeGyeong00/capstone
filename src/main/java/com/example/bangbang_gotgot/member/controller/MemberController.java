@@ -64,7 +64,6 @@ public class MemberController {
     public String findId_proc(Model model, @RequestParam("nickname")String nickname,
                               @RequestParam("phone")String phone)
     {
-
         return "member/signFind/findId2";
     }
 
