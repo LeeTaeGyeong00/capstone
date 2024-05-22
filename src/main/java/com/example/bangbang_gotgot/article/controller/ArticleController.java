@@ -27,6 +27,11 @@ public class ArticleController {
         return "board/write";
     }
 
+    @GetMapping("/contact")
+    public String digh() {
+        return "contact";
+    }
+
 
     @PostMapping("/writedo")
     public String writedo(Article board, Model model) {
