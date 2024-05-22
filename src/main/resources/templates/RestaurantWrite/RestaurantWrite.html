@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>방방곡곡 :: 식당 게시판 작성</title>
+
+
+</head>
+
+<body>
+
+<div th:include="layout/header :: #header"></div>
+
+<!-- Spinner Start -->
+<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status"></div>
+</div>
+<!-- Spinner End -->
+<div class="restaurant_write">
+    <div class="title"><h3 class="title">식당 게시판 작성하기</h3></div>
+    <div class="info_input">
+        <div class="right">
+            <div class="write_item">
+                <p>매장 이름</p>
+                <input class="size_1" type="text" placeholder="당신의 매장 이름을 입력하세요!">
+            </div>
+            <div class="write_item">
+                <p>간단 설명</p>
+                <input class="size_1" type="text" placeholder="당신의 매장을 간단하게 소개해주세요! (예시: 30년 전통 서울 국밥집)">
+            </div>
+            <div class="write_item">
+                <p>매장 소개</p>
+                <input class="size_2" type="text" placeholder="당신의 매장을 소개해주세요!">
+            </div>
+            <div class="write_item">
+                <p>전화번호</p>
+                <input class="size_1" type="text" placeholder="'-'를 제외하고 입력해주세요! (예시: 01012345678)">
+            </div>
+            <div class="write_item">
+                <p>주소</p>
+                <input class="size_1" type="text" placeholder="도로명 주소를 입력해주세요!">
+            </div>
+            <div class="write_item">
+                <p>영업 시간</p>
+            </div>
+            <div class="write_item width_sort">
+                <p>시작 시간</p>
+                <input class="text size_3 textbox_margin" type="text">
+                <p>시</p>
+                <input class="text size_3 textbox_margin" type="text">
+                <p>분</p>
+            </div>
+            <hr>
+            <div class="write_item width_sort">
+                <p>종료 시간</p>
+                <input class="text size_3 textbox_margin" type="text">
+                <p>시</p>
+                <input class="text size_3 textbox_margin" type="text">
+                <p>분</p>
+            </div>
+            <div>
+                <input class="write_button" type="button" value="작성하기">
+            </div>
+        </div>
+        <div class="left">
+            <div class="logo_item">
+                <div class="logo_right">
+                    <div class="logo" src="" alt="사진"></div>
+                </div>
+                <div class="logo_left">
+                    <p>매장 프로필(로고)</p>
+                    <button>매장 프로필</button>
+                </div>
+
+
+            </div>
+            <div class="picture_item">
+                <p>매장 사진</p>
+                <div class="pictures">
+                    <div class="upload_picture picture_1" src="" alt="사진"></div>
+                    <div class="upload_picture picture_2" src="" alt="사진"></div>
+                    <div class="upload_picture picture_3" src="" alt="사진"></div>
+                    <div class="upload_picture picture_4" src="" alt="사진"></div>
+                </div>
+                <button>이미지 업로드</button>
+            </div>
+            <div class="map_item">
+                <p>지도</p>
+                <div class="menu_map"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:include="layout/footer :: #footer"></div>
+</body>
+
+</html>

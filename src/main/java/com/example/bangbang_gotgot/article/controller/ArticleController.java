@@ -27,6 +27,11 @@ public class ArticleController {
         return "board/write";
     }
 
+    @GetMapping("/restaurant_write")
+    public String restaurant_write() {
+        return "RestaurantWrite/RestaurantWrite";
+    }
+
 
     @PostMapping("/writedo")
     public String writedo(Article board, Model model) {
@@ -160,4 +165,5 @@ public class ArticleController {
 
         return "redirect:/board/list";
     }
+
 }
