@@ -102,4 +102,10 @@ public class ArticleController {
 
         return "redirect:/board/list";
     }
+
+    @GetMapping("/restaurant_write")
+    public String restaurant_write() {
+        return "RestaurantWrite/RestaurantWrite";
+    }
+
 }
