@@ -1180,6 +1180,212 @@ input{
 
 /* Local Category End */
 
+/*RESERVATION PAGE(view) Start*/
+.shop_Title{
+    display: flex;
+}
+.shop_detail_{
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    margin: 0 50px;
+    justify-content: space-evenly;
+    .shop_explan{
+        color: #45595b;
+    }
+    .shop_name{
+        color: #000;
+        font-size: 36px;
+    }
+}
+.shop_img{
+    display: flex;
+    justify-content: flex-end;
+    img:nth-child(-n+3){
+        margin: 0 10px 0 0;
+    }
+    img{
+        border: 4px solid #3b4c4d;
+    }
+}
+.item_wrap{
+    width: 100%;
+    height: 60px;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #F55E08;
+    border-radius: 5px;
+    color: #FFFFFF;
+    div{
+        display: flex;
+        border: 2px solid #fff;
+        margin: 0 0 0 10px;
+        width: 120px;
+        height: 100%;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+.shop_item{
+    margin: 0 0 10px;
+}
+.viewer{
+    font-size: 12px;
+    span{
+        margin: 0 8px 0 0;
+    }
+    i{
+        font-size: 16px;
+    }
+}
+
+.shop_container {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.shop_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.shop_section_title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.shopName {
+    color: #000;
+    font-size: 32px;
+}
+.review2{
+    color: #000;
+    padding-left: 90px;
+}
+
+.reviewT {
+    background-color: #FFFFFF;
+    border: 2px solid #F55E08;
+    border-radius: 5px;
+    color: #F55E08;
+    padding: 10px 20px;
+    width: 120px;
+    justify-content: space-evenly;
+}
+
+.shop_content {
+    display: flex;
+    margin-top: 20px;
+}
+
+.left_section, .right_section {
+    width: 50%;
+}
+.left_section{
+    margin-right:30px;
+}
+
+.shop_intro_item {
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 50px;
+    p{
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+.shop_intro_item h2 {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.shop_info_detail {
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.detail_item {
+    color: #000;
+    font-size: 24px;
+    td{
+        padding-bottom: 35px;
+    }
+}
+.detail_item_T {
+    width: 25%;
+}
+.item_in{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+.right_section_content{
+    height: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+.review {
+    margin-bottom: 20px;
+    height: 40%;
+    p{
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+.review + .review::before {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 10px 0 20px;
+}
+
+.review h3 {
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.more_reviews {
+    text-align: right;
+    button{
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.btn_rsv_wrap {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn_rsv {
+    background-color: #FFFFFF;
+    border: 2px solid #F55E08;
+    border-radius: 5px;
+    color: #F55E08;
+    padding: 15px 20px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+/*RESERVATION PAGE End*/
 
 
 /*** Footer Start ***/
