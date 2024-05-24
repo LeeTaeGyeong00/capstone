@@ -1206,6 +1206,7 @@ input{
     }
     img{
         border: 4px solid #3b4c4d;
+        border-radius: 10px;
     }
 }
 .item_wrap{
@@ -1255,8 +1256,9 @@ input{
 
 .shop_section_title {
     display: flex;
-    justify-content: space-between;
     width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .shopName {
@@ -1384,6 +1386,10 @@ input{
     justify-content: space-evenly;
 }
 
+.carousel-item img {
+    max-height: 500px;
+    object-fit: cover;
+}
 
 /*RESERVATION PAGE End*/
 
