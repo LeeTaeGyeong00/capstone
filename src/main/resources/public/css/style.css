@@ -1185,7 +1185,6 @@ input{
             background: #F55E08;
             width: 1120px;
             height: 60px;
-            line-height: 20px;
             align-items: center;
             display: flex;
             padding-left: 20px;
@@ -1205,18 +1204,23 @@ input{
             margin-right: 25px;
 
             .write_item {
-            margin: 40px 0px;
+            margin: 40px 0;
 
                 input {
                     border-color: rgb(0,0,0,0.3);
-                    font-size: 16px;
                     border-radius: 5px;
-                    margin: 10px 0px 0px 0px;
+                    font-size: 26px;
+                    margin: 10px 0 0 0;
 
                 }
                 input::placeholder {
                     padding-left: 15px;
+                    font-size: 16px;
+                    color: rgba(0,0,0,0.3);
                 }
+                /*input::value {*/
+                /*    padding-left: 15px;*/
+                /*}*/
                 .size_1 {
                     width: 525px;
                     height: 57px;
@@ -1229,7 +1233,7 @@ input{
                     width: 100px;
                     height: 57px;
                 }
-                .textbox_margin {
+                .margin_setting {
                     margin: 0 20px;
                 }
             }
@@ -1274,7 +1278,7 @@ input{
                     .logo {
                         width: 143px;
                         height: 143px;
-                        box-shadow: rgb(0,0,0,0.3);
+                        box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.3);
                         background: #BC3D3D;
                         border: rgb(0,0,0,0.5) solid 1px;
                         border-radius: 5px;
@@ -1288,9 +1292,10 @@ input{
                     button {
                         width: 120px;
                         height: 50px;
+                        line-height: 50px;
                         background: #F7F9FD;
-                        border-radius: 10px;
-                        border: rgb(0, 0, 0, 0.3) solid 1px;
+                        border-radius: 5px;
+                        border: rgba(0, 0, 0, 0.3) solid 1px;
 
                     }
                 }
@@ -1330,9 +1335,10 @@ input{
                 button {
                     width: 439px;
                     height: 50px;
+                    line-height: 50px;
                     background: #F7F9FD;
                     border-radius: 5px;
-                    border: rgb(0,0,0,0.3) solid 1px;
+                    border: rgba(0,0,0,0.3) solid 1px;
                 }
 
             }
