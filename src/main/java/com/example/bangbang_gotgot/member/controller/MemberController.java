@@ -61,9 +61,11 @@ public class MemberController {
     }
 
     @PostMapping("/bangbang/find-id")
-    public String findId_proc(Model model, @RequestParam("nickname")String nickname,
-                              @RequestParam("phone")String phone)
+    public String findId_proc(Model model, @RequestParam("nickname")String nickname)
     {
+        String id = memberService.findRealId(nickname);
+        System.out.println("1111");
+        model.addAttribute("id",id);
         return "member/signFind/findId2";
     }
 

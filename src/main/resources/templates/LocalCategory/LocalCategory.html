@@ -131,26 +131,6 @@
                         <li><a href="/board/location?district=%EC%98%B9%EC%A7%84%EA%B5%B0">옹진군</a></li>
                     </ul>
                 </li>
-                <li class="accordion_item">
-                    <div class="accordion_title">부산</div>
-                    <ul class="accordion_content">
-                        <li><a href="/board/location?district=">부산중구</a></li>
-                        <li><a href="/board/location?district=">부산서구</a></li>
-                        <li><a href="/board/location?district=">부산동구</a></li>
-                        <li><a href="/board/location?district=">영도구</a></li>
-                        <li><a href="/board/location?district=">부산진구</a></li>
-                        <li><a href="/board/location?district=">남구</a></li>
-                        <li><a href="/board/location?district=">북구</a></li>
-                        <li><a href="/board/location?district=">해운대구</a></li>
-                        <li><a href="/board/location?district=">사하구</a></li>
-                        <li><a href="/board/location?district=">금정구</a></li>
-                        <li><a href="/board/location?district=">부산강서구</a></li>
-                        <li><a href="/board/location?district=">연제구</a></li>
-                        <li><a href="/board/location?district=">수영구</a></li>
-                        <li><a href="/board/location?district=">사상구</a></li>
-                        <li><a href="/board/location?district=">기장군</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
         <div class="section">
@@ -165,9 +145,13 @@
                 <div class="page" th:each="a : ${list}">
                     <img src="/img/store_photo.png" alt="음식점 안내 사진">
                     <dl>
-                        <dt th:text="${a.title}"></dt>
-                        <dd class="description">open 3p.m / close 11 p.m</dd>
-                        <dd class="rating">별별별별별 5.0(평가수)</dd>
+                        <a th:href="@{/board/detail/{id}(id=${a.id})}"><dt th:text="${a.title}"></dt></a>
+                        <dd class="description">open 3p.m / close 11 p.m</dd><br>
+<!--                        <dd class="rating">별별별별별 5.0(평가수)</dd>-->
+                        <dd class="viewer shop_item">
+                            <span class="shop_heart"><i class="fa fa-heart" aria-hidden="true"></i> <span th:text="${a.likes}" ></span></span>
+                            <span class="shop_bMark"><i class="fa fa-eye" aria-hidden="true"></i> <span th:text="${a.view}"></span></span>
+                        </dd>
                     </dl>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 package com.example.bangbang_gotgot.article.controller;
 
+import com.example.bangbang_gotgot.article.dto.BoardDTO;
 import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +12,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 @Slf4j
@@ -27,9 +29,20 @@ public class ArticleController {
         return "board/write";
     }
 
+    // 관리자 게시글 쓰기
     @GetMapping("/restaurant_write")
     public String restaurant_write() {
-        return "RestaurantWrite/RestaurantWrite";
+        return "LocalCategory/RestaurantWrite";
+    }
+
+    // 게시글 상세페이지
+    @GetMapping("/detail/{id}")
+    public String datail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response) {
+        Article article = articleService.findIdList(id ,request, response);
+//        BoardDTO boardDTO = articleService.findFile(id);
+        model.addAttribute("article",article);
+//        model.addAttribute("file",boardDTO);
+        return "contact";
     }
 
 
@@ -44,6 +57,7 @@ public class ArticleController {
         return "board/message";
     }
 
+    // 게시글 목록
     @GetMapping("/list")
     public String list(Model model,
                        @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
@@ -101,6 +115,7 @@ public class ArticleController {
         return "LocalCategory/LocalCategory";
     }
 
+    // 게시글 목록2
     @GetMapping("/location")
     public String list2(Model model,
                        @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,

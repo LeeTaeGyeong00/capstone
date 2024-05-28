@@ -5,17 +5,13 @@ import com.example.bangbang_gotgot.member.dto.MemberDto;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
-import com.example.bangbang_gotgot.article.util.SmsUtil;
 import lombok.RequiredArgsConstructor;
-import net.nurigo.sdk.message.model.Message;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -85,6 +81,24 @@ public class MemberService {
         } else {
             return true;
         }
+    }
+
+    public Boolean findId(String nickname, String phone) {
+        User user = userRepository.findByNickName(nickname);
+        if(user == null){
+            return false;
+        }
+        else {
+            if(user.getPhone_num().equals(phone) && !phone.trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String findRealId(String nickname) {
+        User user = userRepository.findByNickName(nickname);
+        return user.getPerson_id();
     }
 
 //    @Autowired
