@@ -24,19 +24,22 @@
         <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
                 <h1 class="mb-5 display-3 text-primary">어서오세요.<br>이곳은 어떠신가요?</h1>
-                <div class="position-relative mx-auto">
-                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="text" placeholder="Search">
-                    <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100 main_search_box" style="top: 0; right: 25%;"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
+                    <form class="position-relative mx-auto"  onsubmit="searchRedirect(event)">
+                        <input id="searchKeyword" class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="text" placeholder="Search">
+                        <button id="searchBtn" type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100 main_search_box" style="top: 0; right: 25%;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
             </div>
             <div class="col-md-12 col-lg-5">
                 <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active rounded">
-                            <img src="/img/store_photo.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                            <img src="/img/store_photo.png" class="img-fluid w-100 h-100 bg-secondary rounded" style="width: 291px; height: 300px" alt="First slide">
                         </div>
                         <div class="carousel-item rounded">
-                            <img src="/img/store_photo.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                            <img src="/fruitables-1.0.0/articleImg/55-1스파게티.jpg" class="img-fluid w-100 h-100 rounded" style="width: 291px; height: 300px" alt="Second slide">
+                        </div>
+                        <div class="carousel-item rounded">
+                            <img src="/fruitables-1.0.0/articleImg/147-5짜장면.jpg" class="img-fluid w-100 h-100 rounded" style="width: 291px; height: 300px" alt="Third slide">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
@@ -62,7 +65,6 @@
             <div class="row g-4">
                 <div class="col-lg-4 text-start main_index_article">
                     <h3>랭킹</h3>
-                    <a class="more-notice" href="">더보기&gt;</a>
                 </div>
             </div>
             <div class="tab-content">
@@ -70,154 +72,25 @@
                     <div class="row g-4">
                         <div class="col-lg-12">
                             <div class="row g-4">
-                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                <div class="col-md-6 col-lg-4 col-xl-3" th:each="a : ${articles}">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
+                                            <a th:href="@{/board/detail/{id}(id=${a.id})}">
+                                                <div th:each="b : ${files}">
+                                                    <div th:if="${a.id == b.articleId}">
+                                                        <img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" class="img-fluid w-100 rounded-top" alt="">
+                                                    </div >
+                                                </div>
+<!--                                                <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">-->
+                                            </a>
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex  flex-lg-wrap review-notice">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/img/store_photo.png" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <div class="tab-name">
-                                                <img src="이미지_경로.jpg" alt="" width="40" height="40">
-                                                <h4>Grapes</h4>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                            <div class="d-flex flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0"><i class="fas fa-star"></i></p>
-                                                <span class="score">5.0</span>
-                                                <span class="num-view">(77)</span>
+                                                <h3 th:text="${a.title}" style="font-size: 22px;"></h3>
+                                            </div><br><br>
+                                            <div class="viewer shop_item">
+                                                <span class="shop_heart"><i class="fa fa-heart" aria-hidden="true"></i> <span th:text="${a.likes}"></span></span>
+                                                <span class="shop_bMark"><i class="fa fa-eye" aria-hidden="true"></i> <span th:text="${a.view}"></span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -453,6 +326,14 @@
 <!--    </div>-->
     <!-- video end-->
 </div>
+
+<script>
+    function searchRedirect(event) {
+        event.preventDefault(); // 기본 이벤트 실행 방지
+        var searchKeyword = document.getElementById("searchKeyword").value;
+        window.location.href = "/board/list?searchKeyword=" + searchKeyword;
+    }
+</script>
 
 
 <div th:include="layout/footer :: #footer"></div>

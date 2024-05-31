@@ -142,8 +142,12 @@
                 </select>
             </div>
             <div class="page_list">
-                <div class="page" th:each="a : ${list}">
-                    <img src="/img/store_photo.png" alt="음식점 안내 사진">
+                <div class="page" th:each="a : ${list}" >
+                    <div th:each="b : ${files}">
+                        <div th:if="${a.id == b.articleId}">
+                            <img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 291px; height: 300px;'">
+                        </div >
+                    </div>
                     <dl>
                         <a th:href="@{/board/detail/{id}(id=${a.id})}"><dt th:text="${a.title}"></dt></a>
                         <dd class="description">open 3p.m / close 11 p.m</dd><br>
@@ -183,23 +187,6 @@
 <div th:include="layout/footer :: #footer"></div>
 
 <script>
-    // $(document).ready(function() {
-    //     var accordionContent = $(".accordion_content");
-    //     var listItems = accordionContent.find("li");
-    //     var listItemHeight = listItems.outerHeight(true); // 한 항목의 높이
-    //
-    //     // 최대 표시할 항목 수
-    //     var maxItems = 8;
-    //
-    //     // 항목 수가 최대 표시할 항목 수보다 많으면 스크롤바를 활성화
-    //     if (listItems.length > maxItems) {
-    //         var maxHeight = listItemHeight * maxItems;
-    //         accordionContent.css({
-    //             "max-height": maxHeight + "px",
-    //             "overflow-y": "auto"
-    //         });
-    //     }
-    // });
 
     document.addEventListener("DOMContentLoaded", function() {
         const accordionItems = document.querySelectorAll(".accordion_item");

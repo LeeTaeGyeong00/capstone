@@ -17,4 +17,5 @@ public class ArticleSpecifications {
             return criteriaBuilder.or(titlePredicate, contentPredicate, contentPredicate2);
         };
     }
+
 }
