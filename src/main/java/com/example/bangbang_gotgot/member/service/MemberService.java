@@ -83,6 +83,8 @@ public class MemberService {
         }
     }
 
+
+    // 아이디 찾기(api)
     public Boolean findId(String nickname, String phone) {
         User user = userRepository.findByNickName(nickname);
         if(user == null){
@@ -96,29 +98,29 @@ public class MemberService {
         return false;
     }
 
+    // 아이디 찾기
     public String findRealId(String nickname) {
         User user = userRepository.findByNickName(nickname);
         return user.getPerson_id();
     }
 
-//    @Autowired
-//    private SmsUtil smsUtil;
-//
-//    public ResponseEntity<?> sendSmsToFindEmail(FindEmailRequestDto requestDto) {
-//        String name = requestDto.getName();
-//        //수신번호 형태에 맞춰 "-"을 ""로 변환
-//        String phoneNum = requestDto.getPhoneNum().replaceAll("-","");
-//
-//        User foundUser = userRepository.findByNameAndPhone(name, phoneNum).orElseThrow(()->
-//                new NoSuchElementException("회원이 존재하지 않습니다."));
-//
-//        String receiverEmail = foundUser.getEmail();
-//        String verificationCode = validationUtil.createCode();
-//        smsUtil.sendOne(phoneNum, verificationCode);
-//
-//        //인증코드 유효기간 5분 설정
-//        redisUtil.setDataExpire(verificationCode, receiverEmail, 60 * 5L);
-//
-//        return ResponseEntity.ok(new Message("SMS 전송 성공"));
-//    }
+    // 비밀번호 찾기 (api)
+    public Boolean findPwd(String personId, String nickname, String phone) {
+        User user = userRepository.findByNickName(nickname);
+        if(user == null){
+            return false;
+        }
+        else {
+            if(user.getPhone_num().equals(phone) && user.getPerson_id().equals(personId) && !phone.trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 비밀번호 찾기 (세션이 필요함!)
+    public String findRealPwd(String nickname) {
+        User user = userRepository.findByNickName(nickname);
+        return user.getPasswd();
+    }
 }

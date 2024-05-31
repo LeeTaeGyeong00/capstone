@@ -14,6 +14,7 @@ public class MemberApiController {
     @Autowired
     private MemberService memberService;
 
+    // 회원가입
     @PostMapping("/bangbang/auth/2/sign-in")
     public ResponseEntity<String> joinProc2(@RequestBody AllUserInfoDto allUserInfoDto) {
         memberService.createUser(allUserInfoDto);
@@ -43,11 +44,24 @@ public class MemberApiController {
 
     // 회원 아이디 체크
     @PostMapping("/bangbang/find-id/check")
-    public ResponseEntity<?> find_id(Model model, @RequestParam("nickname")String nickname,
+    public ResponseEntity<?> find_id(@RequestParam("nickname")String nickname,
                                      @RequestParam("phone")String phone)
     {
         System.out.println("2222");
         Boolean target = memberService.findId(nickname, phone);
+        if (target) {
+            return ResponseEntity.status(HttpStatus.OK).body(" ");
+        }
+        System.out.println("111111111");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(" ");
+    }
+
+    // 회원 비밀번호 체크
+    @PostMapping("/bangbang/find-Pwd/check")
+    public ResponseEntity<?> find_pwd(@RequestParam("personId")String personId, @RequestParam("nickname")String nickname,
+                                      @RequestParam("phone")String phone)
+    {
+        Boolean target = memberService.findPwd(personId, nickname, phone);
         if (target) {
             return ResponseEntity.status(HttpStatus.OK).body(" ");
         }

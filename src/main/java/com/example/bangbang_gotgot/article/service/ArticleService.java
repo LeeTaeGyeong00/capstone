@@ -16,12 +16,42 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
+
     private final ArticleRepository articleRepository;
     private final ArticleFileRepository articleFileRepository;
+
+    // 게시글 랭킹 (메인)
+    public List<Article> articleRanking() {
+        List<Article> articles = articleRepository.findTop8ByOrderByViewDesc();
+        return articles;
+    };
+
+    // 게시클 랭킹 파일 (메인)
+    public List<BoardDTO> articleRankingFiles() {
+        List<Article> articles = articleRepository.findTop8ByOrderByViewDesc();
+
+        List<Long> ids = new ArrayList<>();
+        List<BoardDTO> files = new ArrayList<>();
+
+        for (Article article : articles) {
+            ids.add(article.getId());
+        }
+        for (Long id: ids) {
+            List<BoardDTO> dtos = findFile(id);
+
+            Optional<BoardDTO> minIdDto = dtos.stream()
+                    .min(Comparator.comparingLong(BoardDTO::getId));
+
+            BoardDTO foundDto = minIdDto.get();
+            files.add(foundDto);
+        }
+        return files;
+    }
 
     // 글 작성 처리
     public void write(Article board) {
@@ -152,11 +182,27 @@ public class ArticleService {
     }
 
     // id에 해당하는 파일 찾기
-    public BoardDTO findFile(Long id) {
-        ArticleFile articleFile = articleFileRepository.findByArticleId(id);
-        System.out.println(articleFile);
-        BoardDTO boardDTO = BoardDTO.toBoardDTO(articleFile);
-        return boardDTO;
+    public List<BoardDTO> findFile(Long id) {
+
+        return articleFileRepository.findByArticleId(id).stream()
+                .map(ArticleFile -> BoardDTO.toBoardDTO(ArticleFile))
+                .collect(Collectors.toList());
+
     }
+
+
+    public List<BoardDTO> findListArticleFiles(Page<Article> list) {
+
+        List<BoardDTO> articleFiles = new ArrayList<>();
+        for (Article article : list) {
+            // Article 객체에서 id 가져오기
+            Long articleId = article.getId();
+            articleFiles.addAll(findFile(articleId));
+
+        }
+        return articleFiles;
+
+    }
+
 
 }
