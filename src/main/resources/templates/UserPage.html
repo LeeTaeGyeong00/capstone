@@ -125,14 +125,13 @@
 
         /*User_review strat*/
         .User_review{
-
             .modal-R-content {
                 background-color: #fefefe;
                 padding: 30px;
                 width: 100%;
             }
             .modal_reviews {
-                max-height: 400px;
+                max-height: 520px;
                 overflow-y: auto;
             }
             .modal-review {
@@ -141,13 +140,18 @@
                 align-items: flex-start;
                 border-bottom: 1px solid #ddd;
                 padding: 25px;
+                h2{
+                    color: #000;
+                    font-size: 20px;
+                }
+                h4{
+                    color: #555;
+                    font-size: 16px;
+                }
                 h3{
                     color: #000;
                     font-size: 20px;
                     margin-bottom: 15px;
-                }
-                div{
-                    display: flex;
                 }
                 .rv-date {
                     font-size: 0.9em;
@@ -155,16 +159,80 @@
                     margin: 0 20px 15px 0;
                 }
             }
-
-
-            .modal_review p {
-                margin: 5px 0;
-            }
-
         }
         /*User_review end*/
-
+        .User_review{
+            .modal-R-content {
+                background-color: #fefefe;
+                padding: 30px;
+                width: 100%;
+            }
+            .modal_reviews {
+                max-height: 520px;
+                overflow-y: auto;
+            }
+            .modal-review {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-bottom: 1px solid #ddd;
+                padding: 25px;
+                h2{
+                    color: #000;
+                    font-size: 20px;
+                }
+                h4{
+                    color: #555;
+                    font-size: 16px;
+                }
+                h3{
+                    color: #000;
+                    font-size: 20px;
+                    margin-bottom: 15px;
+                }
+                .rv-date {
+                    font-size: 0.9em;
+                    color: #555;
+                    margin: 0 20px 15px 0;
+                }
+            }
+        }
         /*User_save strat*/
+        .User_save{
+            .modal-R-content {
+                background-color: #fefefe;
+                padding: 30px;
+                width: 100%;
+            }
+            .modal_reviews {
+                max-height: 520px;
+                overflow-y: auto;
+            }
+            .modal-review {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-bottom: 1px solid #ddd;
+                padding: 25px;
+                h2{
+                    color: #000;
+                    font-size: 20px;
+                }
+                h4{
+                    color: #555;
+                    font-size: 16px;
+                }
+                h3{
+                    color: #000;
+                    font-size: 20px;
+                }
+                .rv-date {
+                    font-size: 0.9em;
+                    color: #555;
+                    margin: 0 20px 15px 0;
+                }
+            }
+        }
         /*User_save end*/
 
         .act{
@@ -232,28 +300,19 @@
     <!--User_profile end-->
 
     <!--User_review start-->
-    <section class="User_review act">
+    <section class="User_review">
         <div class="tit_box">
             <h3>내가 쓴 리뷰글(3)</h3>
             <button>삭제하기</button>
         </div>
-        <div id="modal_R" class="modal_R">
+        <div class="modal_R">
             <div class="modal-R-content">
-                <div class="md-rv-titles">
-                    <img src="https://via.placeholder.com/75" alt="샘플이미지">
-                    <div class="md-rv-title">
-                        <h2>가게이름</h2>
-                        <div class="md-rv-title-item">
-                            <p>가게 주소</p>
-                            <select  class="viewType">
-                                <option value="relevance">관련성순</option>
-                                <option value="recency">최신순</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
                 <div class="modal_reviews">
                     <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
                         <h3>닉네임</h3>
                         <div>
                             <p class="rv-date">yyyy년 mm월 dd일</p>
@@ -261,6 +320,10 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                     </div>
                     <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
                         <h3>닉네임</h3>
                         <div>
                             <p class="rv-date">yyyy년 mm월 dd일</p>
@@ -268,6 +331,21 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                     </div>
                     <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>닉네임</h3>
+                        <div>
+                            <p class="rv-date">yyyy년 mm월 dd일</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
                         <h3>닉네임</h3>
                         <div>
                             <p class="rv-date">yyyy년 mm월 dd일</p>
@@ -281,8 +359,94 @@
     <!--User_review end-->
 
     <!--User_save start-->
-    <section class="User_save ">
-
+    <section class="User_save act">
+        <div class="tit_box">
+            <h3>찜한 식당</h3>
+            <button>삭제하기</button>
+        </div>
+        <div id="modal_R" class="modal_R">
+            <div class="modal-R-content">
+                <div class="modal_reviews">
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <div class="md-rv-title">
+                            <h2>가게이름</h2>
+                            <p class="rv-date">가게 주소</p>
+                        </div>
+                        <h3>영업 시간</h3>
+                        <div>
+                            <p class="rv-date">open 3 p.m   /   close 11 p.m</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!--User_save end-->
 </div>
