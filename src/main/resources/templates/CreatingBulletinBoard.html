@@ -19,7 +19,16 @@
             display: flex;
             border-bottom: 1px solid #ddd;
             padding: 10px;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            h2{
+                padding: 12px 26px 6px;
+                color: #000000;
+                font-size: 32px;
+            }
+        }
+        .CBB-buttons{
+            padding-right: 15px;
         }
         .save-button, .publish-button {
             border: 1px solid #ddd;
@@ -34,7 +43,7 @@
             border-color: #ff6600;
         }
         .editor {
-            padding: 80px 50px;
+            padding: 70px 50px;
         }
 
         .editor input {
@@ -70,6 +79,7 @@
 <div class="CBB-wrap">
     <div class="editor-container">
         <div class="bar">
+            <h2>리뷰 작성 하기</h2>
             <div class="CBB-buttons">
                 <button class="save-button">닫기</button>
                 <button class="publish-button">저장</button>
