@@ -114,42 +114,44 @@
     // })
     //
     //
-    // // 전제 검증
-    //     nextPwdBefore.addEventListener("click", function (event) {
-    //
-    //     event.preventDefault()
-    //
-    //
-    //     var jasonData = {
-    //         "personId" : document.querySelector("#personId").value,
-    //         "nickname" : document.querySelector("#nickname").value,
-    //         "phone" : document.querySelector("#phone").value
-    //     }
-    //
-    //     // api 구현하기
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/bangbang/find-Pwd/check",
-    //         data: jasonData, // @RequestParam 일때는 이렇게 받는다
-    //         success: function (response) {
-    //             console.log("성공")
-    //
-    //             if (check === 0){
-    //                 alert("전화번호 인증 확인")
-    //
-    //             } else if (check === 2){
-    //                 var form = document.getElementById("myForm");
-    //                 form.submit();
-    //             }
-    //
-    //         },
-    //         error: function (error) {
-    //             console.log("실패")
-    //             alert("아이디, 닉네임, 전화번호가 일치하지 않습니다.")
-    //         }
-    //     })
-    //
-    // })
+
+    let check = 2
+    // 전제 검증
+        nextPwdBefore.addEventListener("click", function (event) {
+
+        event.preventDefault()
+
+
+        var jasonData = {
+            "personId" : document.querySelector("#personId").value,
+            "nickname" : document.querySelector("#nickname").value,
+            "phone" : document.querySelector("#phone").value
+        }
+
+        // api 구현하기
+        $.ajax({
+            type: "POST",
+            url: "/bangbang/find-Pwd/check",
+            data: jasonData, // @RequestParam 일때는 이렇게 받는다
+            success: function (response) {
+                console.log("성공")
+
+                if (check === 0){
+                    alert("전화번호 인증 확인")
+
+                } else if (check === 2){
+                    var form = document.getElementById("myForm");
+                    form.submit();
+                }
+
+            },
+            error: function (error) {
+                console.log("실패")
+                alert("아이디, 닉네임, 전화번호가 일치하지 않습니다.")
+            }
+        })
+
+    })
 
 </script>
 

@@ -100,6 +100,12 @@ public class MemberService {
         return false;
     }
 
+    // 아이디 찾기
+    public String findRealId(String nickname) {
+        User user = userRepository.findByNickName(nickname);
+        return user.getPerson_id();
+    }
+
 
     // 비밀번호 찾기 (api)
     public Boolean findPwd(String personId, String nickname, String phone) {
@@ -113,6 +119,12 @@ public class MemberService {
             }
         }
         return false;
+    }
+
+    // 비밀번호 찾기
+    public String findRealPwd(String nickname) {
+        User user = userRepository.findByNickName(nickname);
+        return user.getPasswd();
     }
 
 }
