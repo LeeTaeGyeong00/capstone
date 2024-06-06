@@ -17,7 +17,7 @@
 //    private final SmsCertificationUtil smsUtil;
 //    private final SmsCertificationDao smsCertificationDao;
 //
-//
+//    // redis 데이터 생성 & 문자 보내기
 //    @Override
 //    public void sendSms(RedisUserDto.SmsCertificationRequest requestDto) {
 //        String to = requestDto.getPhone_num();
@@ -29,6 +29,7 @@
 //
 //    }
 //
+//    // redis 데이터 지우기
 //    @Override
 //    public void verifySms(RedisUserDto.SmsCertificationRequest requestDto) {
 //        if (isVerify(requestDto)) {
@@ -37,10 +38,13 @@
 //        smsCertificationDao.removeSmsCertification(requestDto.getPhone_num());
 //    }
 //
+//    // 문자 인증이 되었는지 확인
 //    @Override
 //    public boolean isVerify(RedisUserDto.SmsCertificationRequest requestDto) {
 //        return !(smsCertificationDao.hasKey(requestDto.getPhone_num()) &&
 //                smsCertificationDao.getSmsCertification(requestDto.getPhone_num())
 //                        .equals(requestDto.getCertificationNumber()));
 //    }
+//
+//
 //}

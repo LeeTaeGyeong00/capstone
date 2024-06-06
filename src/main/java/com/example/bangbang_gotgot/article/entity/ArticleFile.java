@@ -28,4 +28,5 @@ public class ArticleFile {
         articleFile.setArticle(article);
         return articleFile;
     }
+
 }

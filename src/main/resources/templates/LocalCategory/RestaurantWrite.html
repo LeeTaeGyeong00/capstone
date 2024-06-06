@@ -18,61 +18,62 @@
 <!-- Spinner End -->
 <div class="restaurant_write">
     <div class="title"><h3 class="title">식당 게시판 작성하기</h3></div>
+    <form method="post" id="myForm" action="/board/restaurant_write" onsubmit="return check()" enctype="multipart/form-data">
     <div class="info_input">
         <div class="right">
             <div class="write_item">
                 <p>매장 이름</p>
-                <input class="size_1" type="text" placeholder="당신의 매장 이름을 입력하세요!">
-            </div>
-            <div class="write_item">
-                <p>간단 설명</p>
-                <input class="size_1" type="text" placeholder="당신의 매장을 간단하게 소개해주세요! (예시: 30년 전통 서울 국밥집)">
+                <input  name="title" class="size_1" type="text" placeholder="당신의 매장 이름을 입력하세요!">
             </div>
             <div class="write_item">
                 <p>매장 소개</p>
-                <input class="size_2" type="text" placeholder="당신의 매장을 소개해주세요!">
+                <input name="content" class="size_2" type="text" placeholder="당신의 매장을 소개해주세요!">
+            </div>
+            <div class="write_item">
+                <p>대표자명</p>
+                <input id="writer" name="writer" class="size_1" type="text" placeholder="이름을 입력해주세요!">
             </div>
             <div class="write_item">
                 <p>전화번호</p>
-                <input class="size_1" type="text" placeholder="'-'를 제외하고 입력해주세요! (예시: 01012345678)">
+                <input name="phoneNumber" class="size_1" type="text" placeholder="'-'를 제외하고 입력해주세요! (예시: 01012345678)">
             </div>
             <div class="write_item">
                 <p>주소</p>
-                <input class="size_1" type="text" placeholder="도로명 주소를 입력해주세요!">
+                <input name="address1" class="size_1" type="text" placeholder="주소를 입력해주세요(ex 서울시, 경기도)">
+                <input name="address2" class="size_1" type="text" placeholder="주소를 입력해주세요!(ex 종로구, 성남시)">
+                <input name="address3" class="size_1" type="text" placeholder="나머지 상세주소를 입력해주세요.">
             </div>
             <div class="write_item">
                 <p>영업 시간</p>
             </div>
             <div class="write_item width_sort">
                 <p>시작 시간</p>
-                <input class="text size_3 textbox_margin" type="text">
+                <input name="startTime1" class="text size_3 textbox_margin" type="text">
                 <p>시</p>
-                <input class="text size_3 textbox_margin" type="text">
+                <input name="startTime2" class="text size_3 textbox_margin" type="text">
                 <p>분</p>
             </div>
             <hr>
             <div class="write_item width_sort">
                 <p>종료 시간</p>
-                <input class="text size_3 textbox_margin" type="text">
+                <input name="endTime1" class="text size_3 textbox_margin" type="text">
                 <p>시</p>
-                <input class="text size_3 textbox_margin" type="text">
+                <input name="endTime2" class="text size_3 textbox_margin" type="text">
                 <p>분</p>
             </div>
             <div>
-                <input class="write_button" type="button" value="작성하기">
+                <Button class="write_button" type="submit">작성하기</Button>
             </div>
         </div>
         <div class="left">
-            <div class="logo_item">
+            <div class="logo_item" id="imgBox">
                 <div class="logo_right">
-                    <div class="logo" src="" alt="사진"></div>
+                    <div id="imgTag" class="logo" src="" alt="사진"></div>
                 </div>
                 <div class="logo_left">
                     <p>매장 프로필(로고)</p>
-                    <button>매장 프로필</button>
+                    <input id="file" type="file" name="file" accept=".jpg,.png,.jpeg" onchange="loadFile(this)">
                 </div>
-
-
             </div>
             <div class="picture_item">
                 <p>매장 사진</p>
@@ -82,18 +83,120 @@
                     <div class="upload_picture picture_3" src="" alt="사진"></div>
                     <div class="upload_picture picture_4" src="" alt="사진"></div>
                 </div>
-                <button>이미지 업로드</button>
-            </div>
-            <div class="map_item">
-                <p>지도</p>
-                <div class="menu_map"></div>
+<!--                <button>이미지 업로드</button>-->
+                <input type="file" name="multiFiles" multiple>
             </div>
         </div>
     </div>
+    </form>
 
 </div>
 
 <div th:include="layout/footer :: #footer"></div>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script>
+
+    function check() {
+        if (myForm.title.value.trim().length === 0) {
+            alert("가게명을 입력해주세요.");
+            myForm.title.focus();
+            return false;
+        }
+
+        if (myForm.content.value.trim().length === 0) {
+            alert("매장을 소개해 해주세요.");
+            myForm.content.focus();
+            return false;
+        }
+
+        if (myForm.writer.value.trim().length === 0) {
+            alert("대표자명을 입력해주세요.");
+            myForm.writer.focus();
+            return false;
+        }
+
+        if (myForm.phoneNumber.value.trim().length === 0) {
+            alert("전화번호를 입력해주세요.");
+            myForm.phoneNumber.focus();
+            return false;
+        }
+
+        if (myForm.phoneNumber.value.trim().length < 9 || myForm.phoneNumber.value.trim().length > 11 || isNaN(myForm.phoneNumber.value)) {
+            alert("전화번호를 형식에 맞춰 입력해주세요.");
+            myForm.phoneNumber.focus();
+            return false;
+        }
+
+        if (myForm.address1.value.trim().length === 0) {
+            alert("주소를 입력해주세요. ex) 서울시, 경기도, 인천");
+            myForm.address1.focus();
+            return false;
+        }
+
+        if (myForm.address2.value.trim().length === 0) {
+            alert("주소를 입력해주세요. ex) 종로구, 용산구, 성남시");
+            myForm.address2.focus();
+            return false;
+        }
+
+        if (myForm.address3.value.trim().length === 0) {
+            alert("주소를 입력해주세요. ex) 의사당대로 1");
+            myForm.address3.focus();
+            return false;
+        }
+
+        if (myForm.startTime1.value.trim().length === 0 || myForm.startTime2.value.trim().length === 0) {
+            alert("영업 시작 시간을 입력해주세요.");
+            myForm.startTime1.focus();
+            return false;
+        }
+
+        if (isNaN(myForm.startTime1.value) || isNaN(myForm.startTime2.value)) {
+            alert("영업 시작 시간을 제대로 입력해주세요.");
+            myForm.startTime1.focus();
+            return false;
+        }
+
+        if (myForm.endTime1.value.trim().length === 0 || myForm.endTime2.value.trim().length === 0) {
+            alert("영업 종료 시간을 입력해주세요.");
+            myForm.endTime1.focus();
+            return false;
+        }
+
+
+        if (isNaN(myForm.endTime1.value) || isNaN(myForm.endTime2.value)) {
+            alert("영업 종료 시간을 제대로 입력해주세요.");
+            myForm.endTime1.focus();
+            return false;
+        }
+
+        if($('#file').val() === "") {
+            alert("대표 이미지는 필수입니다.");
+            $("#file").focus();
+            return false;
+        }
+
+    }
+
+
+
+    // 파일 미리보기
+    function loadFile(input) {
+        var file = input.files[0];
+        $('#imgTag').html(" <img src='"+URL.createObjectURL(file)+"' style='height:141px; width:141px;'/> ");
+    }
+
+    function checkFiles(input) {
+        if (input.files.length > 4) {
+            alert("파일은 4개 이하로만 올리실 수 있습니다.");
+            input.value = ""; // Clear the input
+        }
+    }
+
+
+</script>
+
 </body>
 
 </html>

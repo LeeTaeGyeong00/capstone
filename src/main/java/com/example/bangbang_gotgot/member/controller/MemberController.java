@@ -17,7 +17,6 @@ public class MemberController {
 
     private final MemberService memberService;
 
-
     // 회원가입
     @GetMapping("/bangbang/auth/sign-in")
     public String join(){
@@ -34,12 +33,6 @@ public class MemberController {
 
 
     // 로그인
-
-    @GetMapping("/bangbang/auth/sign-up")
-    public String loginForm(Model model) {
-        model.addAttribute("memberDto", new MemberDto());
-        return "member/login";
-    }
 
     @PostMapping("/bangbang/auth/sign-up")
     public String login(MemberDto memberDto) {

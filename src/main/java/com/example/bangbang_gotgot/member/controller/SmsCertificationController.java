@@ -21,6 +21,7 @@
 //public class SmsCertificationController extends BaseController {
 //    private final UserCertificationService userService;
 //
+//    // 문자 보내기
 //    @PostMapping("/send")
 //    public ResponseEntity<?> sendSms(@RequestBody RedisUserDto.SmsCertificationRequest requestDto) throws Exception {
 //        try {
