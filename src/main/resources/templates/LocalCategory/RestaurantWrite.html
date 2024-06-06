@@ -78,13 +78,14 @@
             <div class="picture_item">
                 <p>매장 사진</p>
                 <div class="pictures">
-                    <div class="upload_picture picture_1" src="" alt="사진"></div>
-                    <div class="upload_picture picture_2" src="" alt="사진"></div>
-                    <div class="upload_picture picture_3" src="" alt="사진"></div>
-                    <div class="upload_picture picture_4" src="" alt="사진"></div>
+                    <div id="picture1" class="upload_picture picture_1" src="" alt="사진"></div>
+                    <div id="picture2" class="upload_picture picture_2" src="" alt="사진"></div>
+                    <div id="picture3" class="upload_picture picture_3" src="" alt="사진"></div>
+                    <div id="picture4" class="upload_picture picture_4" src="" alt="사진"></div>
                 </div>
 <!--                <button>이미지 업로드</button>-->
-                <input type="file" name="multiFiles" multiple>
+                <input type="file" name="multiFiles" id="multiFilesInput" multiple onchange="loadPictures(this)">
+                <p id="fileCountInfo">선택된 파일 수: 0</p>
             </div>
         </div>
     </div>
@@ -187,12 +188,32 @@
         $('#imgTag').html(" <img src='"+URL.createObjectURL(file)+"' style='height:141px; width:141px;'/> ");
     }
 
-    function checkFiles(input) {
-        if (input.files.length > 4) {
-            alert("파일은 4개 이하로만 올리실 수 있습니다.");
-            input.value = ""; // Clear the input
+    function loadPictures(input) {
+        let count = input.multiFiles.length
+        for (i = 0 ; i<count ; i++) {
+            var file = input.multiFiles[i]
+            $('#picture'+(count+1)).html(" <img src='"+URL.createObjectURL(file)+"' style='height:141px; width:141px;'/> ");
         }
     }
+
+    // input 요소에 파일이 선택될 때 호출되는 함수
+    function updateFileCount(event) {
+        // 선택된 파일의 수를 계산
+        var files = event.target.files;
+        document.getElementById('fileCountInfo').textContent = '선택된 파일 수: ' + files.length;
+
+        // 파일의 수가 4개를 초과하는 경우 경고 메시지 출력
+        if (files.length > 4) {
+            alert('최대 4개의 파일까지 선택할 수 있습니다.');
+            document.getElementById('fileCountInfo').textContent = '선택된 파일 수: 0'
+            // 4개를 초과하는 파일을 제거
+            event.target.value = null;
+        }
+    }
+
+    // input 요소에 change 이벤트 리스너 등록
+    document.getElementById('multiFilesInput').addEventListener('change', updateFileCount);
+
 
 
 </script>

@@ -22,8 +22,6 @@ public class MemberApiController extends BaseController {
     // 회원가입
         @PostMapping("/bangbang/auth/2/sign-in")
         public ResponseEntity<?> joinProc2(@RequestBody AllUserInfoDto allUserInfoDto) {
-//            memberService.createUser(allUserInfoDto);
-//                return ResponseEntity.status(HttpStatus.OK).body("회원가입 완료");
             try {
                 memberService.createUser(allUserInfoDto);
                 return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.JOIN_MEMBER_SUCCESS), HttpStatus.OK);
