@@ -41,15 +41,6 @@ public class MemberService {
 
         User user = new User();
 
-        // 회원이 존재하지 않을때
-        if (userAllInfoDto.getId() == null) {
-            throw new IllegalArgumentException("존재하지 않는 회원입니다.");
-        }
-        // 해당 ID가 이미 존재하는지 확인
-        if (userRepository.existsById(userAllInfoDto.getId())) {
-            throw new IllegalArgumentException("이미 존재하는 회원 ID입니다.");
-        }
-
         user.setPerson_id(userAllInfoDto.getPerson_id());
         user.setPasswd(bCryptPasswordEncoder.encode(userAllInfoDto.getPasswd()));
         user.setCreated_at(LocalDateTime.now());

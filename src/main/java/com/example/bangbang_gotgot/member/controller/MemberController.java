@@ -30,8 +30,7 @@ public class MemberController {
         return "member/signUp/signUp2";
     }
 
-
-
+    
     // 로그인
     @GetMapping("/bangbang/auth/sign-up")
     public  String loginPage(){
