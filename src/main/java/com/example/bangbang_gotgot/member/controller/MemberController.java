@@ -30,7 +30,7 @@ public class MemberController {
         return "member/signUp/signUp2";
     }
 
-    
+
     // 로그인
     @GetMapping("/bangbang/auth/sign-up")
     public  String loginPage(){
@@ -48,6 +48,12 @@ public class MemberController {
             // 로그인 실패 시 처리
             return "redirect:/error/404";
         }
+    }
+
+    // 마이페이지
+    @GetMapping("/bangbang/myPage")
+    public String myPage() {
+        return "myPage/UserPage";
     }
 
     // 아이디 찾기
@@ -72,11 +78,10 @@ public class MemberController {
     }
 
     @PostMapping("/bangbang/find-pwd")
-    public String findPwd_proc(Model model, @RequestParam("nickname")String nickname)
+    public String findPwd_proc(Model model, @RequestParam("personId")String personId)
     {
-        String pwd = memberService.findRealPwd(nickname);
-        System.out.println("1111");
-        model.addAttribute("pwd",pwd);
+        String newPwd = memberService.updatePassword(personId); // 임시 비밀번호 생성
+        model.addAttribute("pwd",newPwd);
         return "member/signFind/findPwd2";
     }
 

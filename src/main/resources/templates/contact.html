@@ -86,7 +86,7 @@
                         <div class="shop_section_title">
                             <h3 class="shopName shop2"><span th:text="${article.title}"></span></h3>
                             <h3 class="shopName review2">리뷰</h3>
-                            <button class="reviewT"><i class="fa fa-pencil" aria-hidden="true"></i> 리뷰작성</button>
+                            <a th:href="@{/board/review-write/{id}(id=${article.id})}"><button class="reviewT"><i class="fa fa-pencil" aria-hidden="true"></i> 리뷰작성</button></a>
                         </div>
                     </div>
                     <div class="shop_content">
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="btn_rsv_wrap">
-                                <button type="submit" class="btn_rsv">예약하기</button>
+                                <a href="/board/list"><button type="submit" class="btn_rsv">게시판 목록</button></a>
                             </div>
                         </div>
                     </div>

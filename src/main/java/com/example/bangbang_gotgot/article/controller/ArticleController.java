@@ -55,6 +55,13 @@ public class ArticleController {
         return "redirect:/board/list";
     }
 
+    // 리뷰 쓰기
+    @GetMapping("/review-write/{id}")
+    public String review(@PathVariable Long id, Model model) {
+        model.addAttribute("id",id);
+        return "LocalCategory/CreatingBulletinBoard";
+    }
+
 
     // 게시글 상세페이지
     @Value("${map.api.key}")
