@@ -10,7 +10,6 @@
 <body>
 
 <div th:include="layout/header :: #header"></div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
 
 <!-- Spinner Start -->
 <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -25,11 +24,17 @@
             <div class="row g-4">
                 <div class="shop">
                     <div class="shop_Title">
-                        <div th:if="${imagefiles.size() > 0}">
-                            <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(0).storedFileName}|}" th:style="'width: 140px; height: 140px;'" />
-                        </div>
-                        <!--                        <img src="https://via.placeholder.com/140" alt="샘플이미지">-->
-                        <!--                        <img th:src="@{|/fruitables-1.0.0/${file.storedFileName}|}" alt="샘플이미지" th:style="'width: 140px; height: 140px;'">-->
+<!--                        <div th:if="${imagefiles.size() > 0}">-->
+<!--                            <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(0).storedFileName}|}" th:style="'width: 140px; height: 140px;'" />-->
+<!--                        </div>-->
+<!--                        <img src="https://via.placeholder.com/140" alt="샘플이미지">-->
+<!--                        <img th:src="@{|/fruitables-1.0.0/${file.storedFileName}|}" alt="샘플이미지" th:style="'width: 140px; height: 140px;'">-->
+                        <th:block th:if="${imagefiles.get(0).articleId >= 151}">
+                            <img th:src="@{|/upload/${imagefiles.get(0).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 140px; height: 140px;'">
+                        </th:block>
+                        <th:block th:if="${imagefiles.get(0).articleId < 151}">
+                            <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(0).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 140px; height: 140px;'">
+                        </th:block>
                         <div class="shop_detail_">
                             <h3 class="shop_name shop_item"><span th:text="${article.title}"></span></h3>
                             <p class="shop_explan shop_item">대표: <span th:text="${article.writer}"></span></p>
@@ -48,7 +53,14 @@
 
                     <div class="shop_img">
                         <div th:each="imageFile, iterStat : ${imagefiles}" th:if="${iterStat.index > 0}">
-                            <img th:src="@{|/fruitables-1.0.0/${imageFile.storedFileName}|}"  th:style="'width: 180px; height: 120px;'" />
+
+                            <th:block th:if="${imageFile.articleId >= 151}">
+                                <img th:src="@{|/upload/${imageFile.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 180px; height: 120px;'">
+                            </th:block>
+                            <th:block th:if="${imageFile.articleId < 151}">
+                                <img th:src="@{|/fruitables-1.0.0/${imageFile.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 180px; height: 120px;'">
+                            </th:block>
+
                         </div>
                     </div>
                 </div>
@@ -66,7 +78,7 @@
                 <div class="col-lg-12">
                     <div class="h-100 rounded">
                         <div id="googleMap" style="height: 400px; "></div>
-                        <!--                        <iframe class="rounded w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+<!--                        <iframe class="rounded w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
                     </div>
                 </div>
                 <div class="shop_container">
@@ -87,7 +99,7 @@
                                 <table class="info_table">
                                     <tr class="detail_item">
                                         <td class="detail_item_T"><i class="fa fa-clock" aria-hidden="true"></i> 영업시간</td>
-                                        <td class="item_in">00:00 - 00:00</td>
+                                        <td class="item_in"><span th:text="${article.startTime}"></span> - <span th:text="${article.endTime}"></span></td>
                                     </tr>
                                     <tr class="detail_item">
                                         <td class="detail_item_T"><i class="fa fa-map-marker" aria-hidden="true"></i> 주소</td>
@@ -128,7 +140,7 @@
 <!-- Contact End -->
 
 
-<!-- Modal for images -->
+<!-- Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -146,24 +158,44 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <!--                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지1">-->
+<!--                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지1">-->
                             <div class="d-block w-100" th:if="${imagefiles.size() > 1}">
-                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(1).storedFileName}|}" />
+                                <th:block th:if="${imagefiles.get(1).articleId >= 151}">
+                                    <img th:src="@{|/upload/${imagefiles.get(1).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
+                                <th:block th:if="${imagefiles.get(1).articleId < 151}">
+                                    <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(1).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-block w-100" th:if="${imagefiles.size() > 2}">
-                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(2).storedFileName}|}"/>
+                                <th:block th:if="${imagefiles.get(2).articleId >= 151}">
+                                    <img th:src="@{|/upload/${imagefiles.get(2).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
+                                <th:block th:if="${imagefiles.get(2).articleId < 151}">
+                                    <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(2).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-block w-100" th:if="${imagefiles.size() > 3}">
-                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(3).storedFileName}|}"/>
+                                <th:block th:if="${imagefiles.get(3).articleId >= 151}">
+                                    <img th:src="@{|/upload/${imagefiles.get(3).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
+                                <th:block th:if="${imagefiles.get(3).articleId < 151}">
+                                    <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(3).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-block w-100" th:if="${imagefiles.size() > 4}">
-                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(4).storedFileName}|}" />
+                                <th:block th:if="${imagefiles.get(4).articleId >= 151}">
+                                    <img th:src="@{|/upload/${imagefiles.get(4).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
+                                <th:block th:if="${imagefiles.get(4).articleId < 151}">
+                                    <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(4).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 800px; height: 480px;'">
+                                </th:block>
                             </div>
                         </div>
                     </div>
@@ -180,6 +212,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal for Reviews -->
 <div id="modal_R" class="modal_R">
@@ -349,6 +382,3 @@
 </body>
 
 </html>
-
-
-

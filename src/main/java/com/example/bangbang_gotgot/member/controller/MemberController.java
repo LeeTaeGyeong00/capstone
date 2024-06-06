@@ -9,13 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
-
 
     // 회원가입
     @GetMapping("/bangbang/auth/sign-in")
@@ -30,13 +30,10 @@ public class MemberController {
         return "member/signUp/signUp2";
     }
 
-
-
+    
     // 로그인
-
     @GetMapping("/bangbang/auth/sign-up")
-    public String loginForm(Model model) {
-        model.addAttribute("memberDto", new MemberDto());
+    public  String loginPage(){
         return "member/login";
     }
 
@@ -51,6 +48,36 @@ public class MemberController {
             // 로그인 실패 시 처리
             return "redirect:/error/404";
         }
+    }
+
+    // 아이디 찾기
+    @GetMapping("/bangbang/find-id")
+    public String findId(){
+        return "member/signFind/findId";
+    }
+
+    @PostMapping("/bangbang/find-id")
+    public String findId_proc(Model model, @RequestParam("nickname")String nickname)
+    {
+//        String id = memberService.findRealId(nickname);
+//        System.out.println("1111");
+//        model.addAttribute("id",id);
+        return "member/signFind/findId2";
+    }
+
+    // 비밀번호 찾기
+    @GetMapping("/bangbang/find-pwd")
+    public String findPwd(){
+        return "member/signFind/findPwd";
+    }
+
+    @PostMapping("/bangbang/find-pwd")
+    public String findPwd_proc(Model model, @RequestParam("nickname")String nickname)
+    {
+        String pwd = memberService.findRealPwd(nickname);
+        System.out.println("1111");
+        model.addAttribute("pwd",pwd);
+        return "member/signFind/findPwd2";
     }
 
 

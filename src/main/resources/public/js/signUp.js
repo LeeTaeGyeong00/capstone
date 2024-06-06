@@ -128,21 +128,92 @@ function checkIdProceed() {
             data: jsonData,
             success: function (response) {
                 if (response === true) {
-                    alert("사용 가능한 아이디입니다")
-                    // document.querySelector("#matchId").textContent = "사용 가능한 아이디입니다"
-                    // 추후에 사용가능한 아이디면 택스트 쓰지 못하도록 하자
+
+                    document.getElementById("textIdCheck").style.color = "#01DF74";
+                    document.getElementById("textIdCheck").textContent = "사용 가능한 아이디 입니다. "
                     checkId = 1
+
                 } else {
-                    alert("중복된 아이디 입니다")
+                    document.getElementById("textIdCheck").style.color = "red";
+                    document.getElementById("textIdCheck").textContent = "중복된 아이디 입니다. "
                 }
+
             },
             error: function (error) {
 
             }
         });
 
+
+
+        // 실시간 중복 체크
+        var userIdInput = document.querySelector("#textId");
+
+
+        userIdInput.addEventListener("input", function() {
+
+            // 보낼 JSON 데이터 생성
+            var jsonData2 = {
+                "person_id": document.querySelector("#textId").value
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/bangbang/check/id",  // Spring Boot 어플리케이션의 URL로 변경
+                data: jsonData2,
+                success: function (response) {
+                    if (response === true) {
+
+                        document.getElementById("textIdCheck").style.color = "#01DF74";
+                        document.getElementById("textIdCheck").textContent = "사용 가능한 아이디 입니다. "
+                        checkId = 1
+
+                    } else {
+                        document.getElementById("textIdCheck").style.color = "red";
+                        document.getElementById("textIdCheck").textContent = "중복된 아이디 입니다. "
+                        checkId = 0
+                    }
+
+                },
+                error: function (error) {
+
+                }
+            });
+
+        });
+
     }
 }
+
+
+// 아이디 중복 체크 버튼
+document.getElementById("modal_opne_btn").onclick = function() {
+
+    checkIdProceed()
+
+    var userIdValue = document.querySelector("#user-id").value;
+    document.querySelector("#textId").value = userIdValue;
+
+    document.getElementById("modal").style.display="block";
+
+}
+
+document.getElementById("modal_close_btn").onclick = function() {
+    document.getElementById("modal").style.display="none";
+}
+
+
+    document.getElementById("modal_OK_btn").addEventListener("click", function() {
+        if (checkId === 1) {
+            document.getElementById("modal").style.display = "none";
+            document.querySelector("#user-id").value = document.querySelector("#textId").value
+            document.querySelector("#user-id").readOnly  = true
+            document.querySelector("#user-id").style.backgroundColor = "#EEEEEE";
+        } else {
+            alert("중복된 아이디 입니다. ")
+        }
+    });
+
 
 
 
@@ -166,11 +237,14 @@ function checkNickProceed() {
             data: jsonData,
             success: function (response) {
                 if (response === true) {
-                    alert("사용 가능한 닉네임입니다")
-                    // document.querySelector("#matchNickname").textContent = "사용 가능한 닉네임입니다"
+
+                    document.getElementById("textNickCheck").style.color = "#01DF74";
+                    document.getElementById("textNickCheck").textContent = "사용 가능한 닉네임 입니다. "
                     checkNick = 1
+
                 } else {
-                    alert("중복된 닉네임 입니다")
+                    document.getElementById("textNickCheck").style.color = "red";
+                    document.getElementById("textNickCheck").textContent = "중복된 닉네임 입니다. "
                 }
             },
             error: function (error) {
@@ -178,8 +252,76 @@ function checkNickProceed() {
             }
         });
 
+
+        // 실시간 중복 체크
+        var userNickInput = document.querySelector("#textNick");
+
+
+        userNickInput.addEventListener("input", function() {
+
+            // 보낼 JSON 데이터 생성
+            var jsonData2 = {
+                "nick_name": document.querySelector("#textNick").value
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/bangbang/check/nickname",  // Spring Boot 어플리케이션의 URL로 변경
+                data: jsonData2,
+                success: function (response) {
+                    if (response === true) {
+
+                        document.getElementById("textNickCheck").style.color = "#01DF74";
+                        document.getElementById("textNickCheck").textContent = "사용 가능한 닉네임 입니다. "
+                        checkNick = 1
+
+                    } else {
+                        document.getElementById("textNickCheck").style.color = "red";
+                        document.getElementById("textNickCheck").textContent = "중복된 닉네임 입니다. "
+                        checkNick = 0
+                    }
+
+                },
+                error: function (error) {
+
+                }
+            });
+
+        });
+
+
     }
 }
+
+
+// 닉네임 중복 체크 버튼
+document.getElementById("modal_opne_btn2").onclick = function() {
+
+    checkNickProceed()
+
+    document.querySelector("#textNick").value = document.querySelector("#nick_name").value;
+
+    document.getElementById("modal2").style.display="block";
+
+}
+
+document.getElementById("modal_close_btn2").onclick = function() {
+    document.getElementById("modal2").style.display="none";
+}
+
+document.getElementById("modal_OK_btn2").addEventListener("click", function() {
+    if (checkNick === 1) {
+        document.getElementById("modal2").style.display = "none";
+        document.querySelector("#nick_name").value = document.querySelector("#textNick").value
+        document.querySelector("#nick_name").readOnly  = true
+        document.querySelector("#nick_name").style.backgroundColor = "#EEEEEE";
+    } else {
+        alert("중복된 닉네임 입니다. ")
+    }
+});
+
+
+
 
 // 중복 체크 구현
 const checkBtn = document.querySelector("#check")
