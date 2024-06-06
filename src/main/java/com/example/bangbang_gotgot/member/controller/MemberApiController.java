@@ -20,14 +20,13 @@ public class MemberApiController extends BaseController {
     private MemberService memberService;
 
     // 회원가입
-    @PostMapping("/bangbang/auth/2/sign-in")
-    public ResponseEntity<String> joinProc2(@RequestBody AllUserInfoDto allUserInfoDto) {
-        try {
-            memberService.createUser(allUserInfoDto);
-//            return ResponseEntity.status(HttpStatus.OK).body("회원가입 완료");
-            return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.JOIN_MEMBER_SUCCESS), HttpStatus.OK);
-        } catch (CustomExceptions.Exception e) {
-            return handleApiException(e, HttpStatus.BAD_REQUEST);
+        @PostMapping("/bangbang/auth/2/sign-in")
+        public ResponseEntity<?> joinProc2(@RequestBody AllUserInfoDto allUserInfoDto) {
+//            memberService.createUser(allUserInfoDto);
+//                return ResponseEntity.status(HttpStatus.OK).body("회원가입 완료");
+            try {
+                memberService.createUser(allUserInfoDto);
+                return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.JOIN_MEMBER_SUCCESS), HttpStatus.OK);
         } catch (Exception e) {
             return handleApiException(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,8 +37,7 @@ public class MemberApiController extends BaseController {
     public ResponseEntity<Boolean> checkId(@RequestParam("person_id") String person_id){
         try {
             boolean checked = memberService.checkId(person_id);
-//            return ResponseEntity.status(HttpStatus.OK).body(checked);
-            return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CAN_UES_ID_SUCCESS), HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(checked);
         } catch (CustomExceptions.Exception e) {
             return handleApiException(e, HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
@@ -52,8 +50,7 @@ public class MemberApiController extends BaseController {
     public ResponseEntity<Boolean> checkNick(@RequestParam("nick_name")String nick_name){
         try {
             boolean checked = memberService.checkNick(nick_name);
-//            return ResponseEntity.status(HttpStatus.OK).body(checked);
-            return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CAN_UES_NICKNAME_SUCCESS), HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(checked);
         } catch (CustomExceptions.Exception e) {
             return handleApiException(e, HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
