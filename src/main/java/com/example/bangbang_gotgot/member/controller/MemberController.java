@@ -33,6 +33,10 @@ public class MemberController {
 
 
     // 로그인
+    @GetMapping("/bangbang/auth/sign-up")
+    public  String loginPage(){
+        return "member/login";
+    }
 
     @PostMapping("/bangbang/auth/sign-up")
     public String login(MemberDto memberDto) {
@@ -71,9 +75,9 @@ public class MemberController {
     @PostMapping("/bangbang/find-pwd")
     public String findPwd_proc(Model model, @RequestParam("nickname")String nickname)
     {
-//        String pwd = memberService.findRealPwd(nickname);
-//        System.out.println("1111");
-//        model.addAttribute("pwd",pwd);
+        String pwd = memberService.findRealPwd(nickname);
+        System.out.println("1111");
+        model.addAttribute("pwd",pwd);
         return "member/signFind/findPwd2";
     }
 
