@@ -20,6 +20,10 @@ public class MainController {
     public String main(Model model){
         List<Article> articles = articleService.articleRanking();
         List<BoardDTO> boardDTOS = articleService.articleRankingFiles();
+
+        for (BoardDTO boardDTO : boardDTOS){
+            System.out.println(boardDTO.getArticleId());
+        }
         model.addAttribute("articles", articles);
         model.addAttribute("files", boardDTOS);
         return "index";

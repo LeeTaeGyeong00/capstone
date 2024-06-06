@@ -1,5 +1,6 @@
 package com.example.bangbang_gotgot.article.controller;
 
+import com.example.bangbang_gotgot.article.dto.ArticleDto;
 import com.example.bangbang_gotgot.article.dto.BoardDTO;
 import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.entity.ArticleFile;
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,21 +33,33 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
+
     // 관리자 게시글 쓰기
     @GetMapping("/restaurant_write")
     public String restaurant_write() {
         return "LocalCategory/RestaurantWrite";
     }
 
-    @PostMapping("/writedo")
-    public String writedo(Article board, Model model) {
 
-        articleService.write(board);
+    @PostMapping("/restaurant_write")
+    public String writedo(ArticleDto articleDto, Model model, @RequestParam("file") MultipartFile file
+                          ,@RequestParam(value = "multiFiles", required = false) MultipartFile[] multiFiles
+    ) throws IOException {
+
+        Article article = articleService.write(articleDto);
+        articleService.writeBoard(file, multiFiles, article);
 
         model.addAttribute("message", "글 작성이 완료되었습니다.");
         model.addAttribute("searchUrl", "/board/list");
 
-        return "board/message";
+        return "redirect:/board/list";
+    }
+
+    // 리뷰 쓰기
+    @GetMapping("/review-write/{id}")
+    public String review(@PathVariable Long id, Model model) {
+        model.addAttribute("id",id);
+        return "LocalCategory/CreatingBulletinBoard";
     }
 
 
@@ -64,7 +79,7 @@ public class ArticleController {
     }
 
 
-    // 게시글 목록
+    // 게시글 목록 (검색 + 콤보박스)
     @GetMapping("/list")
     public String list(Model model,
                        @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
@@ -76,6 +91,7 @@ public class ArticleController {
 
         Page<Article> list = null;
 
+        // 검색, 옵션선택에 따라 담기는 리스트 값
         if (option == null) {
             if (searchKeyword == null){
 
@@ -96,31 +112,15 @@ public class ArticleController {
             }
         }
 
-
+        // 리스트 값 디버깅
         System.out.println("Total elements: " + list.getTotalElements());
             for (Article article : list) {
                 System.out.println("Article ID: " + article.getId());
             }
 
 
-         // 해당 파일 저장
-         List<BoardDTO> articleFiles = articleService.findListArticleFiles(list);
-         Set<Long> ids = new HashSet<>();
-         List<BoardDTO> files = new ArrayList<>();
-
-         for (BoardDTO boardDTO : articleFiles) {
-             ids.add(boardDTO.getArticleId());
-         }
-         
-         for (Long id : ids) {
-             List<BoardDTO> dtos = articleService.findFile(id);
-
-             Optional<BoardDTO> minIdDto = dtos.stream()
-                     .min(Comparator.comparingLong(BoardDTO::getId));
-
-             BoardDTO foundDto = minIdDto.get();
-             files.add(foundDto);
-         }
+         // 리스트에 해당하는 이미지 저장
+         List<BoardDTO> files = fileList(list);
 
 
             // 페이지 설정
@@ -143,13 +143,8 @@ public class ArticleController {
         return "LocalCategory/LocalCategory";
     }
 
-    private List<Long> extractIds(Page<Article> articles) {
-        return articles.stream()
-                .map(Article::getId)
-                .collect(Collectors.toList());
-    }
 
-    // 게시글 목록2
+    // 게시글 목록 (지역 선택 + 콤보박스)
     @GetMapping("/location")
     public String list2(Model model,
                        @PageableDefault(page = 0, size = 9, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
@@ -157,29 +152,13 @@ public class ArticleController {
                         @RequestParam(value = "option", required = false)String option)
     {
 
-        Page<Article> list = null;
-        list = articleService.locate(pageable, district, option);
+        // 지역 선택 + 콤보박스 선택
+        Page<Article> list = articleService.locate(pageable, district, option);
 
         System.out.println(option);
 
         // 해당 파일 저장
-        List<BoardDTO> articleFiles = articleService.findListArticleFiles(list);
-        Set<Long> ids = new HashSet<>();
-        List<BoardDTO> files = new ArrayList<>();
-
-        for (BoardDTO boardDTO : articleFiles) {
-            ids.add(boardDTO.getArticleId());
-        }
-
-        for (Long id : ids) {
-            List<BoardDTO> dtos = articleService.findFile(id);
-
-            Optional<BoardDTO> minIdDto = dtos.stream()
-                    .min(Comparator.comparingLong(BoardDTO::getId));
-
-            BoardDTO foundDto = minIdDto.get();
-            files.add(foundDto);
-        }
+        List<BoardDTO> files = fileList(list);
 
 
         int nowPage = list.getPageable().getPageNumber()+1; // or Pageable.getPageNumber() 현재페이지
@@ -203,38 +182,30 @@ public class ArticleController {
     }
 
 
-    @GetMapping("/view/{id}")
-    public String view(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("board", articleService.view(id));
-        return "board/view";
+    // 리스트에 해당하는 이미지 저장
+    private List<BoardDTO> fileList(Page<Article> list) {
+        List<BoardDTO> articleFiles = articleService.findListArticleFiles(list);
+        Set<Long> ids = new HashSet<>();
+        List<BoardDTO> files = new ArrayList<>();
+
+        for (BoardDTO boardDTO : articleFiles) {
+            ids.add(boardDTO.getArticleId());
+        }
+
+        for (Long id : ids) {
+            List<BoardDTO> dtos = articleService.findFile(id);
+
+            Optional<BoardDTO> minIdDto = dtos.stream()
+                    .min(Comparator.comparingLong(BoardDTO::getId));
+
+            BoardDTO foundDto = minIdDto.get();
+            files.add(foundDto);
+        }
+        return files;
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        articleService.deleteById(id);
 
-        return "redirect:/board/list";
-    }
 
-    @GetMapping("/modify/{id}")
-    public String modify(@PathVariable("id") Long id,
-                         Model model) {
-        model.addAttribute("board", articleService.view(id));
-
-        return "board/modify";
-    }
-
-    @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") Long id, Article board) {
-
-        Article boardTemp = articleService.view(id);
-        boardTemp.setTitle(board.getTitle());
-        boardTemp.setContent(board.getContent());
-
-        articleService.write(boardTemp);
-
-        return "redirect:/board/list";
-    }
 
     @GetMapping("/UserPage")
     public String UserPage() {

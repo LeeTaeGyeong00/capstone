@@ -14,16 +14,22 @@ import java.util.Map;
 public class BaseController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(value = Exception.class) // 모든 예외를 처리하는 메서드
     public ResponseEntity handleException(Exception e) {
+        // 예외 처리 & 내부 서버 오류 반환
         return handleApiException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    // 예외 응답 메서드
     protected ResponseEntity handleApiException(Exception e, HttpStatus status) {
+        // 응답 맵
         Map<String, String> res = new HashMap<>();
         res.put("statusCode", "error");
         res.put("responseMessage", e.getMessage());
         logger.info("error:{}", e.getMessage());
+
+        // 응답 엔티티 생성 반환
         return new ResponseEntity<>(res, status);
     }
+
 }

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,19 +36,11 @@ public class MemberService {
         return MemberDto.from(member);
     }
 
-
+    // 회원가입
+    @Transactional
     public void createUser(AllUserInfoDto userAllInfoDto) {
 
         User user = new User();
-
-//        boolean exists = userRepository.existsById(userAllInfoDto.getId());
-//        // 예외 발생
-//        if (exists)
-//            try {
-//                throw new IllegalAccessException("회원의 id가 없어야 합니다.");
-//            } catch (IllegalAccessException e) {
-//                throw new RuntimeException(e);
-//            }
 
         user.setPerson_id(userAllInfoDto.getPerson_id());
         user.setPasswd(bCryptPasswordEncoder.encode(userAllInfoDto.getPasswd()));
@@ -64,6 +57,7 @@ public class MemberService {
 
     }
 
+    // 중복된 아이디 확인
     public boolean checkId(String person_id) {
         boolean existId = userRepository.existsByPersonId(person_id);
         if(existId){
@@ -73,7 +67,7 @@ public class MemberService {
         }
     }
 
-
+    // 중복된 닉네임 확인
     public boolean checkNick(String nickName) {
         boolean existId = userRepository.existsByNickname(nickName);
         if(existId){
@@ -104,6 +98,7 @@ public class MemberService {
         return user.getPerson_id();
     }
 
+
     // 비밀번호 찾기 (api)
     public Boolean findPwd(String personId, String nickname, String phone) {
         User user = userRepository.findByNickName(nickname);
@@ -118,9 +113,54 @@ public class MemberService {
         return false;
     }
 
-    // 비밀번호 찾기 (세션이 필요함!)
-    public String findRealPwd(String nickname) {
-        User user = userRepository.findByNickName(nickname);
-        return user.getPasswd();
+    // 임시 비밀번호 설정
+    private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
+    private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();
+    private static final String NUMBER = "0123456789";
+
+    private static final String DATA_FOR_RANDOM_STRING = CHAR_LOWER + CHAR_UPPER + NUMBER;
+    private static SecureRandom random = new SecureRandom();
+
+    // 임시 비밀번호 생성
+    private static String generateTemporaryPassword(int length) {
+        if (length < 1) throw new IllegalArgumentException();
+
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int rndCharAt = random.nextInt(DATA_FOR_RANDOM_STRING.length());
+            char rndChar = DATA_FOR_RANDOM_STRING.charAt(rndCharAt);
+            sb.append(rndChar);
+        }
+
+        return sb.toString();
     }
+
+    // 임시 비밀번호 업데이트
+    @Transactional
+    public String updatePassword(String personId) {
+        int length = 10;
+        String temporaryPassword = generateTemporaryPassword(length);
+        System.out.println("새 비밀번호: "+ temporaryPassword);
+
+        // 사용자를 조회
+        User user = userRepository.findByPersonId(personId);
+
+        // 사용자가 존재하지 않는 경우 예외 처리
+        if (user == null) {
+            throw new IllegalArgumentException("해당 personId를 가진 사용자를 찾을 수 없습니다.");
+        }
+
+        // 암호화
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encryptedPassword = passwordEncoder.encode(temporaryPassword);
+
+        // 업데이트
+        user.setPasswd(encryptedPassword);
+        user.setLast_passwd_changed(LocalDateTime.now());
+
+        userRepository.save(user);
+
+        return temporaryPassword;
+    }
+
 }

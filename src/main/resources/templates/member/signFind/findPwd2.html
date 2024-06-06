@@ -2,15 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>새 비밀번호</title>
+
 </head>
 <body>
 <!--<div th:include="layout/header :: #header"></div>-->
 <div style="text-align: center;">
-    회원님의 비밀번호는<br>
-<!--    <span th:text="${pwd}"></span> 입니다.-->
-    어쩌구저쩌구 입니다.
+    회원님의 새로운 비밀번호는<br>
+    <span th:text="${pwd}"></span> 입니다.
+<!--    어쩌구저쩌구 입니다.-->
 </div>
 <!--<div th:include="layout/footer :: #footer"></div>-->
 </body>
+
+<script>
+    // F5 키 이벤트를 감지
+    window.addEventListener('keydown', preventPageRefresh);
+
+    // F5 키로의 페이지 새로고침을 막는 함수
+    function preventPageRefresh(event) {
+        if ((event.which || event.keyCode) === 116) {
+            event.preventDefault(); // 기본 동작(페이지 새로고침)을 막음
+        }
+    }
+
+</script>
 </html>

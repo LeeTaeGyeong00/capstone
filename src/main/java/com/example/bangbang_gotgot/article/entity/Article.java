@@ -61,24 +61,12 @@ public class Article {
     @Column(name="modDate")
     private LocalDateTime modDate;
 
+    @Column(nullable = false)
+    private String startTime;
 
-//    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, orphanRemoval = true,fetch = FetchType.LAZY)
-//    @JsonManagedReference
-//    private List<ArticleFile> boardFileList = new ArrayList<>();
+    @Column(nullable = false)
+    private String endTime;
 
-
-
-    @Builder
-    public Article(String title, String content, String writer, LocalDateTime workTime, String address1, String address2, String address3, String phoneNumber){
-        this.title = title;
-        this.content = content;
-        this.writer = writer;
-        this.workTime = workTime;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.address3 = address3;
-        this.phoneNumber=phoneNumber;
-    }
 
     public Article newArticle(Article article, int count) {
         return new Article(
@@ -94,8 +82,9 @@ public class Article {
                 article.getLikes(),
                 count,
                 article.getRegDate(),
-                article.getModDate()
-//                article.getBoardFileList()
+                article.getModDate(),
+                article.getStartTime(),
+                article.getEndTime()
         );
     }
 }

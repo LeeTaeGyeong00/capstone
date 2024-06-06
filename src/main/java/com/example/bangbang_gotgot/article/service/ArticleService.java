@@ -1,5 +1,6 @@
 package com.example.bangbang_gotgot.article.service;
 
+import com.example.bangbang_gotgot.article.dto.ArticleDto;
 import com.example.bangbang_gotgot.article.dto.BoardDTO;
 import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.entity.ArticleFile;
@@ -11,10 +12,16 @@ import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,13 +32,13 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
     private final ArticleFileRepository articleFileRepository;
 
-    // 게시글 랭킹 (메인)
+    // 게시글 랭킹(조회수) 리턴(메인)
     public List<Article> articleRanking() {
         List<Article> articles = articleRepository.findTop8ByOrderByViewDesc();
         return articles;
     };
 
-    // 게시클 랭킹 파일 (메인)
+    // 게시클 랭킹(조회수) 해당 사진 리턴(메인)
     public List<BoardDTO> articleRankingFiles() {
         List<Article> articles = articleRepository.findTop8ByOrderByViewDesc();
 
@@ -53,34 +60,50 @@ public class ArticleService {
         return files;
     }
 
-    // 글 작성 처리
-    public void write(Article board) {
-        articleRepository.save(board);
+    // 관리자 글 작성 : DB 저장
+    public Article write(ArticleDto board) {
+        String start = board.getStartTime1() + ":" + board.getStartTime2();
+        board.setStartTime1(start);
+
+        String end = board.getEndTime1() + ":" + board.getEndTime2();
+        board.setEndTime1(end);
+
+        Article article = ArticleDto.makeArticle(board);
+        Article article1 = articleRepository.save(article);
+
+        return article1;
     }
 
-    // 게시글 리스트 처리
-//    public Page<Article> list(Pageable pageable, String option) {
-//        if (option.equals("1")) {
-//            return articleRepository.findAll(pageable);
-//        } else if (option.equals("2")) {
-//            return articleRepository.findAllByOrderByViewDesc(pageable);
-//        } else if (option.equals("3")) {
-//            return articleRepository.findAllByOrderByLikesDesc(pageable);
-//        }
+
+    // 관리자 글 작성 사진:  DB 저장
+    public void writeBoard(MultipartFile file, MultipartFile[] multiFiles, Article article) throws IOException {
+
+
+//        // 파일의 이름 가져옴
+//        List<String> originalFilenames = new ArrayList<>();
 //
-//        return articleRepository.findAllByOrderByLikesDesc(pageable);
-//    }
+//        originalFilenames.add(file.getOriginalFilename());
+//        for (MultipartFile file1 : multiFiles) {
+//            originalFilenames.add(file1.getOriginalFilename());
+//        }
 
-    // 특정 게시글 상세보기
-    public Article view(Long id) {
-        return articleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("없는 id입니다."));
+        // 파일의 이름 가져옴
+        String originalFilename = file.getOriginalFilename();
+
+        // 서버 저장용 이름을 만듬
+        String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
+
+        // 해당 경로에 파일 저장
+        String savePath = "C:/springboot_img/" + storedFileName;
+        file.transferTo(new File(savePath));
+
+        // 해당 데이터 save 처리
+        ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
+        articleFileRepository.save(articleFile);
+
+
     }
 
-    // 특정 게시글 삭제
-    public void deleteById(Long id) {
-        articleRepository.deleteById(id);
-    }
 
     // 게시글 목록: 검색
     public Page<Article> searchList(String searchKeyword, Pageable pageable, String option) {
@@ -124,6 +147,7 @@ public class ArticleService {
         return articleRepository.findAll(pageable);
     }
 
+
     // 게시글 목록: 지역
     public Page<Article> locate(Pageable pageable, String district, String option) {
 
@@ -140,10 +164,11 @@ public class ArticleService {
 
     }
 
+
     // 상세 페이지
     public Article findIdList(Long id, HttpServletRequest request, HttpServletResponse response) {
-        Article article = articleRepository.findById(id).orElse(null);
-        Long articleId = article.getId();
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("없는 id입니다."));
 
         int count = article.getView();
         if (!isArticleIdInCookies(request, id)) {
@@ -181,7 +206,7 @@ public class ArticleService {
         return false;
     }
 
-    // id에 해당하는 파일 찾기
+    // id에 해당하는 사진 찾기
     public List<BoardDTO> findFile(Long id) {
 
         return articleFileRepository.findByArticleId(id).stream()
@@ -190,7 +215,7 @@ public class ArticleService {
 
     }
 
-
+    // list에 해당하는 사진들 찾기
     public List<BoardDTO> findListArticleFiles(Page<Article> list) {
 
         List<BoardDTO> articleFiles = new ArrayList<>();
@@ -203,6 +228,7 @@ public class ArticleService {
         return articleFiles;
 
     }
+
 
 
 }

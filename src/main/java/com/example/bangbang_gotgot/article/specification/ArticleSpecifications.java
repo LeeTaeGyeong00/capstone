@@ -9,6 +9,7 @@ import javax.persistence.criteria.Predicate;
 public class ArticleSpecifications {
     public static Specification<Article> searchByKeyword(String keyword) {
         return (root, query, criteriaBuilder) -> {  // criteria: JPA기능 중 하나로 동적 쿼리 생성
+            // DB에 가게명 or 주소에 해당하는 검색어를 검색해줌
             String likeKeyword = "%" + keyword + "%";
             Predicate titlePredicate = criteriaBuilder.like(root.get("title"), likeKeyword); //predicate: sql where절
             Predicate contentPredicate = criteriaBuilder.like(root.get("address1"), likeKeyword);
