@@ -35,19 +35,20 @@ public class MemberService {
         return MemberDto.from(member);
     }
 
-
+    // 회원가입
+    @Transactional
     public void createUser(AllUserInfoDto userAllInfoDto) {
 
         User user = new User();
 
-//        boolean exists = userRepository.existsById(userAllInfoDto.getId());
-//        // 예외 발생
-//        if (exists)
-//            try {
-//                throw new IllegalAccessException("회원의 id가 없어야 합니다.");
-//            } catch (IllegalAccessException e) {
-//                throw new RuntimeException(e);
-//            }
+        // 회원이 존재하지 않을때
+        if (userAllInfoDto.getId() == null) {
+            throw new IllegalArgumentException("존재하지 않는 회원입니다.");
+        }
+        // 해당 ID가 이미 존재하는지 확인
+        if (userRepository.existsById(userAllInfoDto.getId())) {
+            throw new IllegalArgumentException("이미 존재하는 회원 ID입니다.");
+        }
 
         user.setPerson_id(userAllInfoDto.getPerson_id());
         user.setPasswd(bCryptPasswordEncoder.encode(userAllInfoDto.getPasswd()));
@@ -64,6 +65,7 @@ public class MemberService {
 
     }
 
+    // 중복된 아이디 확인
     public boolean checkId(String person_id) {
         boolean existId = userRepository.existsByPersonId(person_id);
         if(existId){
@@ -73,7 +75,7 @@ public class MemberService {
         }
     }
 
-
+    // 중복된 닉네임 확인
     public boolean checkNick(String nickName) {
         boolean existId = userRepository.existsByNickname(nickName);
         if(existId){
@@ -98,11 +100,6 @@ public class MemberService {
         return false;
     }
 
-    // 아이디 찾기
-    public String findRealId(String nickname) {
-        User user = userRepository.findByNickName(nickname);
-        return user.getPerson_id();
-    }
 
     // 비밀번호 찾기 (api)
     public Boolean findPwd(String personId, String nickname, String phone) {
@@ -118,9 +115,4 @@ public class MemberService {
         return false;
     }
 
-    // 비밀번호 찾기 (세션이 필요함!)
-    public String findRealPwd(String nickname) {
-        User user = userRepository.findByNickName(nickname);
-        return user.getPasswd();
-    }
 }

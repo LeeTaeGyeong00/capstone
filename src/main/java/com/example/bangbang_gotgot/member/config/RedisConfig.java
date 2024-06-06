@@ -18,11 +18,13 @@
 //    @Value("${spring.redis.port}")
 //    private int redisPort;
 //
+//    // redis와 서버 연결
 //    @Bean
 //    public RedisConnectionFactory redisConnectionFactory(){
 //        return new LettuceConnectionFactory(redisHost, redisPort);
 //    }
 //
+//    // redis와 서버 연결 구성설정
 //    @Bean
 //    public StringRedisTemplate stringRedisTemplate() {
 //        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();

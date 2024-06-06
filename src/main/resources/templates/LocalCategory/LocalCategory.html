@@ -145,12 +145,17 @@
                 <div class="page" th:each="a : ${list}" >
                     <div th:each="b : ${files}">
                         <div th:if="${a.id == b.articleId}">
-                            <img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 291px; height: 300px;'">
+                            <th:block th:if="${b.articleId >= 151}">
+                                <img th:src="@{|/upload/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 291px; height: 300px;'">
+                            </th:block>
+                            <th:block th:if="${b.articleId < 151}">
+                                <img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 291px; height: 300px;'">
+                            </th:block>
                         </div >
                     </div>
                     <dl>
                         <a th:href="@{/board/detail/{id}(id=${a.id})}"><dt th:text="${a.title}"></dt></a>
-                        <dd class="description">open 3p.m / close 11 p.m</dd><br>
+                        <dd class="description">open <span th:text="${a.startTime}"></span> / close <span th:text="${a.endTime}"></span></dd><br>
 <!--                        <dd class="rating">별별별별별 5.0(평가수)</dd>-->
                         <dd class="viewer shop_item">
                             <span class="shop_heart"><i class="fa fa-heart" aria-hidden="true"></i> <span th:text="${a.likes}" ></span></span>
