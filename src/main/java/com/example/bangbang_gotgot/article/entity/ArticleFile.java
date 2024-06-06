@@ -1,5 +1,6 @@
 package com.example.bangbang_gotgot.article.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;

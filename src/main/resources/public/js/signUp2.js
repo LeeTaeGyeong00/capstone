@@ -71,5 +71,5 @@ const formattedOld = formatOld(old)
 document.querySelector("#js-birth").textContent = formattedOld
 
 function formatOld(old) {
-    return old.replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3')
+    return old.replace(/(\d{4})(\d{2})(\d{2})/, '$1년 $2월 $3일')
 }

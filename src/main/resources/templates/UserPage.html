@@ -1,0 +1,293 @@
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>방방곡곡</title>
+<style>
+    .userpage_box{
+        font-family: 'BMJUA', 'sans-serif';
+        font-size: 20px;
+        color: #000;
+        display: flex;
+        justify-content: space-between;
+        width: 1280px;
+        height: 813px;
+        background: #fff;
+        border-radius: 10px 10px 0 0;
+        margin: 75px auto 0;
+        padding: 37px 64px;
+
+        a{
+            color: #000;
+        }
+        .user_control_box{
+            border: solid 1px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 370px;
+            :first-child{
+                border-top: none;
+            }
+            h5{
+                color: #000;
+            }
+            >dt{
+                padding: 20px 32px;
+                font-size: 32px;
+                border-top: solid 1px rgba(0, 0, 0, 0.3);
+            }
+            >dd{
+                padding: 20px 32px;
+                border-top: solid 1px rgba(0, 0, 0, 0.3);
+            }
+            .name_box {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                p{
+                    width: 178px;
+                    height: 78px;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    background: rgba(245,94,8,0.2);
+                    text-align: center;
+                    padding: 20px;
+                }
+            }
+        }
+        section{
+            display: none;
+            width: 760px;
+            min-height: 713px;
+            border: solid 1px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 45px;
+
+            .tit_box{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 50px;
+
+                h3{
+                    font-size: 32px;
+                    color: #000;
+                }
+                button{
+                    width: 80px;
+                    font-size: 15px;
+                    line-height: 30px;
+                    border-radius: 3px;
+                    background: #F55E08;
+                    color: #fff;
+                }
+            }
+        }
+
+        /*User_profil start*/
+        .user_profil{
+            table{
+                width: 100%;
+                color: #000;
+
+                th{
+                    padding-left: 18px;
+                    line-height: 40px;
+                    border: solid 1px #e7e7e7;
+                    background: #f7f7f7;
+                }
+                td{
+                    padding-left: 18px;
+                    line-height: 40px;
+                    border: solid 1px #e7e7e7;
+
+                    button{
+                        width: 37px;
+                        line-height: 20px;
+                        text-align: center;
+                        border-radius: 3px;
+                        margin-left: 45px;
+                        background: #73757C;
+                        border: solid 1px #E7E7E7;
+                        color: #fff;
+                        font-family: "Noto Sans KR", 'sans-serif';
+                        font-size: 10px;
+                    }
+                    .withdrawal{
+                        background: #fff;
+                        color: #73757C;
+                        text-align: center;
+                        margin-left: 0;
+                        font-family: "Noto Sans KR", 'sans-serif';
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        /*User_profil end*/
+
+        /*User_review strat*/
+        .User_review{
+
+            .modal-R-content {
+                background-color: #fefefe;
+                padding: 30px;
+                width: 100%;
+            }
+            .modal_reviews {
+                max-height: 400px;
+                overflow-y: auto;
+            }
+            .modal-review {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-bottom: 1px solid #ddd;
+                padding: 25px;
+                h3{
+                    color: #000;
+                    font-size: 20px;
+                    margin-bottom: 15px;
+                }
+                div{
+                    display: flex;
+                }
+                .rv-date {
+                    font-size: 0.9em;
+                    color: #555;
+                    margin: 0 20px 15px 0;
+                }
+            }
+
+
+            .modal_review p {
+                margin: 5px 0;
+            }
+
+        }
+        /*User_review end*/
+
+        /*User_save strat*/
+        /*User_save end*/
+
+        .act{
+            display: block;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div th:include="layout/header :: #header"></div>
+
+<!-- Spinner Start -->
+<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status"></div>
+</div>
+<!-- Spinner End -->
+
+<div class="userpage_box">
+    <nav>
+        <dl class="user_control_box">
+            <dt>내 정보</dt>
+            <dd class="name_box">
+                <h5>닉네임</h5>
+                <p><i>@</i> 2,000 포인트</p>
+            </dd>
+            <dd id="User_profile" class="interior">회원정보</dd>
+            <dd><a href="#">개인정보 수정</a></dd>
+            <dd id="User_review" class="interior">내가 쓴 리뷰</dd>
+            <dd id="User_save" class="interior">찜한식당</dd>
+            <dd><a href="#">식당 게시판 작성하기</a></dd>
+        </dl>
+    </nav>
+    <!--User_profile start-->
+    <section class="user_profil">
+        <div class="tit_box">
+        <h3>계정정보 설정</h3>
+            <button>편집하기</button>
+        </div>
+        <table>
+            <tr>
+                <th>계정 번호</th>
+                <td>00000000000000000000000</td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>123@123.com</td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td>******* <button>변경</button></td>
+            </tr>
+            <tr>
+                <th>닉네임</th>
+                <td>닉네임 <button>변경</button></td>
+            </tr>
+            <tr>
+                <th>계정 탈퇴</th>
+                <td><button class="withdrawal">탈퇴</button></td>
+            </tr>
+        </table>
+    </section>
+    <!--User_profile end-->
+
+    <!--User_review start-->
+    <section class="User_review act">
+        <div class="tit_box">
+            <h3>내가 쓴 리뷰글(3)</h3>
+            <button>삭제하기</button>
+        </div>
+        <div id="modal_R" class="modal_R">
+            <div class="modal-R-content">
+                <div class="md-rv-titles">
+                    <img src="https://via.placeholder.com/75" alt="샘플이미지">
+                    <div class="md-rv-title">
+                        <h2>가게이름</h2>
+                        <div class="md-rv-title-item">
+                            <p>가게 주소</p>
+                            <select  class="viewType">
+                                <option value="relevance">관련성순</option>
+                                <option value="recency">최신순</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_reviews">
+                    <div class="modal-review">
+                        <h3>닉네임</h3>
+                        <div>
+                            <p class="rv-date">yyyy년 mm월 dd일</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <h3>닉네임</h3>
+                        <div>
+                            <p class="rv-date">yyyy년 mm월 dd일</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                    <div class="modal-review">
+                        <h3>닉네임</h3>
+                        <div>
+                            <p class="rv-date">yyyy년 mm월 dd일</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--User_review end-->
+
+    <!--User_save start-->
+    <section class="User_save ">
+
+    </section>
+    <!--User_save end-->
+</div>
+
+<div th:include="layout/footer :: #footer"></div>
+</body>
+
+</html>

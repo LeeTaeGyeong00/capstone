@@ -3,6 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+<!--    모달 스타일-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+        .wrap {
+            position: absolute;
+        }
+        #modal, #modal2 {
+            display: none;
+            position:fixed;
+            width:100%;
+            height:100%;
+            z-index:1;
+            align-items: center; /* 수직 가운데 정렬 */
+            justify-content: center; /* 수평 가운데 정렬 */
+        }
+
+        #modal h2, #modal2 h2 {
+            margin:0;
+        }
+        #modal .button-container, #modal2 .button-container {
+            text-align: right;
+        }
+
+        #modal button, #modal2 button {
+            display: inline-block;
+            width: 50px;
+            margin: 7px;
+            padding: 5px 0px;
+        }
+
+        #modal .modal_content, #modal2 .modal_content {
+            width:350px;
+            margin:100px auto;
+            padding:20px ;
+            background:#fff;
+            border-radius: 8px;
+
+        }
+
+        #modal .modal_layer, #modal2 .modal_layer {
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0, 0, 0, 0.5);
+            z-index:-1;
+        }
+
+
+    </style>
 
 </head>
 <body>
@@ -32,12 +84,12 @@
             <form class="join_form" action="/bangbang/auth/sign-in" method="post" name="myform">
                 <div class="form_id">
                     <span class="form_item"> 아이디</span> <br>
-                    <input type="text" class="joinInput" name="person_id" id="user-id" value="11111" placeholder="아이디를 입력해주세요."> <input class="id_chk" type="button" value="중복확인"  onclick="checkIdProceed()"><br>
+                    <input type="text" class="joinInput" name="person_id" id="user-id" value="11111" placeholder="아이디를 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn"><br>
                     <div id="matchId"></div>
                 </div>
                 <div class="form_id form_nickname">
                     <span class="form_item"> 닉네임</span> <br>
-                    <input type="text" class="joinInput" name="nick_name" id="nick_name" value="11" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" onclick="checkNickProceed()">
+                    <input type="text" class="joinInput" name="nick_name" id="nick_name" value="11" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn2">
                     <div id="matchNickname"></div>
                 </div>
                 <div class="form_pw">
@@ -51,14 +103,14 @@
                 <div class="join_form2">
                     <div class="form_tel">
                         <span class="form_item"> 전화번호</span><br>
-                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="예시&#41;01012345678">
+                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="01000000000">
                     </div>
                     <div class="form_birth">
                         <span class="form_item"> 생년월일</span><br>
-                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="예시&#41;19990101">
+                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="YYYYMMDD">
                     </div>
                 </div>
-                <button type="submit" class="next-step step_btn" id="check">다음</button>
+                <button type="submit" class="next-step step_btn" id="check">다 음</button>
             </form>
 
         </div>
@@ -66,6 +118,55 @@
     <div th:include="layout/footer :: #footer"></div>
 
 </div>
+
+<!--modal-->
+
+<!--id modal-->
+<div id="modal">
+
+    <div class="modal_content">
+        <h2>아이디 중복 체크</h2><br><br>
+
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" id="textId"><br>
+            <p id="textIdCheck"></p>
+        </div>
+
+        <br><br>
+
+        <div class="button-container">
+            <button type="button" id="modal_close_btn">취소</button>
+            <button type="button" id="modal_OK_btn">OK</button>
+        </div>
+
+    </div>
+
+    <div class="modal_layer"></div>
+</div>
+
+<!--nickname modal-->
+<div id="modal2">
+
+    <div class="modal_content">
+        <h2>닉네임 중복 체크</h2><br><br>
+
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" id="textNick"><br>
+            <p id="textNickCheck"></p>
+        </div>
+
+        <br><br>
+
+        <div class="button-container">
+            <button type="button" id="modal_close_btn2">취소</button>
+            <button type="button" id="modal_OK_btn2">OK</button>
+        </div>
+
+    </div>
+
+    <div class="modal_layer"></div>
+</div>
+
 
 <script type="text/javascript" src="/js/signUp.js"></script>
 

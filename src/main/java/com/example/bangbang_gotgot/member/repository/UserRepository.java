@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // 스네이크 형식쓰면 이렇게 골치 아프게 작업해야 함...몰랐다
@@ -16,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.person_id = :personId")
     User findByPersonId(@Param("personId")String personId);
+
+    @Query("select u from User u where u.nick_name = :nickname")
+    User findByNickName(String nickname);
 }

@@ -38,12 +38,12 @@
             <div class="Profile">
                 <table>
                     <tr>
-                        <th>닉네임</th>
-                        <td th:text="${uesrInfo.nick_name}"></td>
-                    </tr>
-                    <tr>
                         <th>아이디</th>
                         <td th:text="${uesrInfo.person_id}"></td>
+                    </tr>
+                    <tr>
+                        <th>닉네임</th>
+                        <td th:text="${uesrInfo.nick_name}"></td>
                     </tr>
                     <tr>
                         <th>전화번호</th>
@@ -56,14 +56,14 @@
                 </table>
             </div>
             <div class="join_control_box">
-                <button type="submit" id="signUp-back" class="Prev-step step_btn">이전</button>
+                <button type="submit" id="signUp-back" class="Prev-step step_btn">이 전</button>
                 <form action="/bangbang/auth/sign-in" method="post" name="myform">
                     <input type="hidden" id="user-id" th:value="${uesrInfo.person_id}">
                     <input type="hidden"id="user-passwd" th:value="${uesrInfo.passwd}">
                     <input type="hidden" id="nick-name" th:value="${uesrInfo.nick_name}">
                     <input type="hidden" id="user-old" th:value="${uesrInfo.old}">
                     <input type="hidden" id="user-phone" th:value="${uesrInfo.phone_num}">
-                    <button type="button" id="join-btn" class="next-step step_btn">회원가입</button>
+                    <button type="button" id="join-btn" class="next-step step_btn">가입하기</button>
                 </form>
             </div>
         </div>
