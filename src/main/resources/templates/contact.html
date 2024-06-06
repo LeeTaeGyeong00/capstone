@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8">
-    <title>방방곡곡</title>
+    <title>방방곡곡: 예약페이지</title>
 
 
 </head>
@@ -10,6 +10,7 @@
 <body>
 
 <div th:include="layout/header :: #header"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
 
 <!-- Spinner Start -->
 <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -24,46 +25,54 @@
             <div class="row g-4">
                 <div class="shop">
                     <div class="shop_Title">
-                        <img src="https://via.placeholder.com/140" alt="샘플이미지">
+                        <div th:if="${imagefiles.size() > 0}">
+                            <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(0).storedFileName}|}" th:style="'width: 140px; height: 140px;'" />
+                        </div>
+                        <!--                        <img src="https://via.placeholder.com/140" alt="샘플이미지">-->
+                        <!--                        <img th:src="@{|/fruitables-1.0.0/${file.storedFileName}|}" alt="샘플이미지" th:style="'width: 140px; height: 140px;'">-->
                         <div class="shop_detail_">
-                            <h3 class="shop_name shop_item">식당 이름</h3>
-                            <p class="shop_explan shop_item">간단 설명</p>
+                            <h3 class="shop_name shop_item"><span th:text="${article.title}"></span></h3>
+                            <p class="shop_explan shop_item">대표: <span th:text="${article.writer}"></span></p>
                             <div class="viewer shop_item">
-                                <span class="shop_view"><i class="fa fa-bookmark" aria-hidden="true"></i> 1698146</span>
-                                <span class="shop_heart"><i class="fa fa-heart" aria-hidden="true"></i> 1698146</span>
-                                <span class="shop_bMark"><i class="fa fa-eye" aria-hidden="true"></i> 11469841</span>
+                                <span class="shop_heart"><i class="fa fa-heart" aria-hidden="true"></i> <span th:text="${article.likes}"></span></span>
+                                <span class="shop_bMark"><i class="fa fa-eye" aria-hidden="true"></i> <span th:text="${article.view}"></span></span>
                             </div>
                             <div class="region_view">
                                 <p class="region_b">
-                                    서울 - 강남구 &gt;
-                                    <span class="region_s">논현</span>
+                                    <span th:text="${article.address1}"></span> - <span th:text="${article.address2}"></span> &gt;
+                                    <span class="region_s" th:text="${article.address3}"></span>
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="shop_img">
-                        <img class="shop_img_1" src="https://via.placeholder.com/180x120" alt="상세이미지1">
-                        <img class="shop_img_2" src="https://via.placeholder.com/180x120" alt="상세이미지2">
-                        <img class="shop_img_3" src="https://via.placeholder.com/180x120" alt="상세이미지3">
-                        <img class="shop_img_4" src="https://via.placeholder.com/180x120" alt="상세이미지4">
+                        <div th:each="imageFile, iterStat : ${imagefiles}" th:if="${iterStat.index > 0}">
+                            <img th:src="@{|/fruitables-1.0.0/${imageFile.storedFileName}|}"  th:style="'width: 180px; height: 120px;'" />
+                        </div>
                     </div>
                 </div>
+
+                <input type="hidden" id="address2" th:value="${article.address2}">
+                <input type="hidden" id="address3" th:value="${article.address3}">
+                <input type="hidden" id="key" th:value="${key}">
+
                 <div class="item_wrap">
-                    <div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</div>
+                    <a href="/board/restaurant_write"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</div></a>
                     <div class="item bmark"><i class="fa fa-eye" aria-hidden="true"></i> 즐겨찾기</div>
                     <div class="item heart"><i class="fa fa-heart" aria-hidden="true"></i> 좋아요</div>
                     <div class="item share"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</div>
                 </div>
                 <div class="col-lg-12">
                     <div class="h-100 rounded">
-                        <iframe class="rounded w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div id="googleMap" style="height: 400px; "></div>
+                        <!--                        <iframe class="rounded w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
                     </div>
                 </div>
                 <div class="shop_container">
                     <div class="shop_header">
                         <div class="shop_section_title">
-                            <h3 class="shopName shop2">식당 이름</h3>
+                            <h3 class="shopName shop2"><span th:text="${article.title}"></span></h3>
                             <h3 class="shopName review2">리뷰</h3>
                             <button class="reviewT"><i class="fa fa-pencil" aria-hidden="true"></i> 리뷰작성</button>
                         </div>
@@ -72,7 +81,7 @@
                         <div class="left_section">
                             <div class="shop_intro_item">
                                 <h2>매장 소개</h2>
-                                <p>가게설명을 쓰시오오</p>
+                                <p th:text="${article.content}"></p>
                             </div>
                             <div class="shop_info_detail">
                                 <table class="info_table">
@@ -82,11 +91,11 @@
                                     </tr>
                                     <tr class="detail_item">
                                         <td class="detail_item_T"><i class="fa fa-map-marker" aria-hidden="true"></i> 주소</td>
-                                        <td class="item_in">경기도 안양시</td>
+                                        <td class="item_in"><span th:text="${article.address1}"></span> <span th:text="${article.address2}"></span> <span th:text="${article.address3}"></span></td>
                                     </tr>
                                     <tr class="detail_item">
                                         <td class="detail_item_T"><i class="fa fa-phone" aria-hidden="true"></i> 전화</td>
-                                        <td class="item_in">02-123-1234</td>
+                                        <td class="item_in"><span th:text="${article.phoneNumber}"></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -103,13 +112,13 @@
                                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod te incididuntLorem ipsum dolor sit amet consectetur adipiscing elit</p>
                                 </div>
                                 <div class="more_reviews">
-                                    <button>더보기 &gt;</button>
+                                    <button button id="moreButton">더보기 &gt;</button>
                                 </div>
                             </div>
                             <div class="btn_rsv_wrap">
                                 <button type="submit" class="btn_rsv">예약하기</button>
                             </div>
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,7 +128,7 @@
 <!-- Contact End -->
 
 
-<!-- Modal -->
+<!-- Modal for images -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -137,16 +146,25 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지1">
+                            <!--                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지1">-->
+                            <div class="d-block w-100" th:if="${imagefiles.size() > 1}">
+                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(1).storedFileName}|}" />
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지2">
+                            <div class="d-block w-100" th:if="${imagefiles.size() > 2}">
+                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(2).storedFileName}|}"/>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지3">
+                            <div class="d-block w-100" th:if="${imagefiles.size() > 3}">
+                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(3).storedFileName}|}"/>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/180x120" class="d-block w-100" alt="상세이미지4">
+                            <div class="d-block w-100" th:if="${imagefiles.size() > 4}">
+                                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(4).storedFileName}|}" />
+                            </div>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -162,6 +180,70 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for Reviews -->
+<div id="modal_R" class="modal_R">
+    <div class="modal-R-content">
+        <span class="close">&times;</span>
+        <div class="md-rv-titles">
+            <img src="https://via.placeholder.com/75" alt="샘플이미지">
+            <div class="md-rv-title">
+                <h2>가게이름</h2>
+                <div class="md-rv-title-item">
+                    <p>가게 주소</p>
+                    <select  class="viewType">
+                        <option value="relevance">관련성순</option>
+                        <option value="recency">최신순</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="modal_reviews">
+            <div class="modal-review">
+                <h3>닉네임</h3>
+                <div>
+                    <p class="rv-date">yyyy년 mm월 dd일</p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+            <div class="modal-review">
+                <h3>닉네임</h3>
+                <div>
+                    <p class="rv-date">yyyy년 mm월 dd일</p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+            <div class="modal-review">
+                <h3>닉네임</h3>
+                <div>
+                    <p class="rv-date">yyyy년 mm월 dd일</p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Modal for Reviews
+    const modal = document.getElementById("modal_R");
+    const moreButton = document.getElementById("moreButton");
+    const closeModal = document.querySelector(".close");
+
+    moreButton.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
 
 <script>
     // JavaScript to handle image click and show modal
@@ -184,18 +266,89 @@
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+
+<script>
+
+    let key = document.querySelector("#key").value
+    function initMap(callback) {
+        // Geocoder 객체를 선언
+        const geocoder = new google.maps.Geocoder();
+
+        // 지도에서 보여주고 싶은 장소의 주소 또는 이름
+        let address2 = document.querySelector("#address2").value
+        let address3 = document.querySelector("#address3").value
+
+
+        // 지도에서 보여주고 싶은 장소의 주소 또는 이름
+        const address = address2 + " " + address3;
+
+        geocoder.geocode({ address: address }, (results, status) => {
+            if (status === 'OK') {
+                // 해당 장소의 위도와 경도 가져오기
+                const latitude = results[0].geometry.location.lat();
+                const longitude = results[0].geometry.location.lng();
+                console.log('위도:', latitude);
+                console.log('경도:', longitude);
+
+                // 장소의 위도와 경도 정보를 담은 객체 선언
+                let location = { lat: latitude, lng: longitude };
+
+                // 지도에 나타내고 싶은 장소의 마커 선언
+                var mapOptions = {
+                    center: location, // 지도의 중심에 표시할 장소
+                    zoom: 16, // 몇 배 확대해서 보여줄 것인지
+                    disableDefaultUI: true,
+                    zoomControl: true // 지도 확대/축소 가능 여부
+                };
+
+                // 지도를 보여줄 div 영역의 id 값과 위에서 지정한 옵션을 map에 등록
+                var map = new google.maps.Map(
+                    document.getElementById("googleMap"), mapOptions);
+
+                // 지도에 표시할 마커를 생성
+                var marker = new google.maps.Marker({ position: location, map: map });
+
+                // 마커를 클릭했을 때 보여주고 싶은 문구가 있을 경우 추가
+                var infoWindow = new google.maps.InfoWindow({
+                    content: `
+                            <h6>${address}</h6>
+                        `
+                });
+
+                // 마커 클릭 이벤트 등록
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            } else {
+                console.error('지오코딩 실패:', status);
+            }
+        });
+    }
+
+    // 페이지 로드 시 Google Maps API를 동적으로 로드합니다.
+    document.addEventListener('DOMContentLoaded', () => {
+        const googleMapsScript = document.createElement('script');
+        googleMapsScript.src = "https://maps.googleapis.com/maps/api/js?key="+key+"&callback=initMap";
+        googleMapsScript.async = true;
+        googleMapsScript.defer = true;
+        document.head.appendChild(googleMapsScript);
+    });
+</script>
 
 <div th:include="layout/footer :: #footer"></div>
 </body>
 
 </html>
+
+
+
