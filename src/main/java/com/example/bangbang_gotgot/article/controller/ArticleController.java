@@ -40,7 +40,7 @@ public class ArticleController {
         return "LocalCategory/RestaurantWrite";
     }
 
-
+    // 관리자 게시글 쓰기
     @PostMapping("/restaurant_write")
     public String writedo(ArticleDto articleDto, Model model, @RequestParam("file") MultipartFile file
                           ,@RequestParam(value = "multiFiles", required = false) MultipartFile[] multiFiles

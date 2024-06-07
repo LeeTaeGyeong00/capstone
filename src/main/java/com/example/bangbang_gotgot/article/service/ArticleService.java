@@ -78,28 +78,47 @@ public class ArticleService {
     // 관리자 글 작성 사진:  DB 저장
     public void writeBoard(MultipartFile file, MultipartFile[] multiFiles, Article article) throws IOException {
 
-
-//        // 파일의 이름 가져옴
-//        List<String> originalFilenames = new ArrayList<>();
-//
-//        originalFilenames.add(file.getOriginalFilename());
-//        for (MultipartFile file1 : multiFiles) {
-//            originalFilenames.add(file1.getOriginalFilename());
-//        }
-
         // 파일의 이름 가져옴
-        String originalFilename = file.getOriginalFilename();
+        List<String> originalFilenames = new ArrayList<>();
+
+        originalFilenames.add(file.getOriginalFilename());
+        for (MultipartFile file1 : multiFiles) {
+            originalFilenames.add(file1.getOriginalFilename());
+        }
 
         // 서버 저장용 이름을 만듬
-        String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
+        List<String> storedFileNames = new ArrayList<>();
+
+        storedFileNames.add(System.currentTimeMillis() + "_" + file.getOriginalFilename());
+        for (MultipartFile file1 : multiFiles) {
+            storedFileNames.add(UUID.randomUUID() + "_" + file1.getOriginalFilename());
+        }
 
         // 해당 경로에 파일 저장
-        String savePath = "C:/springboot_img/" + storedFileName;
-        file.transferTo(new File(savePath));
+        for(String storedFile : storedFileNames) {
+            String savePath = "C:/springboot_img/" + storedFile;
+            file.transferTo(new File(savePath));
+        }
 
         // 해당 데이터 save 처리
-        ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
-        articleFileRepository.save(articleFile);
+        for (int i = 0 ; i < originalFilenames.size(); i++) {
+            ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilenames.get(i), storedFileNames.get(i));
+            articleFileRepository.save(articleFile);
+        }
+
+//        // 파일의 이름 가져옴
+//        String originalFilename = file.getOriginalFilename();
+//
+//        // 서버 저장용 이름을 만듬
+//        String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
+//
+//        // 해당 경로에 파일 저장
+//        String savePath = "C:/springboot_img/" + storedFileName;
+//        file.transferTo(new File(savePath));
+//
+//        // 해당 데이터 save 처리
+//        ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
+//        articleFileRepository.save(articleFile);
 
 
     }

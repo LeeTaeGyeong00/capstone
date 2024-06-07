@@ -591,6 +591,8 @@ header.main_header {
         margin: 35px;
     }
     .search-txt{
+        border: 1px solid #F55E08;
+        border-radius: 30px;
         width: 100%; height: 59px;
     }
     .search-btn{
@@ -921,13 +923,16 @@ input{
 }
 
 .local_category {
-
+    box-shadow: 4px 3px 6px 0;
+    border-radius: 5px;
     .local_menu {
         display: flex;
         height: auto;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
         ul {
+            a:hover{
+                background-color: #f6dca7;
+            }
             li {
                 .title {
                     color: #FFFFFF;
@@ -935,6 +940,7 @@ input{
                     background-color: #F55E08;
                     text-align: center;
                     line-height: 70px;
+                    border-radius: 5px 5px 0 0;
                 }
                 .accordion_item {
                     overflow: hidden;
@@ -947,6 +953,9 @@ input{
                     font-size: 24px;
                     padding: 20px 75px;
                     cursor: pointer;
+                }
+                .accordion_title:hover {
+                    background-color: #f6dca7;
                 }
                 .accordion_content {
                     max-height: 0;
@@ -966,7 +975,6 @@ input{
         }
     }
     .section {
-        border: 1px solid red;
         width: 1000px;
 
         .page_filter{
@@ -977,6 +985,7 @@ input{
             justify-content: flex-end;
             align-content: center;
             flex-wrap: wrap;
+            border-radius: 5px 5px 0 0;
 
             .filter_box {
                 display: flex;
@@ -987,15 +996,16 @@ input{
                 margin-right: 20px;
                 padding: 0 10px 0 60px;
                 vertical-align: middle;
+                border-radius: 5px;
+                font-size: 20px;
             }
         }
         .page_swap {
             background-color: #F55E08;
             height: 70px;
             margin-top: 25px;
-            justify-content: flex-end;
             align-content: center;
-            flex-wrap: wrap;
+            border-radius: 0 0 5px 5px;
 
             .swap_button {
                 display: flex;
@@ -1026,19 +1036,16 @@ input{
     .page_list {
         display: flex;
         flex-flow: wrap;
-        justify-content: space-between;
-        border: 1px solid orange;
-
         .page {
-            border: 1px solid purple;
-
             width: 300px;
-            margin: 10px;
-
+            margin: 16.6px;
+            border: 1.3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             img {
                 background-color: #D9D9D9;
                 width: 300px;
                 height: 300px;
+                border-radius: 10px 10px 0 0;
             }
             dl {
                 margin-left: 15px;
@@ -1050,6 +1057,7 @@ input{
                 }
                 dd {
                     color: #707070;
+                    padding-bottom: 5px;
                 }
 
                 .description {
@@ -1334,17 +1342,18 @@ Restaurant Write End */
 .shop_section_title {
     display: flex;
     width: 100%;
-    justify-content: space-between;
     align-items: flex-end;
 }
 
 .shopName {
     color: #000;
     font-size: 32px;
+    width: 580px;
 }
 .review2{
     color: #000;
-    padding-left: 90px;
+    margin-left: 30px;
+    width: 465px;
 }
 .reviewT {
     background-color: #FFFFFF;
