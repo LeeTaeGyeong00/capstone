@@ -256,19 +256,21 @@
         <table>
             <tr>
                 <th>계정 번호</th>
-                <td>00000000000000000000000</td>
+                <td th:text="${user.id}">00000000000000000000000</td>
             </tr>
             <tr>
                 <th>아이디</th>
-                <td>123@123.com</td>
+                <td th:text="${user.person_id}">123@123.com</td>
             </tr>
             <tr>
+            <tr>
                 <th>비밀번호</th>
-                <td>******* <button>변경</button></td>
+                <td><a th:href="@{/bangbang/auth/change-password}" class="btn btn-link">변경</a></td>
+            </tr>
             </tr>
             <tr>
                 <th>닉네임</th>
-                <td>닉네임 <button>변경</button></td>
+                <td th:text="${user.nick_name}">닉네임 <button>변경</button></td>
             </tr>
             <tr>
                 <th>계정 탈퇴</th>

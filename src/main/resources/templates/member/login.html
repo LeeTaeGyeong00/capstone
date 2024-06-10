@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>방방곡곡:로그인 페이지</title>
@@ -45,14 +46,14 @@
         <div class="content">
             <div class="login_wrap">
                 <h2 class="guideLogin">로그인</h2>
-                <form action="bangbang/auth/sign-up" method="post" name="myform">
-                    <input type="text" name="person_id" class="login_input login_C" placeholder="아이디"><br>
-                    <input type="password" name="passwd" class="login_input login_C"placeholder="비밀번호"><br>
+                <form th:action="@{/bangbang/auth/login}" method="post" th:object="${memberDto}" name="myform">
+                    <input type="text" th:field="*{person_id}" class="login_input login_C" placeholder="아이디"><br>
+                    <input type="password" th:field="*{passwd}" class="login_input login_C" placeholder="비밀번호"><br>
                     <div class="login_keep_wrap">
                         <input type="checkbox" id="keep" class="input_keep">
                         <label for="keep" class="keep_text">로그인 유지</label>
                     </div>
-                    <button type="button" class="btn_login login_C" onclick="return check()">로그인</button>
+                    <button type="submit" class="btn_login login_C">로그인</button>
                 </form>
             </div>
             <ul class="find_wrap">

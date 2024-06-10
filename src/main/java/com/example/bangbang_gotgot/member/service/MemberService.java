@@ -1,6 +1,7 @@
 package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
+import com.example.bangbang_gotgot.member.dto.LoginRequest;
 import com.example.bangbang_gotgot.member.dto.MemberDto;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
@@ -23,18 +24,23 @@ public class MemberService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public MemberDto login(String personId, String rawPassword) {
-        User member = userRepository.findByPersonId(personId);
-        if (member == null) {
-            throw new IllegalArgumentException("Invalid personId or password");
+    public User login(LoginRequest loginRequest) throws Exception {
+        System.out.println(loginRequest);
+        // 사용자 조회
+        User user = userRepository.findByPersonId(loginRequest.getPerson_id()); // 수정: 필드 이름을 올바르게 사용
+        if (user == null) {
+            throw new Exception("User not found");
         }
 
-        if (!bCryptPasswordEncoder.matches(rawPassword, member.getPasswd())) {
-            throw new IllegalArgumentException("Invalid personId or password");
+        // 비밀번호 확인
+        if (!bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPasswd())) { // 수정: 필드 이름을 올바르게 사용
+            throw new Exception("Invalid password");
         }
 
-        return MemberDto.from(member);
+        // 로그인 성공 시 사용자 객체 반환
+        return user;
     }
+
 
     // 회원가입
     @Transactional
@@ -162,5 +168,20 @@ public class MemberService {
 
         return temporaryPassword;
     }
-
+//    @Transactional
+//    public MyPageResponse getMyPageResponse(Long userId) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        MyPageResponse myPageResponse = new MyPageResponse();
+//        myPageResponse.setId(user.getId());
+//        myPageResponse.setPerson_id(user.getPerson_id());
+//        myPageResponse.setNick_name(user.getNick_name());
+//        myPageResponse.setPhone_num(user.getPhone_num());
+//
+//        System.out.println(myPageResponse.getId());
+//        System.out.println(myPageResponse.getNick_name());
+//        System.out.println(myPageResponse.getPerson_id());
+//        System.out.println(myPageResponse.getPhone_num());
+//        return myPageResponse;
+//    }
 }

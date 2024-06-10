@@ -1,5 +1,6 @@
 package com.example.bangbang_gotgot.article.entity;
 
+import com.example.bangbang_gotgot.member.entity.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -25,6 +26,10 @@ public class Article {
 
     @Column(name="title", nullable = false)
     private String title;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User userId;
 
     @Column(name="writer")
     private String writer;
@@ -68,10 +73,30 @@ public class Article {
     private String endTime;
 
 
+
+//    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, orphanRemoval = true,fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    private List<ArticleFile> boardFileList = new ArrayList<>();
+
+
+
+//    @Builder
+//    public Article(String title, String content, String writer, LocalDateTime workTime, String address1, String address2, String address3, String phoneNumber){
+//        this.title = title;
+//        this.content = content;
+//        this.writer = writer;
+//        this.workTime = workTime;
+//        this.address1 = address1;
+//        this.address2 = address2;
+//        this.address3 = address3;
+//        this.phoneNumber=phoneNumber;
+//    }
+
     public Article newArticle(Article article, int count) {
         return new Article(
                 article.getId(),
                 article.getTitle(),
+                article.getUserId(),
                 article.getWriter(),
                 article.getContent(),
                 article.getWorkTime(),
@@ -86,5 +111,6 @@ public class Article {
                 article.getStartTime(),
                 article.getEndTime()
         );
+
     }
 }
