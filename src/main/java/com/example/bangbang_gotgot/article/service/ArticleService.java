@@ -76,49 +76,66 @@ public class ArticleService {
 
 
     // 관리자 글 작성 사진:  DB 저장
-    public void writeBoard(MultipartFile file, MultipartFile[] multiFiles, Article article) throws IOException {
+    public void writeBoard(MultipartFile file, List<MultipartFile> multiFiles, Article article) throws IOException {
 
-        // 파일의 이름 가져옴
-        List<String> originalFilenames = new ArrayList<>();
+        if (multiFiles.get(0).isEmpty()){ // 파일이 한개일 떄
+            // 파일의 이름 가져옴
+            String originalFilename = file.getOriginalFilename();
 
-        originalFilenames.add(file.getOriginalFilename());
-        for (MultipartFile file1 : multiFiles) {
-            originalFilenames.add(file1.getOriginalFilename());
-        }
+            // 서버 저장용 이름을 만듬
+            String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
 
-        // 서버 저장용 이름을 만듬
-        List<String> storedFileNames = new ArrayList<>();
-
-        storedFileNames.add(System.currentTimeMillis() + "_" + file.getOriginalFilename());
-        for (MultipartFile file1 : multiFiles) {
-            storedFileNames.add(UUID.randomUUID() + "_" + file1.getOriginalFilename());
-        }
-
-        // 해당 경로에 파일 저장
-        for(String storedFile : storedFileNames) {
-            String savePath = "C:/springboot_img/" + storedFile;
+            // 해당 경로에 파일 저장
+            String savePath = "C:/springboot_img/" + storedFileName;
             file.transferTo(new File(savePath));
-        }
 
-        // 해당 데이터 save 처리
-        for (int i = 0 ; i < originalFilenames.size(); i++) {
-            ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilenames.get(i), storedFileNames.get(i));
+            // 해당 데이터 save 처리
+            ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
             articleFileRepository.save(articleFile);
-        }
 
-//        // 파일의 이름 가져옴
-//        String originalFilename = file.getOriginalFilename();
-//
-//        // 서버 저장용 이름을 만듬
-//        String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
-//
-//        // 해당 경로에 파일 저장
-//        String savePath = "C:/springboot_img/" + storedFileName;
-//        file.transferTo(new File(savePath));
-//
-//        // 해당 데이터 save 처리
-//        ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
-//        articleFileRepository.save(articleFile);
+        } else{ // 다중 파일 처리
+
+            // 파일의 이름 가져옴
+            List<String> originalFilenames = new ArrayList<>();
+
+            originalFilenames.add(file.getOriginalFilename());
+            for (MultipartFile file1 : multiFiles) {
+                originalFilenames.add(file1.getOriginalFilename());
+            }
+
+            // 서버 저장용 이름을 만듬
+            List<String> storedFileNames = new ArrayList<>();
+
+            String firstFile = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            storedFileNames.add(firstFile);
+            for (MultipartFile file1 : multiFiles) {
+                storedFileNames.add(UUID.randomUUID() + "_" + file1.getOriginalFilename());
+            }
+
+            // 해당 경로에 파일 저장
+            try {
+                String savePath = "C:/springboot_img/" + firstFile;
+                file.transferTo(new File(savePath));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            for (int i = 0; i < storedFileNames.size()-1;i++) {
+                try {
+                    String savePath = "C:/springboot_img/" + storedFileNames.get(i+1);
+                    multiFiles.get(i).transferTo(new File(savePath));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // 해당 데이터 save 처리
+            for (int i = 0 ; i < originalFilenames.size(); i++) {
+                ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilenames.get(i), storedFileNames.get(i));
+                articleFileRepository.save(articleFile);
+            }
+
+        }
 
 
     }
