@@ -146,10 +146,10 @@
                     <div th:each="b : ${files}">
                         <div th:if="${a.id == b.articleId}">
                             <th:block th:if="${b.articleId >= 151}">
-                                <img th:src="@{|/upload/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'height: 300px;'">
+                                <a th:href="@{/board/detail/{id}(id=${a.id})}"><img th:src="@{|/upload/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'height: 300px;'"></a>
                             </th:block>
                             <th:block th:if="${b.articleId < 151}">
-                                <img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'height: 300px;'">
+                                <a th:href="@{/board/detail/{id}(id=${a.id})}"><img th:src="@{|/fruitables-1.0.0/${b.storedFileName}|}" alt="음식점 안내 사진" th:style="'height: 300px;'"></a>
                             </th:block>
                         </div >
                     </div>

@@ -43,7 +43,7 @@ public class ArticleController {
     // 관리자 게시글 쓰기
     @PostMapping("/restaurant_write")
     public String writedo(ArticleDto articleDto, Model model, @RequestParam("file") MultipartFile file
-                          ,@RequestParam(value = "multiFiles", required = false) MultipartFile[] multiFiles
+                          ,@RequestParam(value = "multiFiles", required = false) List<MultipartFile> multiFiles
     ) throws IOException {
 
         Article article = articleService.write(articleDto);
