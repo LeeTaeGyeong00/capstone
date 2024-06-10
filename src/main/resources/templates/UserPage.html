@@ -396,6 +396,35 @@
 </div>
 
 <div th:include="layout/footer :: #footer"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 각 메뉴 아이템을 변수로 저장
+        const userProfileLink = document.getElementById("User_profile");
+        const userReviewLink = document.getElementById("User_review");
+        const userSaveLink = document.getElementById("User_save");
+
+        // 각 섹션을 변수로 저장
+        const userProfileSection = document.querySelector(".user_profil");
+        const userReviewSection = document.querySelector(".User_review");
+        const userSaveSection = document.querySelector(".User_save");
+
+        // 모든 섹션을 배열로 저장
+        const allSections = [userProfileSection, userReviewSection, userSaveSection];
+
+        // 섹션을 활성화하고 나머지를 비활성화하는 함수
+        function activateSection(section) {
+            allSections.forEach(sec => sec.classList.remove("act")); // 모든 섹션에서 act 클래스 제거
+            section.classList.add("act"); // 선택된 섹션에 act 클래스 추가
+        }
+
+        // 각 메뉴 아이템에 클릭 이벤트 추가
+        userProfileLink.addEventListener("click", () => activateSection(userProfileSection));
+        userReviewLink.addEventListener("click", () => activateSection(userReviewSection));
+        userSaveLink.addEventListener("click", () => activateSection(userSaveSection));
+    });
+</script>
+
 </body>
 
 </html>
