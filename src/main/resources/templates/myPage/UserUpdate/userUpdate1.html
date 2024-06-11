@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원수정</title>
+<!--    모달 스타일-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+        .wrap {
+            position: absolute;
+        }
+        #modal, #modal2 {
+            display: none;
+            position:fixed;
+            width:100%;
+            height:100%;
+            z-index:1;
+            align-items: center; /* 수직 가운데 정렬 */
+            justify-content: center; /* 수평 가운데 정렬 */
+        }
+
+        #modal h2, #modal2 h2 {
+            margin:0;
+        }
+        #modal .button-container, #modal2 .button-container {
+            text-align: right;
+        }
+
+        #modal button, #modal2 button {
+            display: inline-block;
+            width: 50px;
+            margin: 7px;
+            padding: 5px 0px;
+        }
+
+        #modal .modal_content, #modal2 .modal_content {
+            width:350px;
+            margin:100px auto;
+            padding:20px ;
+            background:#fff;
+            border-radius: 8px;
+
+        }
+
+        #modal .modal_layer, #modal2 .modal_layer {
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0, 0, 0, 0.5);
+            z-index:-1;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<div class="wrap">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <div id="container" class="container joinContainer">
+        <div th:include="layout/header :: #header"></div>
+        <div class="tap">
+            <ul class="step_wrap">
+                <li class="step act"><span class="textNum">1</span><span class="text">개인정보 입력</span></li>
+                <li class="step"><span class="textNum">2</span><span class="text">최종 확인</span></li>
+            </ul>
+        </div>
+        <div class="joinInput_wrap">
+            <div class="content_summary">
+                <h3>step 1</h3>
+                <p>회원 수정해주세요.</p>
+            </div>
+
+            <form class="join_form" th:action="@{/bangbang/user/{id}/update(id=${user.id})}" method="post" name="myform">
+                <div class="form_id">
+                    <span class="form_item"> 아이디</span> <br>
+                    <input type="text" class="joinInput" name="person_id" id="user-id" th:value="${user.person_id}" readonly>
+                </div>
+                <div class="form_id form_nickname">
+                    <span class="form_item"> 닉네임</span> <br>
+                    <input type="text" class="joinInput" name="nick_name" id="nick_name" th:value="${user.nick_name}" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn2">
+                    <div id="matchNickname"></div>
+                </div>
+                <div class="form_pw">
+                    <span class="form_item"> 비밀번호</span><br>
+                    <input type="password" class="joinInput" name="passwd" id="user-passwd" th:value="${user.passwd}" placeholder="비밀번호를 입력해주세요.">
+                </div>
+                <div class="form_pwChk">
+                    <span class="form_item"> 비밀번호 확인</span><br>
+                    <input type="password" class="joinInput" name="passwd2" value="">
+                </div>
+                <div class="join_form2">
+                    <div class="form_tel">
+                        <span class="form_item"> 전화번호</span><br>
+                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" th:value="${user.phone_num}" placeholder="01000000000">
+                    </div>
+                    <div class="form_birth">
+                        <span class="form_item"> 생년월일</span><br>
+                        <input type="text" class="joinInput2" name="old" id="user-old" th:value="${user.old}" placeholder="YYYYMMDD">
+                    </div>
+                </div>
+                <button type="submit" class="next-step step_btn" id="check">다 음</button>
+            </form>
+
+        </div>
+    </div>
+    <div th:include="layout/footer :: #footer"></div>
+
+</div>
+
+<!--modal-->
+
+
+<!--nickname modal-->
+<div id="modal2">
+
+    <div class="modal_content">
+        <h2>닉네임 중복 체크</h2><br><br>
+
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" id="textNick"><br>
+            <p id="textNickCheck"></p>
+        </div>
+
+        <br><br>
+
+        <div class="button-container">
+            <button type="button" id="modal_close_btn2">취소</button>
+            <button type="button" id="modal_OK_btn2">OK</button>
+        </div>
+
+    </div>
+
+    <div class="modal_layer"></div>
+</div>
+
+
+<script type="text/javascript" src="/js/userUpdate.js"></script>
+
+
+</body>
+</html>
