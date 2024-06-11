@@ -163,4 +163,8 @@ public class MemberService {
         return temporaryPassword;
     }
 
+    public User findUser(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        return user;
+    }
 }

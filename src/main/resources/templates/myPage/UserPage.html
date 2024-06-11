@@ -241,7 +241,7 @@
                 <p><i>@</i> 2,000 포인트</p>
             </dd>
             <dd id="User_profile" class="interior">회원정보</dd>
-            <dd><a href="#">개인정보 수정</a></dd>
+            <dd><a th:href="@{/bangbang/user/{id}/update(id=${user.id})}">개인정보 수정</a></dd>
             <dd id="User_review" class="interior">내가 쓴 리뷰</dd>
             <dd id="User_save" class="interior">찜한식당</dd>
             <dd><a href="#">식당 게시판 작성하기</a></dd>

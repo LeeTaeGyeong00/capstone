@@ -58,7 +58,7 @@ public class MemberApiController extends BaseController {
 
 
 
-    // 회원 아이디 체크
+    // 회원 아이디 찾기 체크
     @PostMapping("/bangbang/find-id/check")
     public ResponseEntity<?> find_id(@RequestParam("nickname")String nickname,
                                      @RequestParam("phone")String phone)
@@ -75,7 +75,7 @@ public class MemberApiController extends BaseController {
         }
     }
 
-    // 회원 비밀번호 체크
+    // 회원 비밀번호 찾기 체크
     @PostMapping("/bangbang/find-Pwd/check")
     public ResponseEntity<?> find_pwd(@RequestParam("personId")String personId, @RequestParam("nickname")String nickname,
                                       @RequestParam("phone")String phone)
@@ -91,6 +91,12 @@ public class MemberApiController extends BaseController {
             return handleApiException(e, HttpStatus.BAD_REQUEST);
         }
     }
+
+    // 회원정보 수정
+//    @PostMapping("/user/{id}/update")
+//    public ResponseEntity<String> updateUser(@RequestBody AllUserInfoDto allUserInfoDto){
+//            return "";
+//    }
 
 
 }
