@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -78,6 +79,8 @@ public class MemberController {
             return "member/login";
         }
     }
+
+
     // 마이페이지
     @GetMapping("/bangbang/myPage")
     public String myPage(Model model,HttpSession session) {
@@ -85,6 +88,28 @@ public class MemberController {
         model.addAttribute("user", sessionUser);
         return "myPage/UserPage";
     }
+
+    // 회원정보 수정
+    @GetMapping("/bangbang/user/{id}/update")
+    public String update(@PathVariable Long id, Model model){
+        User user = memberService.findUser(id);
+        if (user == null) {
+            return "error/404";
+        }
+        model.addAttribute("user",user);
+        return "myPage/UserUpdate/userUpdate1";
+    }
+
+    // 회원정보 수정2
+    @PostMapping("/bangbang/user/{id}/update")
+    public String update2(AllUserInfoDto allUserInfoDto, Model model) {
+        model.addAttribute("user",allUserInfoDto);
+        return "myPage/UserUpdate/userUpdate2";
+    }
+
+    // 회원정보 수정 완료
+
+
 
     // 아이디 찾기
     @GetMapping("/bangbang/find-id")

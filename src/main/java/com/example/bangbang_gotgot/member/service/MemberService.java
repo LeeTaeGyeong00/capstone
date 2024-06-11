@@ -184,4 +184,9 @@ public class MemberService {
 //        System.out.println(myPageResponse.getPhone_num());
 //        return myPageResponse;
 //    }
+
+    public User findUser(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        return user;
+    }
 }
