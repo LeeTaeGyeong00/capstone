@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,8 +57,53 @@ public class ArticleController {
         Article article = articleService.write(articleDto, user);
         articleService.writeBoard(file, multiFiles, article);
 
-        model.addAttribute("message", "글 작성이 완료되었습니다.");
-        model.addAttribute("searchUrl", "/board/list");
+//        model.addAttribute("message", "글 작성이 완료되었습니다.");
+//        model.addAttribute("searchUrl", "/board/list");
+
+        return "redirect:/board/list";
+    }
+
+    // 관리자 게시글 수정하기
+    @GetMapping("/update/{id}/store")
+    public String updateStore(@PathVariable Long id, Model model) {
+        Article article = articleService.findArticle(id);
+        if (article == null) {
+            return "redirect:/bangbang/auth/sign-up";
+        }
+
+        String[] startTime = article.getStartTime().split(":");
+        String[] endTime = article.getEndTime().split(":");
+
+        model.addAttribute("article", article);
+        model.addAttribute("startTime",startTime);
+        model.addAttribute("endTime",endTime);
+        return "LocalCategory/RestaurantUpdate";
+    }
+
+    // 관리자 게시글 수정하기
+    @Transactional
+    @PostMapping("/update/{id}/store")
+    public String updateStoreProc(@PathVariable Long id, ArticleDto articleDto, Model model, @RequestParam("file") MultipartFile file
+            ,@RequestParam(value = "multiFiles", required = false) List<MultipartFile> multiFiles,
+                                  HttpSession session) throws IOException
+    {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            // 유저 정보가 없으면 로그인 페이지로 리다이렉트
+            return "redirect:/bangbang/auth/sign-up";
+        }
+        try {
+
+            Article article = articleService.updateArticle(articleDto, user, id);
+            String boardDto = articleService.updateBoard(file, multiFiles, article, id);
+            if (boardDto == null) {
+                return "error/404";
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return "error/404";
+        }
+//        model.addAttribute("searchUrl", "/board/list");
 
         return "redirect:/board/list";
     }
@@ -76,10 +122,16 @@ public class ArticleController {
     private String key;
 
     @GetMapping("/detail/{id}")
-    public String datail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String datail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         Article article = articleService.findIdList(id ,request, response);
+        User sessionUser = (User) session.getAttribute("user");
         List<BoardDTO> boardDTO = articleService.findFile(id);
 
+        User user = sessionUser != null ? sessionUser : new User();
+        System.out.println(user.getId());
+        System.out.println(article.getUserId().getId());
+
+        model.addAttribute("user", sessionUser != null ? sessionUser : new User());
         model.addAttribute("article",article);
         model.addAttribute("key",key);
         model.addAttribute("imagefiles",boardDTO);

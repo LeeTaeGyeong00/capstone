@@ -87,6 +87,9 @@ public class MemberController {
     @GetMapping("/bangbang/myPage")
     public String myPage(Model model,HttpSession session) {
         Object sessionUser = session.getAttribute("user");
+        if (sessionUser == null) {
+            return "redirect:/bangbang/auth/sign-up";
+        }
         model.addAttribute("user", sessionUser);
         return "myPage/UserPage";
     }
@@ -151,20 +154,5 @@ public class MemberController {
     }
 
 
-    //마이페이지
-    @GetMapping("/user/info")
-    public String getUserInfo(HttpSession session, Model model) {
-        // 세션에서 사용자 정보 가져오기
-        Object sessionUser = session.getAttribute("user");
 
-        // 세션에 사용자 정보가 없으면 회원가입 페이지로 리다이렉트
-        if (sessionUser == null) {
-            return "redirect:/bangbang/auth/sign-up";
-        }
-
-        // 세션에 저장된 사용자 정보를 모델에 추가하여 페이지에 전달
-        model.addAttribute("user", sessionUser);
-
-        return "myPage/myPage";
-    }
 }

@@ -70,8 +70,12 @@
                 <input type="hidden" id="key" th:value="${key}">
 
                 <div class="item_wrap">
-                    <a href="/board/restaurant_write"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</div></a>
-                    <div class="item bmark"><i class="fa fa-eye" aria-hidden="true"></i> 즐겨찾기</div>
+                    <span th:if="${user.id != null}">
+                        <a href="/board/restaurant_write"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</div></a>
+                    </span>
+                    <span th:if="${article.userId.id == user.id}">
+                        <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>
+                    </span>
                     <div class="item heart"><i class="fa fa-heart" aria-hidden="true"></i> 좋아요</div>
                     <div class="item share"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</div>
                 </div>
