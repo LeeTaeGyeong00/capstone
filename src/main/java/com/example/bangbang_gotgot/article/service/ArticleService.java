@@ -7,6 +7,7 @@ import com.example.bangbang_gotgot.article.entity.ArticleFile;
 import com.example.bangbang_gotgot.article.repository.ArticleFileRepository;
 import com.example.bangbang_gotgot.article.repository.ArticleRepository;
 import com.example.bangbang_gotgot.article.specification.ArticleSpecifications;
+import com.example.bangbang_gotgot.member.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
@@ -60,18 +61,18 @@ public class ArticleService {
         return files;
     }
 
-    // 관리자 글 작성 : DB 저장
-    public Article write(ArticleDto board) {
+    // 글 작성 처리
+    public Article write(ArticleDto board, User user) {
         String start = board.getStartTime1() + ":" + board.getStartTime2();
         board.setStartTime1(start);
 
         String end = board.getEndTime1() + ":" + board.getEndTime2();
         board.setEndTime1(end);
 
-        Article article = ArticleDto.makeArticle(board);
-        Article article1 = articleRepository.save(article);
+        Article article = ArticleDto.makeArticle(board, user);
+        Article savedArticle = articleRepository.save(article);
 
-        return article1;
+        return savedArticle;
     }
 
 

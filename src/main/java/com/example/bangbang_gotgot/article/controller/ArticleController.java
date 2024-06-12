@@ -5,6 +5,7 @@ import com.example.bangbang_gotgot.article.dto.BoardDTO;
 import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.entity.ArticleFile;
 import com.example.bangbang_gotgot.article.service.ArticleService;
+import com.example.bangbang_gotgot.member.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -43,10 +45,15 @@ public class ArticleController {
     // 관리자 게시글 쓰기
     @PostMapping("/restaurant_write")
     public String writedo(ArticleDto articleDto, Model model, @RequestParam("file") MultipartFile file
-                          ,@RequestParam(value = "multiFiles", required = false) List<MultipartFile> multiFiles
+                          ,@RequestParam(value = "multiFiles", required = false) List<MultipartFile> multiFiles,
+                          HttpSession session
     ) throws IOException {
-
-        Article article = articleService.write(articleDto);
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            // 유저 정보가 없으면 로그인 페이지로 리다이렉트
+            return "redirect:/bangbang/auth/sign-up";
+        }
+        Article article = articleService.write(articleDto, user);
         articleService.writeBoard(file, multiFiles, article);
 
         model.addAttribute("message", "글 작성이 완료되었습니다.");
@@ -54,6 +61,7 @@ public class ArticleController {
 
         return "redirect:/board/list";
     }
+
 
     // 리뷰 쓰기
     @GetMapping("/review-write/{id}")

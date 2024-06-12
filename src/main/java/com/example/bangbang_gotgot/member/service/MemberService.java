@@ -1,18 +1,22 @@
 package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
-import com.example.bangbang_gotgot.member.dto.MemberDto;
+import com.example.bangbang_gotgot.member.dto.LoginRequest;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,18 +27,23 @@ public class MemberService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public MemberDto login(String personId, String rawPassword) {
-        User member = userRepository.findByPersonId(personId);
-        if (member == null) {
-            throw new IllegalArgumentException("Invalid personId or password");
+    public User login(LoginRequest loginRequest) throws Exception {
+        System.out.println(loginRequest);
+        // 사용자 조회
+        User user = userRepository.findByPersonId(loginRequest.getPerson_id()); // 수정: 필드 이름을 올바르게 사용
+        if (user == null) {
+            throw new Exception("User not found");
         }
 
-        if (!bCryptPasswordEncoder.matches(rawPassword, member.getPasswd())) {
-            throw new IllegalArgumentException("Invalid personId or password");
+        // 비밀번호 확인
+        if (!bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPasswd())) { // 수정: 필드 이름을 올바르게 사용
+            throw new Exception("Invalid password");
         }
 
-        return MemberDto.from(member);
+        // 로그인 성공 시 사용자 객체 반환
+        return user;
     }
+
 
     // 회원가입
     @Transactional
@@ -71,6 +80,24 @@ public class MemberService {
     public boolean checkNick(String nickName) {
         boolean existId = userRepository.existsByNickname(nickName);
         if(existId){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean checkNick2(String nickName, Long id) {
+        boolean existId = userRepository.existsByNickname(nickName);
+        if(existId){
+            User user = userRepository.findById(id).orElse(null);
+            System.out.println(user.getNick_name());
+            System.out.println(nickName);
+            if (user == null){
+                return false;
+            }
+            if(user.getNick_name().equals(nickName)){
+                return true;
+            }
             return false;
         } else {
             return true;
@@ -161,6 +188,72 @@ public class MemberService {
         userRepository.save(user);
 
         return temporaryPassword;
+    }
+//    @Transactional
+//    public MyPageResponse getMyPageResponse(Long userId) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        MyPageResponse myPageResponse = new MyPageResponse();
+//        myPageResponse.setId(user.getId());
+//        myPageResponse.setPerson_id(user.getPerson_id());
+//        myPageResponse.setNick_name(user.getNick_name());
+//        myPageResponse.setPhone_num(user.getPhone_num());
+//
+//        System.out.println(myPageResponse.getId());
+//        System.out.println(myPageResponse.getNick_name());
+//        System.out.println(myPageResponse.getPerson_id());
+//        System.out.println(myPageResponse.getPhone_num());
+//        return myPageResponse;
+//    }
+
+    // 회원 찾기
+    public User findUser(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        return user;
+    }
+
+    // 회원 수정
+    @Transactional
+    public ResponseEntity<String> update(AllUserInfoDto allUserInfoDto, Long id, HttpSession httpSession) {
+
+        User target = userRepository.findById(id).orElse(null);
+
+        if(target == null || !id.equals(allUserInfoDto.getId())){
+            //400, 잘못된 요청 응답
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원수정 실패");
+        }
+
+        // 사용자 정보 업데이트
+        target.setPerson_id(allUserInfoDto.getPerson_id());
+        target.setPasswd(bCryptPasswordEncoder.encode(allUserInfoDto.getPasswd()));
+        target.setLast_passwd_changed(LocalDateTime.now());
+        target.setNick_name(allUserInfoDto.getNick_name());
+        target.setOld(allUserInfoDto.getOld());
+        target.setPhone_num(allUserInfoDto.getPhone_num());
+
+        userRepository.save(target);
+
+        httpSession.setAttribute("user",target);
+
+        return ResponseEntity.ok("회원수정 성공");
+    }
+
+    // 회원 삭제
+    @Transactional
+    public User delete(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+
+        if (user == null){
+            return null;
+        }
+
+        // 해당 게시글 리뷰 전부 삭제
+
+        // 해당 게시글 전부 삭제
+
+        // 회원 삭제
+        userRepository.delete(user);
+        return user;
     }
 
 }

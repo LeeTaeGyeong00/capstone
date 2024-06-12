@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <title>회원수정</title>
 <!--    모달 스타일-->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
@@ -78,36 +78,37 @@
         <div class="joinInput_wrap">
             <div class="content_summary">
                 <h3>step 1</h3>
-                <p>정보를 입력해주세요.</p>
+                <p>회원 수정해주세요.</p>
             </div>
 
-            <form class="join_form" action="/bangbang/auth/sign-in" method="post" name="myform">
+            <form class="join_form" th:action="@{/bangbang/user/{id}/update(id=${user.id})}" method="post" name="myform">
+
+                <input type="hidden" id="id" th:value="${user.id}">
                 <div class="form_id">
                     <span class="form_item"> 아이디</span> <br>
-                    <input type="text" class="joinInput" name="person_id" id="user-id" value="12345" placeholder="아이디를 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn"><br>
-                    <div id="matchId"></div>
+                    <input type="text" class="joinInput" name="person_id" id="user-id" th:value="${user.person_id}" readonly>
                 </div>
                 <div class="form_id form_nickname">
                     <span class="form_item"> 닉네임</span> <br>
-                    <input type="text" class="joinInput" name="nick_name" id="nick_name" value="11" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn2">
+                    <input type="text" class="joinInput" name="nick_name" id="nick_name" th:value="${user.nick_name}" placeholder="닉네임을 입력해주세요."> <input class="id_chk" type="button" value="중복확인" id="modal_opne_btn2">
                     <div id="matchNickname"></div>
                 </div>
                 <div class="form_pw">
                     <span class="form_item"> 비밀번호</span><br>
-                    <input type="password" class="joinInput" name="passwd" id="user-passwd" value="123456@q" placeholder="비밀번호를 입력해주세요.">
+                    <input type="password" class="joinInput" name="passwd" id="user-passwd"  placeholder="원하는 비밀번호를 입력해주세요.">
                 </div>
                 <div class="form_pwChk">
                     <span class="form_item"> 비밀번호 확인</span><br>
-                    <input type="password" class="joinInput" name="passwd2" value="123456@q">
+                    <input type="password" class="joinInput" name="passwd2" value="">
                 </div>
                 <div class="join_form2">
                     <div class="form_tel">
                         <span class="form_item"> 전화번호</span><br>
-                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" value="01011112222" placeholder="01000000000">
+                        <input type="text" class="joinInput2" name="phone_num" id="user-phone" th:value="${user.phone_num}" placeholder="01000000000">
                     </div>
                     <div class="form_birth">
                         <span class="form_item"> 생년월일</span><br>
-                        <input type="text" class="joinInput2" name="old" id="user-old" value="20000101" placeholder="YYYYMMDD">
+                        <input type="text" class="joinInput2" name="old" id="user-old" th:value="${user.old}" placeholder="YYYYMMDD">
                     </div>
                 </div>
                 <button type="submit" class="next-step step_btn" id="check">다 음</button>
@@ -121,28 +122,6 @@
 
 <!--modal-->
 
-<!--id modal-->
-<div id="modal">
-
-    <div class="modal_content">
-        <h2>아이디 중복 체크</h2><br><br>
-
-        <div class="form-group mb-4">
-            <input type="text" class="form-control" id="textId"><br>
-            <p id="textIdCheck"></p>
-        </div>
-
-        <br><br>
-
-        <div class="button-container">
-            <button type="button" id="modal_close_btn">취소</button>
-            <button type="button" id="modal_OK_btn">OK</button>
-        </div>
-
-    </div>
-
-    <div class="modal_layer"></div>
-</div>
 
 <!--nickname modal-->
 <div id="modal2">
@@ -152,6 +131,7 @@
 
         <div class="form-group mb-4">
             <input type="text" class="form-control" id="textNick"><br>
+            <input type="hidden" id="id2" th:value="${user.id}">
             <p id="textNickCheck"></p>
         </div>
 
@@ -168,7 +148,7 @@
 </div>
 
 
-<script type="text/javascript" src="/js/signUp.js"></script>
+<script type="text/javascript" src="/js/userUpdate.js"></script>
 
 
 </body>

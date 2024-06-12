@@ -1,303 +1,306 @@
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('고기마켓','김영수', '고기고기', now(), '서울','서초구','서초 중앙로 14', '010-1111-2222', 3, 6, now(), now(), "9:00", "17:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('삼삼이네 분식','이지은', '삼삼삼삼', now(), '서울','동대문구','보문로 6', '010-2222-3333', 7, 10, now(), now(), "9:00", "17:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('해산물마을','박민준', '해산물좋아', now(), '서울','중구','명동4길 25', '010-3333-4444', 40, 12, now(), now(), "9:00", "17:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('소나무밥상','최지혜', '소나무가', now(), '서울','광진구', '답심리로 364', '010-4444-5757', 14, 8, now(), now(), "9:00", "17:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('쌀국수의 전설','정승우', '쌀국수는베트남', now(), '서울','구로구', '신도림로 51', '010-2483-8487', 67, 223, now(), now(), "9:00", "17:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('행복한 파스타집','강수진', '파스타는파스타', now(), '서울' ,'금천구', '독산로 101길', '010-2474-7585', 134, 5, now(), now(), "9:15", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('고급스러운 스테이크하우스','윤현우', '스테이크는차갑다', now(), '경기' , '안양시', '동안구 경수대로 436-2', '010-4757-3958', 22, 5, now(), now(), "9:15", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('분위기 있는 바','임서연', '분위기좋음', now(), '서울','중랑구', '상봉중앙로5길 56', '010-2475-5893', 0, 0, now(), now(), "9:15", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('건강한 샐러드 카페','한준호', '건강최고', now(), '경기도', '고양시', ' 고양시청로 2', '010-4756-3858', 25, 79, now(), now(), "9:15", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('따뜻한 베이커리','서지민', '따뜻해요', now(), '경기도','남양주시', '늘을2로', '010-4757-5937', 67, 62, now(), now(), "9:15", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('시원한 아이스크림 가게','김상중', '시원해요', now(), '서울' , '은평구', '갈현로 29길 53', '010-4788-3058', 45,24, now(), now(), "9:30", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('부드러운 디저트 매장','고상기', '부드러워요', now(), '서울', '동작구', '노들로2길 3', '010-5748-5658', 42, 124, now(), now(), "9:30", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('즐거운 퓨전 음식점','상해영', '즐거워요', now(), '서울' ,'송파구', '도곡로 434', '010-4857-2222', 40, 50, now(), now(), "9:30", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('매력적인 와인 바','진덕팔', '매력적이에요', now(), '경기도' ,'광명시', '광오로 2', '010-5757-3984', 40, 80, now(), now(), "9:30", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 피자집','조조팔', '특별해요', now(), '경기도', '시흥시', '하우로 1', '010-5743-8444', 70, 10, now(), now(), "9:30", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 채소 가게','선딕조', '신선해요', now(), '인천', '연수구', '독배로 4', '010-4757-5555', 60, 70, now(), now(), "9:05", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 맛집','강해영', '맛집이에요', now(), '경기도', '광명시' , '광이로 1', '010-4785-6666', 50, 90, now(), now(), "9:05", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 정원 카페','승세권', '아름다워요', now(), '경기도' , '과천시', '산마을길 31', '010-5753-7777', 50, 10, now(), now(), "9:05", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('유명한 일식집',' 최성원', '유명해요', now(), '경기도', '광주시', '경안로42번길 3', '010-4732-8888', 30, 0, now(), now(), "9:05", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 과일 가게','유세원', '신선해요', now(), '경기도', '안산시' , '갈마지1길 104', '010-2414-9999', 10, 450, now(), now(), "9:05", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('이색적인 음료','이색적', '이색적이에요', now(), '경기도' , '군포시', '당동로 3-1', '010-3740-5593', 30, 430, now(), now(), "9:10", "17:15" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('차분한 차','차해원', '차분해요', now(), '경기도' , '용인시', '금령로106번길 5', '010-4747-8295', 10, 40, now(), now(), "9:10", "17:15" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('화려한 중식당','무모칠', '화려해요', now(), '경기도' , '화성시', '남양읍 화성시청로 1', '010-5757-1111', 30, 70, now(), now(), "9:10", "17:15" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('따뜻한 라면집','따뜻해', '따뜻해요', now(), '경기도' , '수원시', '장안구 영동고속도로 31' ,'010-6748-2222', 440, 60, now(), now(), "9:10", "17:15" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('즐거운 맥주집','송해여', '즐거워요', now(), '경기도', '수원시' , '권신구194번길 19', '010-5734-9584', 70, 50, now(), now(), "9:10", "17:15" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('매력적인 아메리카노 카페','성진우', '매력적이에요', now(), '경기도' ,'평택시', '관광특구로 1', '010-4857-4857', 70, 30, now(), now(), "9:25", "17:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('편안한 테이크아웃 매장','이상', '편안해요', now(), '경기도' , '용인시', '처인구 금령로106번길 5', '010-5475-5555', 20, 30, now(), now(), "9:25", "17:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('친구와 함께하는 칵테일 바','김상길', '함께해요', now(), '경기도', '오산시', '경기대로281번길 6', '010-4858-6666', 70, 10, now(), now(), "9:25", "17:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('즐거운 요리','전세화', '즐거워요', now(), '경기도', '용인시' ,'처인구 금령로106번길 14-6', '010-5739-7777', 30, 60, now(), now(), "9:25", "17:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('건강한 샌드위치','김상우', '건강해요', now(), '경기도', '수원시' , '권선구 새터로 3-3', '010-5748-8888', 650, 32, now(), now(), "9:25", "17:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 한정 메뉴','강수인', '특별해요', now(), '경기도' , '안성시', '시청1길 1-2', '010-4822-9999', 20, 50, now(), now(), "9:35", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맛있는 간식','정재승', '맛있어요', now(), '경기도', '성남시' , '수정구 공원로333번길 3', '010-5839-0000', 30, 40, now(), now(), "9:35", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('분위기 있는 미식 클럽','모모이', '분위기있어요', now(), '경기도', '군포시', '당동로 4', '010-4738-5493', 0, 0, now(), now(), "9:35", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 채식','갈리오', '신선해요', now(), '경기도', '시흥시', '비둘기공원로 8', '010-2424-1111', 30, 60, now(), now(), "9:35", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('레트로한 디저트','짐리', '레트로해요', now(), '서울', '노원구', '공릉로 328', '010-5838-2222', 30, 560, now(), now(), "9:35", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('알록달록한 디저트','김정기', '알록달록해요', now(), '경기도', '고양시', '덕양구 고양대로1290번길 4', '010-5784-3333', 0, 0, now(), now(), "9:45", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아기자기한 디저트','윤준식', '아기자기해요', now(), '경기도', '파주시', '동산길 35-8', '010-5839-4444', 50, 20, now(), now(), "9:45", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('멋진 햄버거','채승아', '멋져요', now(), '경기도', '의정부시', '행복로 1', '010-5839-5555', 30, 50, now(), now(), "9:45", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('친구와 함께하는 술','강수희', '함께해요', now(), '경기도', '남양주시', '호평로 6', '010-5738-6666', 30,50, now(), now(), "9:45", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 특산물','주현영', '현지에서먹어요', now(), '경기도', '양주시', '새양주로110번길 100', '010-4783-8583', 60, 0, now(), now(), "9:45", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 음악과 함께하는 카페','김기명', '아름다워요', now(), '경기도' , '하남시', '샘재로104번길 5', '010-4738-8888', 70, 40, now(), now(), "9:50", "17:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('귀여운 카페','마요리', '귀여워요', now(), '서울', '중량구', '봉화산로 179', '010-5738-5739', 30, 50, now(), now(), "9:50", "17:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('매력적인 가든 레스토랑','황근출', '매력적이에요', now(), '경기도', '용인시' , '처인구 백옥대로1068번길 1', '010-5838-0000', 30, 80, now(), now(), "9:50", "17:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 스시','조병옥', '신선해요', now(), '경기도' , '동두천시', '아차노리로 3', '010-5738-5647', 30, 60, now(), now(), "9:50", "17:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 문화를 느낄 수 있는 음식점','류웨이', '현지가타요', now(), '경기도', '덕양구', '산황로 11-51', '010-4756-1111', 70, 970, now(), now(), "9:50", "17:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('바쁜 날의 간단한 점심','강찬석', '바빠요', now(), '경기도' ,'과천시', '문원로 40', '010-4737-2222', 70, 50, now(), now(), "9:55", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('감각적인 빵','선재워', '감각적이에요', now(), '경기' , '부천시', '원미구 조종로 3', '010-4738-3333', 70, 30, now(), now(), "9:55", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 기념일을 위한 레스토랑','진히원', '특별해요', now(), '경기도' , '오산시' , '경기동로8번길 5', '010-4746-3658', 0, 0, now(), now(), "9:55", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 커피 원두','계원', '신선해요', now(), '경기도' ,'이천시', '서희로59번길 3', '010-5738-5555', 50, 90, now(), now(), "9:55", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('따뜻한 국수집','마유리', '따뜻해요', now(), '경기도' , '양평군', '양평읍 경강로 1580', '010-4737-6666', 70, 90, now(), now(), "9:55", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 정원 바베큐','마키세', '아름다워요', now(), '경기도' ,' 양평군', '양평읍 공흥로 5', '010-4757-3857', 35, 67, now(), now(), "8:50", "16:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 차 컬렉션','크리스', '특별해요', now(), '경기도' , '여주시', '여흥로172번길 1', '010-7563-8593', 450, 240, now(), now(), "8:50", "16:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('매력적인 디저트','정보석', '매력적이에요', now(), '인천' , '강화군', '강화읍 강화대로 322', '010-5738-9999', 760, 970, now(), now(), "8:50", "16:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('즐거운 카레','가이아', '즐거워요', now(), '인천' , '계양구', '인남로 607', '010-4737-5967', 320, 540, now(), now(), "8:50", "16:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 스파게티','석딕조', '신선해요', now(), '인천' , '서구', '한서로 42',  '010-4727-5947', 30, 60, now(), now(), "8:50", "16:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맛집 탐방','골리앗', '맛집인걸요', now(), '인천' , '연수구', '독배로 4', '010-4756-3845', 0, 50, now(), now(), "8:55", "16:55" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('건강한 샐러드 바','크리스', '건강해요', now(), '인천' , '서구', '녹색숲로 17', '010-4837-2222', 40, 890, now(), now(), "8:55", "16:55" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('따뜻한 차','레이너', '따뜻해요', now(), '서울' , '강서구', '공항대로63길 27', '010-475-6438', 50, 780, now(), now(), "8:55", "16:55" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('행복한 아이스크림','구마유시', '행복해요', now(), '경기도' , '광명시', '도덕로 4', '010-5738-4444', 0, 0, now(), now(), "8:55", "16:55" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('친근한 커피','스파클', '친근해요', now(), '서울', '노원구', '초안산로 2', '010-2844-3920', 53, 67,  now(), now(), "8:55", "16:55" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('즐거운 베이커리','판탈로네', '즐거워요', now(), '서울', '강남구', '강남대로92길 13', '010-2434-3222' ,50,82, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 음료','페이몬', '특별해요', now(), '서울', '강북구', '도봉로 10가길 5', '010-4857-5839', 34, 78, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 테라스 레스토랑','풀치넬라', '아름다워요', now(), '서울', '성북구', '혜화로 80', '010-4857-5939', 0, 0, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('멋진 해산물 레스토랑','아를레키노', '멋져요', now(), '서울', '구로구', '경인로63길 11', '010-4857-5969', 32, 789, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 분위기의 커피숍','김수민', '분위기가 좋아요', now(), '서울', '마포구', '굴레방로9길 7', '010-4857-6767', 34, 56, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('행복한 피자 가게','정시환', '행복해요ㅠㅠ', now(), '서울', '도봉구', '노해로41길 5-4','010-5875-5839', 34, 56, now(), now(), "10:15", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맛있는 소고기 레스토랑','주원신', '맛있어요', now(), '서울', '중랑구', '중랑천로8길 4', '010-4857-5769', 23, 67, now(), now(), "10:15", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('따뜻한 라면','조만식', '따뜻한 라면이애요', now(), '서울 ', '금천구', '가산디지털2로 46', '010-4857-4829', 32, 56, now(), now(), "10:15", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('친근한 브런치','최민식', '친근했어요', now(), '서울', '강동구', '동남로67길 4', '010-5756-6332', 23, 567, now(), now(), "10:15", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름다운 빵','시뇨라', '아름다웠어요', now(), '서울', '광진구', '긴고랑로12길 4', '010-5766-5849', 221, 345, now(), now(), "10:15", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 일식','카이리', '특별하더라구요', now(), '서울', '성동구', '마장로19길 29', '010-5867-4839', 44, 67, now(), now(), "10:30", "18:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('기가막힌 맛집','성시경', '가기막혔어요', now(), '서울', '중구', '중구로179번길 1-1' , '010-4738-2958', 45, 89, now(), now(), "10:30", "18:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('빛좋은 디저트','김갑룡', '빛이 좋았더라구요', now(), '서울', '동작구', '노량진로10길 23', '010-5873-2356', 45, 78, now(), now(), "10:30", "18:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('매력적인 레스토랑','소민시', '매력적이었어요', now(), '서울', '영등포구', '영신로13길 2', '010-6869-3920', 432, 896, now(), now(), "10:30", "18:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('행복한 칵테일 바','강춘배', '행복한거같아요', now(), '서울', '종로구', '자하문로28가길 1', '010-5728-3920', 32, 67, now(), now(), "10:30", "18:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아기자기한 떡볶이','강심장', '아기자기했어요', now(), '서울', '서대문구', '경기대로11길 5', '010-5867-5930', 34, 88, now(), now(), "10:45", "18:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 닭꼬치','살라만카', '신선한거같아요', now(), '서울', '양천구', '은행정로 1-1', '010-4958-5930', 43, 50, now(), now(), "10:45", "18:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('고기파는마트','게이밍', '고기가 많아요', now(), '경기도', '고양시', '덕양구 고양시청로 4', '010-4939-5739', 56, 92, now(), now(), "10:45", "18:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('삼칠이가 하는 분식','이진성', '삼삼했어용', now(), '경기도', '천안시', '동남구 복자3길 1', '010-2847-5939', 39, 90, now(), now(), "10:45", "18:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아메리카노집','김민주', '아메리카노가 매력적이에요', now(), '경기도' , '수원시' , '권선구 세류로 1', '010-9392-3958', 7, 30, now(), now(), "10:45", "18:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('평범한 테이크아웃 집','김승아', '테이크아웃이 편안해요', now(), '경기도' , '안산시' , '단원구 광덕대로 138', '010-2325-6789', 40, 56, now(), now(), "11:00", "19:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('작은 칵테일바','김승연', '칵테일바에 함께해요', now(), '경기도' , '군포시', '당동로 3-1', '010-4958-6930', 10, 100, now(), now(), "11:00", "19:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('요리가 즐거워 지는 집','김은지', '요리가 즐거워요', now(), '경기도' , '화성시', '병점동로134번길 4', '010-4958-2059', 69, 79, now(), now(), "11:00", "19:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('샌드위치가 맛있는 집','김의슬', '샌드위치가 건강해요', now(), '인천' , '연수구', '한나루로 45',  '010-5948-2950', 59, 82, now(), now(), "11:00", "19:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('특별한 현지 메뉴 맛보는 집','김준언', '한정 메뉴가 특별해요', now(), '인천' , '계양구', '인남로 607', '010-4857-3920', 98, 104, now(), now(), "11:00", "19:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('간식이 풍부한 집','류영진', '간식이 맛있어요', now(), '서울' , '서초구', '남부순환로287길 7', '010-4829-1048', 80, 97, now(), now(), "11:15", "19:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('미식 클럽 모임','박성욱', '미식 클럽 분위기있어요', now(), '경기도' , '안양시' , '만안구 명학로 2-5', '010-8392-0392', 56, 75, now(), now(), "11:15", "19:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('채식주의자의 맛집','박승민', '채식이 신선해요', now(), '경기도' , '군포시', '고산로250번길 1', '010-3920-5786', 67, 92, now(), now(), "11:15", "19:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('레트로적인 디저트','박종태', '디저트가 레트로해요', now(), '경기도' , '고양시', '덕양구 마상로107번길 1', '010-5849-3029', 54, 56, now(), now(), "11:15", "19:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('빛깔 좋은 디저트','박찬', '디저트가 알록달록해요', now(), '서울' , '노원구', '석계로 2', '010-8596-7878', 34, 79, now(), now(), "11:15", "19:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('작고 귀여운 디저트집','변홍근', '디저트가 아기자기해요', now(), '경기도' , '시흥시', '가마길 4', '010-4857-6760', 10, 20, now(), now(), "11:30", "19:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맥데리아','성진아', '햄버거 모양이 멋져요', now(), '경기도' , '용인시', '처인구 금학로357번길 3-4', '010-1929-4857', 89, 106, now(), now(), "11:30", "19:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('이야기 하기 좋은 술집','성지아', '친구와 술을 함께해요', now(), '경기도' , '부천시', '원미구 조종로 3', '010-0493-2819', 3,5, now(), now(), "11:30", "19:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 특산물이 신선한 집','송미숙', '현지에서 특산물을 먹어요', now(), '인천' , '서구', '검단로 485-1', '010-4839-1049', 100, 128, now(), now(), "11:30", "19:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('레코드 까페','안기현', '음악이 아름다워요', now(), '경기도' , '김포시', '북변1로 5', '010-4958-3029', 45, 60, now(), now(), "11:30", "19:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('카와이 까페','안유남', '까페 분위기가 귀여워요', now(), '인천' , '강화군', '강화읍 고비고개로 6', '010-4858-6029', 90, 100, now(), now(), "11:45", "19:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('정원 레스토링','왕도현', '정원이 매력적이에요', now(), '서울' , '강서구', '양천로65길 7', '010-1928-4059', 59, 80, now(), now(), "11:45", "19:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('신선한 해산물 요리','유인준', '초밥이 신선해요', now(), '경기도' , '과천시', '공원마을1길 4', '010-1049-5860', 58, 96, now(), now(), "11:45", "19:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 문화가 깃든 음식점','윤승현', '현지 문화가 현지가타요', now(), '경기도' , '성남시', '수정구 공원로370번길 26', '010-3948-5019', 79, 93, now(), now(), "11:45", "19:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('바쁜 날의 점심','윤예서', '점심 시간이 너무 바빠요', now(), '경기도' , '수원시', '장안구 경수대로1044번길 3', '010-4859-3029', 149, 250, now(), now(), "11:45", "19:30" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('예술적인 빵','이다유', '빵 맛이 감각적이에요', now(), '서울' , '동작구', '만양로10길 2', '010-3928-3940', 7, 30, now(), now(), "8:45", "16:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('기념일의 레스토랑','이민지', '기념일이 특별해요', now(), '경기도' , '성남시' , '분당구 수내로 39', '010-3985-6030', 56, 65, now(), now(), "8:45", "16:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('각국 커피 원두집','이승현', '커피 원두가 신선해요', now(), '경기도' , '여주시', '여흥로140번길 3-4', '010-5948-2095', 45, 78, now(), now(), "8:45", "16:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('갓 나온 국수집','이우정', '국수 국물이 따뜻해요', now(), '경기도' , '남양주시', '백봉로 8', '010-4859-2304', 7, 9, now(), now(), "8:45", "16:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('정원에서 먹는 바비큐','이유주', '바비큐가 맛있네요', now(), '경기도' , '이천시', '서희로 81번길 4', '010-4756-9824', 90, 100, now(), now(), "8:45", "16:45" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('차가 많은 까페','이유진', '특별한 차가 많아요', now(), '경기도' , '용인시' , '처인구 금령로72번길 6', '010-4857-8888', 81, 91, now(), now(), "9:05", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('디저트가 탑티어집','이종훈', '디저트가 매력적이에요', now(), '경기도' , '성남시' , '분당구 장안로16번길 2', '010-4757-5757', 45, 67, now(), now(), "9:05", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('카레 먹기 좋은 집','이진석', '카레가 즐겁네요', now(), '경기도' , '성남시' , '중원구 광명로100번길 3', '010-5738-4920', 95, 74, now(), now(), "9:05", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 재료로 만든 파스타집','이태랑', '스파게티가 신선해요', now(), '경기도' , '용인시' , '수지구 샘말로 108-1', '010-4757-2049', 40, 50, now(), now(), "9:05", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맛집으로 선정된 맛집','이하늘', '맛집 탐방 좋아요', now(), '경기도' , '군포시', '고산로228번길 10', '010-6758-4920', 20, 30, now(), now(), "9:05", "17:05" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('샐러드바','이태석', '샐러드바가 건강해소 좋아요', now(), '경기도' , '화성시', '경기대로1046번길 5', '010-5729-5890', 89, 98, now(), now(), "9:10", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('찻집','이햇빛', '차가 많이 따뜻ㅎ', now(), '서울시' , '관악구', '양녕로', '010-4727-2748', 67, 78, now(), now(), "9:10", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아이스크림집','정재윤', '아이스크림이 행복하대요', now(), '서울시' , '동작구', '만양로14라길 1', '010-4727-2794', 67, 84, now(), now(), "9:10", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('커피집','전세한', '커피가 친근하대요?', now(), '경기도' , '광명시', '도덕로 8', '010-2626-4785', 45, 59, now(), now(), "9:10", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('베이커리','전우진', '베이커리가 즐거워요', now(), '경기도' , '부천시', '원미구 원미로88번길 4', '010-5757-5732', 97, 98, now(), now(), "9:10", "17:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('음료수 맛집','전세원', '음료는 매우 특별합니다', now(), '인천' , '동구' , '금곡로 18-6', '010-4577-4939', 455, 677, now(), now(), "9:20", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('레스토랑','전지원', '테라스가 이뻐용', now(), '인천' , '동구', '화도진로 124', '010-5757-2094', 56, 78, now(), now(), "9:20", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('해산물 레스토랑','정훈', '해산물이 맛있어요', now(), '인천' , '동구', '석수로 90', '010-4757-6768', 89, 92, now(), now(), "9:20", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('이쁜 커피숍','정희성', '커피숍이 엄청 아름다워요', now(), '인천' , '미추홀구', '경원대로852번길 25', '010-2757-5729', 95, 57, now(), now(), "9:20", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('도미노피자','조혜연', '피자가게가 행복한 분위기에요', now(), '인천' , '미추홀구', '낙섬동로 83', '010-2284-8902', 59, 85, now(), now(), "9:20", "17:20" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('스테이크하우스','지유', '소고기가 부드러워요', now(), '인천' , '남동구', '함박뫼로347번길 122', '010-4727-2749', 56, 89, now(), now(), "9:25", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('라면맛집','최주완', '라면이 즉석에서 나와요', now(), '인천' , '남동구', ' 남동서로205번길 32', '010-4757-5029', 57, 78, now(), now(), "9:25", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('짧은 브런치집','최주형', '브런치가 매우 친근해요', now(), '인천' , '부평구' , '가재울로 129', '010-2757-5829', 98, 102, now(), now(), "9:25", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('빵집','한지원', '빵 모양이 매우 특이해요', now(), '인천' , '부평구' , '갈산로9번길 4-2', '010-4727-2748', 57, 87, now(), now(), "9:25", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('일식집','허윤서', '일식이 진짜 특이해요', now(), '인천' , '옹진군', ' 대청남로86번길 18', '010-2727-2829', 23, 57, now(), now(), "9:25", "17:25" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('듣도보도 못한 맛집','황창민', '맛이 완전 엄청 기가막혀요', now(), '인천' , '옹진군', '북도면 장봉로 553', '010-2727-4720', 47, 69, now(), now(), "9:35", "17:35" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('색이 이쁜 알록달록 디저트집','황현주', '빛깔이 진짜 잘나와요', now(), '서울시' , '종로구' , '자하문로28가길 14-2', '010-2727-4829', 58, 85, now(), now(), "9:35", "17:35" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('느티나무 밥집','랄로', '소나무향이나욧', now(), '서울시' , '종로구', '효자로7길 16', '010-5785-4937', 93, 105, now(), now(), "9:35", "17:35" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('쌀국수가 가장 맛있는 집','정제승', '쌀국수는베트남같아요', now(), '서울시' , '종로구', '효자로7길 3-1', '010-3857-3957', 39, 239, now(), now(), "9:35", "17:35" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('파스타가 좋은 맛집','조릭', '파스타는 행복해', now(), '서울시' ,'종로구', '효자로7길 3-3', '010-3857-3957', 13, 576, now(), now(), "9:35", "17:35" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아웃백','윤상소', '스테이크가 고급스러워', now(), '서울시' , '종로구', '효자로7길 5', '010-5867-2957', 58, 59, now(), now(), "9:40", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('분위기 있는 10년산 와인집','임성직', '분위기가 좋아요', now(), '서울시', '종로구', '효자로7길 6-1', '010-4512-9785', 39, 52, now(), now(), "9:40", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('채소 파는 샌드위치집','안준호', '건강이 최고에여', now(), '서울시', '종로구', '효자로7길 6-4', '010-1496-3258', 67, 89, now(), now(), "9:40", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('갓 구운 베이커리','카리나', '빵이 따뜻해요', now(), '서울시' , '종로구', '효자로7길 7-3', '010-7468-2364', 38, 95, now(), now(), "9:40", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('바로 만들어주는 아이스크림','페이커', '아이스크림이시원해요', now(), '서울시', '종로구' , '효자로7길 7-8', '010-9476-9478', 34,89, now(), now(), "9:40", "17:40" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('카스테라 맛집','백로', '디저트가 부드러워요', now(), '서울시' , '종로구' , '옥인2길', '010-4857-3029', 4, 60, now(), now(), "9:50", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('퓨전음식이 맛난 집','아스타', '퓨전음식이 즐거워요', now(), '서울시' , '종로구', '옥인2길 4', '010-4957-2019', 4, 5, now(), now(), "9:50", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('와인맛이 풍부한 집','심상정', '와인 맛이 매력적이에요', now(), '서울시' ,'종로구', '옥인2길 5', '010-9576-9279', 4, 8, now(), now(), "9:50", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('마스터피자','양순옥', '피자가 특별해요', now(), '서울시', '종로구', '옥인2길 6', '010-4857-4920', 32, 57, now(), now(), "9:50", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 채소 가게','강찬희', '채소가 신선해요', now(), '서울시' , '종로구', '옥인2길 8', '010-4859-6028', 45, 78, now(), now(), "9:50", "17:50" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('현지 맛집','고민주', '현지에서 맛집이에요', now(), '서울시' , '종로구', '옥인2길 10', '010-9587-3910', 5, 9, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('아름답고 정겨운 정원','고영인', '정원이 아름다워요', now(), '서울시' , '종로구', '옥인2길 12', '010-9576-8596', 5, 10, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('초밥이 유명한 집',' 고현세', '일식이 맛있고 유명해요', now(), '서울시' , '종로구', '옥인2길 14-8', '010-4563-2178', 59, 678, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('과일이 신선한 가게','최민성', '과일이 신선해요', now(), '서울시' , '종로구', '옥인2길 15', '010-6768-5949', 56, 85, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('음료가 진짜 단집','송길현', '음료가 달고 이색적이에요', now(), '서울시', '종로구', '창의문로1길 3', '010-9481-7580', 856, 960, now(), now(), "10:00", "18:00" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('차분하게 마시는 찻집','김도영', '찻집 분위기가 차분해요', now(), '서울시' , '종로구', '창의문로1길 5', '010-4958-2958', 305, 406, now(), now(), "10:10", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('웅장한 중식집','김민규', '중식당이 화려해요', now(), '서울시' , '종로구', '창의문로1길 7', '010-5968-4958', 50, 139, now(), now(), "10:10", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('갓 만들어 나온 라면','김서윤', '라면이 따뜻해요', now(), '서울시' , '종로구', '창의문로1길 9', '010-5768-7694', 44, 56, now(), now(), "10:10", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('맥주 마시기 즐거운 집','김수민', '술 분위기가 즐거워요', now(), '서울시' , '종로구', '창의문로1길 11', '010-5768-5940', 32, 67, now(), now(), "10:10", "18:10" );
-insert into article(title, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
-values ('해산물이 맛있는 맛집','박태준', '해산물이 맛있어요', now(), '서울시' , '종로구', '창의문로1길 15', '010-3302-3846', 27, 93, now(), now(), "10:10", "18:10" );
+insert into user(person_id, nick_name, passwd, created_at, last_id_changed, last_passwd_changed, role, old, phone_num)
+values ('11111', '11', 'tea9152352@', now(), now(), now(), 'ROLE_USER', 12,'01097563400');
+
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('고기마켓',1, '김영수', '고기고기', now(), '서울','서초구','서초 중앙로 14', '010-1111-2222', 3, 6, now(), now(), "9:00", "17:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('삼삼이네 분식',1, '이지은', '삼삼삼삼', now(), '서울','동대문구','보문로 6', '010-2222-3333', 7, 10, now(), now(), "9:00", "17:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('해산물마을',1, '박민준', '해산물좋아', now(), '서울','중구','명동4길 25', '010-3333-4444', 40, 12, now(), now(), "9:00", "17:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('소나무밥상',1, '최지혜', '소나무가', now(), '서울','광진구', '답심리로 364', '010-4444-5757', 14, 8, now(), now(), "9:00", "17:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('쌀국수의 전설',1, '정승우', '쌀국수는베트남', now(), '서울','구로구', '신도림로 51', '010-2483-8487', 67, 223, now(), now(), "9:00", "17:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('행복한 파스타집',1, '강수진', '파스타는파스타', now(), '서울' ,'금천구', '독산로 101길', '010-2474-7585', 134, 5, now(), now(), "9:15", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('고급스러운 스테이크하우스',1, '윤현우', '스테이크는차갑다', now(), '경기' , '안양시', '동안구 경수대로 436-2', '010-4757-3958', 22, 5, now(), now(), "9:15", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('분위기 있는 바',1, '임서연', '분위기좋음', now(), '서울','중랑구', '상봉중앙로5길 56', '010-2475-5893', 0, 0, now(), now(), "9:15", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('건강한 샐러드 카페',1, '한준호', '건강최고', now(), '경기도', '고양시', ' 고양시청로 2', '010-4756-3858', 25, 79, now(), now(), "9:15", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('따뜻한 베이커리',1, '서지민', '따뜻해요', now(), '경기도','남양주시', '늘을2로', '010-4757-5937', 67, 62, now(), now(), "9:15", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('시원한 아이스크림 가게',1, '김상중', '시원해요', now(), '서울' , '은평구', '갈현로 29길 53', '010-4788-3058', 45,24, now(), now(), "9:30", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('부드러운 디저트 매장',1, '고상기', '부드러워요', now(), '서울', '동작구', '노들로2길 3', '010-5748-5658', 42, 124, now(), now(), "9:30", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('즐거운 퓨전 음식점',1, '상해영', '즐거워요', now(), '서울' ,'송파구', '도곡로 434', '010-4857-2222', 40, 50, now(), now(), "9:30", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('매력적인 와인 바',1, '진덕팔', '매력적이에요', now(), '경기도' ,'광명시', '광오로 2', '010-5757-3984', 40, 80, now(), now(), "9:30", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 피자집',1, '조조팔', '특별해요', now(), '경기도', '시흥시', '하우로 1', '010-5743-8444', 70, 10, now(), now(), "9:30", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 채소 가게',1, '선딕조', '신선해요', now(), '인천', '연수구', '독배로 4', '010-4757-5555', 60, 70, now(), now(), "9:05", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 맛집',1, '강해영', '맛집이에요', now(), '경기도', '광명시' , '광이로 1', '010-4785-6666', 50, 90, now(), now(), "9:05", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 정원 카페',1, '승세권', '아름다워요', now(), '경기도' , '과천시', '산마을길 31', '010-5753-7777', 50, 10, now(), now(), "9:05", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('유명한 일식집',1, ' 최성원', '유명해요', now(), '경기도', '광주시', '경안로42번길 3', '010-4732-8888', 30, 0, now(), now(), "9:05", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 과일 가게',1, '유세원', '신선해요', now(), '경기도', '안산시' , '갈마지1길 104', '010-2414-9999', 10, 450, now(), now(), "9:05", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('이색적인 음료',1, '이색적', '이색적이에요', now(), '경기도' , '군포시', '당동로 3-1', '010-3740-5593', 30, 430, now(), now(), "9:10", "17:15" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('차분한 차',1, '차해원', '차분해요', now(), '경기도' , '용인시', '금령로106번길 5', '010-4747-8295', 10, 40, now(), now(), "9:10", "17:15" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('화려한 중식당',1, '무모칠', '화려해요', now(), '경기도' , '화성시', '남양읍 화성시청로 1', '010-5757-1111', 30, 70, now(), now(), "9:10", "17:15" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('따뜻한 라면집',1, '따뜻해', '따뜻해요', now(), '경기도' , '수원시', '장안구 영동고속도로 31' ,'010-6748-2222', 440, 60, now(), now(), "9:10", "17:15" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('즐거운 맥주집',1, '송해여', '즐거워요', now(), '경기도', '수원시' , '권신구194번길 19', '010-5734-9584', 70, 50, now(), now(), "9:10", "17:15" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('매력적인 아메리카노 카페',1, '성진우', '매력적이에요', now(), '경기도' ,'평택시', '관광특구로 1', '010-4857-4857', 70, 30, now(), now(), "9:25", "17:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('편안한 테이크아웃 매장',1, '이상', '편안해요', now(), '경기도' , '용인시', '처인구 금령로106번길 5', '010-5475-5555', 20, 30, now(), now(), "9:25", "17:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('친구와 함께하는 칵테일 바',1, '김상길', '함께해요', now(), '경기도', '오산시', '경기대로281번길 6', '010-4858-6666', 70, 10, now(), now(), "9:25", "17:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('즐거운 요리',1, '전세화', '즐거워요', now(), '경기도', '용인시' ,'처인구 금령로106번길 14-6', '010-5739-7777', 30, 60, now(), now(), "9:25", "17:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('건강한 샌드위치',1, '김상우', '건강해요', now(), '경기도', '수원시' , '권선구 새터로 3-3', '010-5748-8888', 650, 32, now(), now(), "9:25", "17:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 한정 메뉴',1, '강수인', '특별해요', now(), '경기도' , '안성시', '시청1길 1-2', '010-4822-9999', 20, 50, now(), now(), "9:35", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맛있는 간식',1, '정재승', '맛있어요', now(), '경기도', '성남시' , '수정구 공원로333번길 3', '010-5839-0000', 30, 40, now(), now(), "9:35", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('분위기 있는 미식 클럽',1, '모모이', '분위기있어요', now(), '경기도', '군포시', '당동로 4', '010-4738-5493', 0, 0, now(), now(), "9:35", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 채식',1, '갈리오', '신선해요', now(), '경기도', '시흥시', '비둘기공원로 8', '010-2424-1111', 30, 60, now(), now(), "9:35", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('레트로한 디저트',1, '짐리', '레트로해요', now(), '서울', '노원구', '공릉로 328', '010-5838-2222', 30, 560, now(), now(), "9:35", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('알록달록한 디저트',1, '김정기', '알록달록해요', now(), '경기도', '고양시', '덕양구 고양대로1290번길 4', '010-5784-3333', 0, 0, now(), now(), "9:45", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아기자기한 디저트',1, '윤준식', '아기자기해요', now(), '경기도', '파주시', '동산길 35-8', '010-5839-4444', 50, 20, now(), now(), "9:45", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('멋진 햄버거',1, '채승아', '멋져요', now(), '경기도', '의정부시', '행복로 1', '010-5839-5555', 30, 50, now(), now(), "9:45", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('친구와 함께하는 술',1, '강수희', '함께해요', now(), '경기도', '남양주시', '호평로 6', '010-5738-6666', 30,50, now(), now(), "9:45", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 특산물',1, '주현영', '현지에서먹어요', now(), '경기도', '양주시', '새양주로110번길 100', '010-4783-8583', 60, 0, now(), now(), "9:45", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 음악과 함께하는 카페',1, '김기명', '아름다워요', now(), '경기도' , '하남시', '샘재로104번길 5', '010-4738-8888', 70, 40, now(), now(), "9:50", "17:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('귀여운 카페',1, '마요리', '귀여워요', now(), '서울', '중량구', '봉화산로 179', '010-5738-5739', 30, 50, now(), now(), "9:50", "17:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('매력적인 가든 레스토랑',1, '황근출', '매력적이에요', now(), '경기도', '용인시' , '처인구 백옥대로1068번길 1', '010-5838-0000', 30, 80, now(), now(), "9:50", "17:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 스시',1, '조병옥', '신선해요', now(), '경기도' , '동두천시', '아차노리로 3', '010-5738-5647', 30, 60, now(), now(), "9:50", "17:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 문화를 느낄 수 있는 음식점',1, '류웨이', '현지가타요', now(), '경기도', '덕양구', '산황로 11-51', '010-4756-1111', 70, 970, now(), now(), "9:50", "17:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('바쁜 날의 간단한 점심',1, '강찬석', '바빠요', now(), '경기도' ,'과천시', '문원로 40', '010-4737-2222', 70, 50, now(), now(), "9:55", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('감각적인 빵',1, '선재워', '감각적이에요', now(), '경기' , '부천시', '원미구 조종로 3', '010-4738-3333', 70, 30, now(), now(), "9:55", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 기념일을 위한 레스토랑',1, '진히원', '특별해요', now(), '경기도' , '오산시' , '경기동로8번길 5', '010-4746-3658', 0, 0, now(), now(), "9:55", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 커피 원두',1, '계원', '신선해요', now(), '경기도' ,'이천시', '서희로59번길 3', '010-5738-5555', 50, 90, now(), now(), "9:55", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('따뜻한 국수집',1, '마유리', '따뜻해요', now(), '경기도' , '양평군', '양평읍 경강로 1580', '010-4737-6666', 70, 90, now(), now(), "9:55", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 정원 바베큐',1, '마키세', '아름다워요', now(), '경기도' ,' 양평군', '양평읍 공흥로 5', '010-4757-3857', 35, 67, now(), now(), "8:50", "16:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 차 컬렉션',1, '크리스', '특별해요', now(), '경기도' , '여주시', '여흥로172번길 1', '010-7563-8593', 450, 240, now(), now(), "8:50", "16:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('매력적인 디저트',1, '정보석', '매력적이에요', now(), '인천' , '강화군', '강화읍 강화대로 322', '010-5738-9999', 760, 970, now(), now(), "8:50", "16:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('즐거운 카레',1, '가이아', '즐거워요', now(), '인천' , '계양구', '인남로 607', '010-4737-5967', 320, 540, now(), now(), "8:50", "16:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 스파게티',1, '석딕조', '신선해요', now(), '인천' , '서구', '한서로 42',  '010-4727-5947', 30, 60, now(), now(), "8:50", "16:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맛집 탐방',1, '골리앗', '맛집인걸요', now(), '인천' , '연수구', '독배로 4', '010-4756-3845', 0, 50, now(), now(), "8:55", "16:55" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('건강한 샐러드 바',1, '크리스', '건강해요', now(), '인천' , '서구', '녹색숲로 17', '010-4837-2222', 40, 890, now(), now(), "8:55", "16:55" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('따뜻한 차',1, '레이너', '따뜻해요', now(), '서울' , '강서구', '공항대로63길 27', '010-475-6438', 50, 780, now(), now(), "8:55", "16:55" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('행복한 아이스크림',1, '구마유시', '행복해요', now(), '경기도' , '광명시', '도덕로 4', '010-5738-4444', 0, 0, now(), now(), "8:55", "16:55" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('친근한 커피',1, '스파클', '친근해요', now(), '서울', '노원구', '초안산로 2', '010-2844-3920', 53, 67,  now(), now(), "8:55", "16:55" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('즐거운 베이커리',1, '판탈로네', '즐거워요', now(), '서울', '강남구', '강남대로92길 13', '010-2434-3222' ,50,82, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 음료',1, '페이몬', '특별해요', now(), '서울', '강북구', '도봉로 10가길 5', '010-4857-5839', 34, 78, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 테라스 레스토랑',1, '풀치넬라', '아름다워요', now(), '서울', '성북구', '혜화로 80', '010-4857-5939', 0, 0, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('멋진 해산물 레스토랑',1, '아를레키노', '멋져요', now(), '서울', '구로구', '경인로63길 11', '010-4857-5969', 32, 789, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 분위기의 커피숍',1, '김수민', '분위기가 좋아요', now(), '서울', '마포구', '굴레방로9길 7', '010-4857-6767', 34, 56, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('행복한 피자 가게',1, '정시환', '행복해요ㅠㅠ', now(), '서울', '도봉구', '노해로41길 5-4','010-5875-5839', 34, 56, now(), now(), "10:15", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맛있는 소고기 레스토랑',1, '주원신', '맛있어요', now(), '서울', '중랑구', '중랑천로8길 4', '010-4857-5769', 23, 67, now(), now(), "10:15", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('따뜻한 라면',1, '조만식', '따뜻한 라면이애요', now(), '서울 ', '금천구', '가산디지털2로 46', '010-4857-4829', 32, 56, now(), now(), "10:15", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('친근한 브런치',1, '최민식', '친근했어요', now(), '서울', '강동구', '동남로67길 4', '010-5756-6332', 23, 567, now(), now(), "10:15", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름다운 빵',1, '시뇨라', '아름다웠어요', now(), '서울', '광진구', '긴고랑로12길 4', '010-5766-5849', 221, 345, now(), now(), "10:15", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 일식',1, '카이리', '특별하더라구요', now(), '서울', '성동구', '마장로19길 29', '010-5867-4839', 44, 67, now(), now(), "10:30", "18:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('기가막힌 맛집',1, '성시경', '가기막혔어요', now(), '서울', '중구', '중구로179번길 1-1' , '010-4738-2958', 45, 89, now(), now(), "10:30", "18:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('빛좋은 디저트',1, '김갑룡', '빛이 좋았더라구요', now(), '서울', '동작구', '노량진로10길 23', '010-5873-2356', 45, 78, now(), now(), "10:30", "18:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('매력적인 레스토랑',1, '소민시', '매력적이었어요', now(), '서울', '영등포구', '영신로13길 2', '010-6869-3920', 432, 896, now(), now(), "10:30", "18:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('행복한 칵테일 바',1, '강춘배', '행복한거같아요', now(), '서울', '종로구', '자하문로28가길 1', '010-5728-3920', 32, 67, now(), now(), "10:30", "18:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아기자기한 떡볶이',1, '강심장', '아기자기했어요', now(), '서울', '서대문구', '경기대로11길 5', '010-5867-5930', 34, 88, now(), now(), "10:45", "18:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 닭꼬치',1, '살라만카', '신선한거같아요', now(), '서울', '양천구', '은행정로 1-1', '010-4958-5930', 43, 50, now(), now(), "10:45", "18:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('고기파는마트',1, '게이밍', '고기가 많아요', now(), '경기도', '고양시', '덕양구 고양시청로 4', '010-4939-5739', 56, 92, now(), now(), "10:45", "18:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('삼칠이가 하는 분식',1, '이진성', '삼삼했어용', now(), '경기도', '천안시', '동남구 복자3길 1', '010-2847-5939', 39, 90, now(), now(), "10:45", "18:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아메리카노집',1, '김민주', '아메리카노가 매력적이에요', now(), '경기도' , '수원시' , '권선구 세류로 1', '010-9392-3958', 7, 30, now(), now(), "10:45", "18:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('평범한 테이크아웃 집',1, '김승아', '테이크아웃이 편안해요', now(), '경기도' , '안산시' , '단원구 광덕대로 138', '010-2325-6789', 40, 56, now(), now(), "11:00", "19:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('작은 칵테일바',1, '김승연', '칵테일바에 함께해요', now(), '경기도' , '군포시', '당동로 3-1', '010-4958-6930', 10, 100, now(), now(), "11:00", "19:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('요리가 즐거워 지는 집',1, '김은지', '요리가 즐거워요', now(), '경기도' , '화성시', '병점동로134번길 4', '010-4958-2059', 69, 79, now(), now(), "11:00", "19:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('샌드위치가 맛있는 집',1, '김의슬', '샌드위치가 건강해요', now(), '인천' , '연수구', '한나루로 45',  '010-5948-2950', 59, 82, now(), now(), "11:00", "19:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('특별한 현지 메뉴 맛보는 집',1, '김준언', '한정 메뉴가 특별해요', now(), '인천' , '계양구', '인남로 607', '010-4857-3920', 98, 104, now(), now(), "11:00", "19:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('간식이 풍부한 집',1, '류영진', '간식이 맛있어요', now(), '서울' , '서초구', '남부순환로287길 7', '010-4829-1048', 80, 97, now(), now(), "11:15", "19:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('미식 클럽 모임',1, '박성욱', '미식 클럽 분위기있어요', now(), '경기도' , '안양시' , '만안구 명학로 2-5', '010-8392-0392', 56, 75, now(), now(), "11:15", "19:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('채식주의자의 맛집',1, '박승민', '채식이 신선해요', now(), '경기도' , '군포시', '고산로250번길 1', '010-3920-5786', 67, 92, now(), now(), "11:15", "19:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('레트로적인 디저트',1, '박종태', '디저트가 레트로해요', now(), '경기도' , '고양시', '덕양구 마상로107번길 1', '010-5849-3029', 54, 56, now(), now(), "11:15", "19:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('빛깔 좋은 디저트',1, '박찬', '디저트가 알록달록해요', now(), '서울' , '노원구', '석계로 2', '010-8596-7878', 34, 79, now(), now(), "11:15", "19:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('작고 귀여운 디저트집',1, '변홍근', '디저트가 아기자기해요', now(), '경기도' , '시흥시', '가마길 4', '010-4857-6760', 10, 20, now(), now(), "11:30", "19:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맥데리아',1, '성진아', '햄버거 모양이 멋져요', now(), '경기도' , '용인시', '처인구 금학로357번길 3-4', '010-1929-4857', 89, 106, now(), now(), "11:30", "19:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('이야기 하기 좋은 술집',1, '성지아', '친구와 술을 함께해요', now(), '경기도' , '부천시', '원미구 조종로 3', '010-0493-2819', 3,5, now(), now(), "11:30", "19:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 특산물이 신선한 집',1, '송미숙', '현지에서 특산물을 먹어요', now(), '인천' , '서구', '검단로 485-1', '010-4839-1049', 100, 128, now(), now(), "11:30", "19:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('레코드 까페',1, '안기현', '음악이 아름다워요', now(), '경기도' , '김포시', '북변1로 5', '010-4958-3029', 45, 60, now(), now(), "11:30", "19:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('카와이 까페',1, '안유남', '까페 분위기가 귀여워요', now(), '인천' , '강화군', '강화읍 고비고개로 6', '010-4858-6029', 90, 100, now(), now(), "11:45", "19:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('정원 레스토링',1, '왕도현', '정원이 매력적이에요', now(), '서울' , '강서구', '양천로65길 7', '010-1928-4059', 59, 80, now(), now(), "11:45", "19:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('신선한 해산물 요리',1, '유인준', '초밥이 신선해요', now(), '경기도' , '과천시', '공원마을1길 4', '010-1049-5860', 58, 96, now(), now(), "11:45", "19:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 문화가 깃든 음식점',1, '윤승현', '현지 문화가 현지가타요', now(), '경기도' , '성남시', '수정구 공원로370번길 26', '010-3948-5019', 79, 93, now(), now(), "11:45", "19:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('바쁜 날의 점심',1, '윤예서', '점심 시간이 너무 바빠요', now(), '경기도' , '수원시', '장안구 경수대로1044번길 3', '010-4859-3029', 149, 250, now(), now(), "11:45", "19:30" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('예술적인 빵',1, '이다유', '빵 맛이 감각적이에요', now(), '서울' , '동작구', '만양로10길 2', '010-3928-3940', 7, 30, now(), now(), "8:45", "16:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('기념일의 레스토랑',1, '이민지', '기념일이 특별해요', now(), '경기도' , '성남시' , '분당구 수내로 39', '010-3985-6030', 56, 65, now(), now(), "8:45", "16:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('각국 커피 원두집',1, '이승현', '커피 원두가 신선해요', now(), '경기도' , '여주시', '여흥로140번길 3-4', '010-5948-2095', 45, 78, now(), now(), "8:45", "16:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('갓 나온 국수집',1, '이우정', '국수 국물이 따뜻해요', now(), '경기도' , '남양주시', '백봉로 8', '010-4859-2304', 7, 9, now(), now(), "8:45", "16:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('정원에서 먹는 바비큐',1, '이유주', '바비큐가 맛있네요', now(), '경기도' , '이천시', '서희로 81번길 4', '010-4756-9824', 90, 100, now(), now(), "8:45", "16:45" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('차가 많은 까페',1, '이유진', '특별한 차가 많아요', now(), '경기도' , '용인시' , '처인구 금령로72번길 6', '010-4857-8888', 81, 91, now(), now(), "9:05", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('디저트가 탑티어집',1, '이종훈', '디저트가 매력적이에요', now(), '경기도' , '성남시' , '분당구 장안로16번길 2', '010-4757-5757', 45, 67, now(), now(), "9:05", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('카레 먹기 좋은 집',1, '이진석', '카레가 즐겁네요', now(), '경기도' , '성남시' , '중원구 광명로100번길 3', '010-5738-4920', 95, 74, now(), now(), "9:05", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 재료로 만든 파스타집',1, '이태랑', '스파게티가 신선해요', now(), '경기도' , '용인시' , '수지구 샘말로 108-1', '010-4757-2049', 40, 50, now(), now(), "9:05", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맛집으로 선정된 맛집',1, '이하늘', '맛집 탐방 좋아요', now(), '경기도' , '군포시', '고산로228번길 10', '010-6758-4920', 20, 30, now(), now(), "9:05", "17:05" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('샐러드바',1, '이태석', '샐러드바가 건강해소 좋아요', now(), '경기도' , '화성시', '경기대로1046번길 5', '010-5729-5890', 89, 98, now(), now(), "9:10", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('찻집',1, '이햇빛', '차가 많이 따뜻ㅎ', now(), '서울시' , '관악구', '양녕로', '010-4727-2748', 67, 78, now(), now(), "9:10", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아이스크림집',1, '정재윤', '아이스크림이 행복하대요', now(), '서울시' , '동작구', '만양로14라길 1', '010-4727-2794', 67, 84, now(), now(), "9:10", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('커피집',1, '전세한', '커피가 친근하대요?', now(), '경기도' , '광명시', '도덕로 8', '010-2626-4785', 45, 59, now(), now(), "9:10", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('베이커리',1, '전우진', '베이커리가 즐거워요', now(), '경기도' , '부천시', '원미구 원미로88번길 4', '010-5757-5732', 97, 98, now(), now(), "9:10", "17:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('음료수 맛집',1, '전세원', '음료는 매우 특별합니다', now(), '인천' , '동구' , '금곡로 18-6', '010-4577-4939', 455, 677, now(), now(), "9:20", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('레스토랑',1, '전지원', '테라스가 이뻐용', now(), '인천' , '동구', '화도진로 124', '010-5757-2094', 56, 78, now(), now(), "9:20", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('해산물 레스토랑',1, '정훈', '해산물이 맛있어요', now(), '인천' , '동구', '석수로 90', '010-4757-6768', 89, 92, now(), now(), "9:20", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('이쁜 커피숍',1, '정희성', '커피숍이 엄청 아름다워요', now(), '인천' , '미추홀구', '경원대로852번길 25', '010-2757-5729', 95, 57, now(), now(), "9:20", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('도미노피자',1, '조혜연', '피자가게가 행복한 분위기에요', now(), '인천' , '미추홀구', '낙섬동로 83', '010-2284-8902', 59, 85, now(), now(), "9:20", "17:20" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('스테이크하우스',1,'지유', '소고기가 부드러워요', now(), '인천' , '남동구', '함박뫼로347번길 122', '010-4727-2749', 56, 89, now(), now(), "9:25", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('라면맛집',1, '최주완', '라면이 즉석에서 나와요', now(), '인천' , '남동구', ' 남동서로205번길 32', '010-4757-5029', 57, 78, now(), now(), "9:25", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('짧은 브런치집',1, '최주형', '브런치가 매우 친근해요', now(), '인천' , '부평구' , '가재울로 129', '010-2757-5829', 98, 102, now(), now(), "9:25", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('빵집',1, '한지원', '빵 모양이 매우 특이해요', now(), '인천' , '부평구' , '갈산로9번길 4-2', '010-4727-2748', 57, 87, now(), now(), "9:25", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('일식집',1, '허윤서', '일식이 진짜 특이해요', now(), '인천' , '옹진군', ' 대청남로86번길 18', '010-2727-2829', 23, 57, now(), now(), "9:25", "17:25" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('듣도보도 못한 맛집',1, '황창민', '맛이 완전 엄청 기가막혀요', now(), '인천' , '옹진군', '북도면 장봉로 553', '010-2727-4720', 47, 69, now(), now(), "9:35", "17:35" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('색이 이쁜 알록달록 디저트집',1, '황현주', '빛깔이 진짜 잘나와요', now(), '서울시' , '종로구' , '자하문로28가길 14-2', '010-2727-4829', 58, 85, now(), now(), "9:35", "17:35" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('느티나무 밥집',1, '랄로', '소나무향이나욧', now(), '서울시' , '종로구', '효자로7길 16', '010-5785-4937', 93, 105, now(), now(), "9:35", "17:35" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('쌀국수가 가장 맛있는 집',1, '정제승', '쌀국수는베트남같아요', now(), '서울시' , '종로구', '효자로7길 3-1', '010-3857-3957', 39, 239, now(), now(), "9:35", "17:35" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('파스타가 좋은 맛집',1, '조릭', '파스타는 행복해', now(), '서울시' ,'종로구', '효자로7길 3-3', '010-3857-3957', 13, 576, now(), now(), "9:35", "17:35" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아웃백',1, '윤상소', '스테이크가 고급스러워', now(), '서울시' , '종로구', '효자로7길 5', '010-5867-2957', 58, 59, now(), now(), "9:40", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('분위기 있는 10년산 와인집',1, '임성직', '분위기가 좋아요', now(), '서울시', '종로구', '효자로7길 6-1', '010-4512-9785', 39, 52, now(), now(), "9:40", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('채소 파는 샌드위치집',1, '안준호', '건강이 최고에여', now(), '서울시', '종로구', '효자로7길 6-4', '010-1496-3258', 67, 89, now(), now(), "9:40", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('갓 구운 베이커리',1, '카리나', '빵이 따뜻해요', now(), '서울시' , '종로구', '효자로7길 7-3', '010-7468-2364', 38, 95, now(), now(), "9:40", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('바로 만들어주는 아이스크림',1, '페이커', '아이스크림이시원해요', now(), '서울시', '종로구' , '효자로7길 7-8', '010-9476-9478', 34,89, now(), now(), "9:40", "17:40" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('카스테라 맛집',1, '백로', '디저트가 부드러워요', now(), '서울시' , '종로구' , '옥인2길', '010-4857-3029', 4, 60, now(), now(), "9:50", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('퓨전음식이 맛난 집',1, '아스타', '퓨전음식이 즐거워요', now(), '서울시' , '종로구', '옥인2길 4', '010-4957-2019', 4, 5, now(), now(), "9:50", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('와인맛이 풍부한 집',1, '심상정', '와인 맛이 매력적이에요', now(), '서울시' ,'종로구', '옥인2길 5', '010-9576-9279', 4, 8, now(), now(), "9:50", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('마스터피자',1, '양순옥', '피자가 특별해요', now(), '서울시', '종로구', '옥인2길 6', '010-4857-4920', 32, 57, now(), now(), "9:50", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 채소 가게',1, '강찬희', '채소가 신선해요', now(), '서울시' , '종로구', '옥인2길 8', '010-4859-6028', 45, 78, now(), now(), "9:50", "17:50" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('현지 맛집',1, '고민주', '현지에서 맛집이에요', now(), '서울시' , '종로구', '옥인2길 10', '010-9587-3910', 5, 9, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('아름답고 정겨운 정원',1, '고영인', '정원이 아름다워요', now(), '서울시' , '종로구', '옥인2길 12', '010-9576-8596', 5, 10, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('초밥이 유명한 집',1, ' 고현세', '일식이 맛있고 유명해요', now(), '서울시' , '종로구', '옥인2길 14-8', '010-4563-2178', 59, 678, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('과일이 신선한 가게',1, '최민성', '과일이 신선해요', now(), '서울시' , '종로구', '옥인2길 15', '010-6768-5949', 56, 85, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('음료가 진짜 단집',1, '송길현', '음료가 달고 이색적이에요', now(), '서울시', '종로구', '창의문로1길 3', '010-9481-7580', 856, 960, now(), now(), "10:00", "18:00" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('차분하게 마시는 찻집',1, '김도영', '찻집 분위기가 차분해요', now(), '서울시' , '종로구', '창의문로1길 5', '010-4958-2958', 305, 406, now(), now(), "10:10", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('웅장한 중식집',1, '김민규', '중식당이 화려해요', now(), '서울시' , '종로구', '창의문로1길 7', '010-5968-4958', 50, 139, now(), now(), "10:10", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('갓 만들어 나온 라면',1, '김서윤', '라면이 따뜻해요', now(), '서울시' , '종로구', '창의문로1길 9', '010-5768-7694', 44, 56, now(), now(), "10:10", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('맥주 마시기 즐거운 집',1, '김수민', '술 분위기가 즐거워요', now(), '서울시' , '종로구', '창의문로1길 11', '010-5768-5940', 32, 67, now(), now(), "10:10", "18:10" );
+insert into article(title, user_id, writer, content, work_time, address1, address2, address3, phone_number, likes, view, reg_date, mod_date, start_time, end_time  )
+values ('해산물이 맛있는 맛집',1, '박태준', '해산물이 맛있어요', now(), '서울시' , '종로구', '창의문로1길 15', '010-3302-3846', 27, 93, now(), now(), "10:10", "18:10" );
 
 
 
@@ -1251,6 +1254,3 @@ insert into article_file(original_file_name, stored_file_name, article_id)
 values ('150-4해산물','articleImg/150-4해산물.jpg',150);
 insert into article_file(original_file_name, stored_file_name, article_id)
 values ('150-5해산물','articleImg/150-5해산물.jpg',150);
-
-
-

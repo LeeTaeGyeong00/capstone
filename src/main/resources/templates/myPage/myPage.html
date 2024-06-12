@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 정보</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>회원 정보</h2>
+    <div>
+        <label>ID: </label><span th:text="${user.id}"></span><br>
+        <label>아이디: </label><span th:text="${user.person_id}"></span><br>
+        <label>닉네임: </label><span th:text="${user.nick_name}"></span><br>
+        <label>역할: </label><span th:text="${user.role}"></span><br>
+        <label>전화번호: </label><span th:text="${user.phone_num}"></span><br>
+        <label>나이: </label><span th:text="${user.old}"></span><br>
+    </div>
+</div>
+</body>
+</html>

@@ -241,7 +241,7 @@
                 <p><i>@</i> 2,000 포인트</p>
             </dd>
             <dd id="User_profile" class="interior">회원정보</dd>
-            <dd><a href="#">개인정보 수정</a></dd>
+            <dd><a th:href="@{/bangbang/user/{id}/update(id=${user.id})}">개인정보 수정</a></dd>
             <dd id="User_review" class="interior">내가 쓴 리뷰</dd>
             <dd id="User_save" class="interior">찜한식당</dd>
             <dd><a href="#">식당 게시판 작성하기</a></dd>
@@ -251,28 +251,30 @@
     <section class="user_profil act">
         <div class="tit_box">
             <h3>계정정보 설정</h3>
-            <button>편집하기</button>
+            <a th:href="@{/bangbang/user/{id}/update(id=${user.id})}"><button>편집하기</button></a>
         </div>
         <table>
             <tr>
                 <th>계정 번호</th>
-                <td>00000000000000000000000</td>
+                <td th:text="${user.id}">00000000000000000000000</td>
             </tr>
             <tr>
                 <th>아이디</th>
-                <td>123@123.com</td>
+                <td th:text="${user.person_id}">123@123.com</td>
             </tr>
             <tr>
+            <tr>
                 <th>비밀번호</th>
-                <td>******* <button>변경</button></td>
+                <td><a th:href="@{/bangbang/auth/change-password}" class="btn btn-link">변경</a></td>
+            </tr>
             </tr>
             <tr>
                 <th>닉네임</th>
-                <td>닉네임 <button>변경</button></td>
+                <td th:text="${user.nick_name}">닉네임 <button>변경</button></td>
             </tr>
             <tr>
                 <th>계정 탈퇴</th>
-                <td><button class="withdrawal">탈퇴</button></td>
+                <td><button class="withdrawal" onclick="confirmWithdrawal()">탈퇴</button></td>
             </tr>
         </table>
     </section>
@@ -423,6 +425,18 @@
         userProfileLink.addEventListener("click", () => activateSection(userProfileSection));
         userReviewLink.addEventListener("click", () => activateSection(userReviewSection));
         userSaveLink.addEventListener("click", () => activateSection(userSaveSection));
+
+        // 회원 탈퇴
+        function confirmWithdrawal() {
+            var input = prompt("회원탈퇴를 입력하세요:");
+
+            if (input === "회원탈퇴") {
+                var url = "/user/" + userId + "/delete";
+                window.location.href = url;
+            } else {
+                alert("다시 입력하세요.");
+            }
+        }
     });
 </script>
 </body>

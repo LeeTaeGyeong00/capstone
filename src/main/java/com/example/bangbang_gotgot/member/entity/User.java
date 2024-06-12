@@ -31,10 +31,10 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime created_at;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime last_id_changed;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime last_passwd_changed;
 
 

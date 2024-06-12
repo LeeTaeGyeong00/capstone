@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class MemberApiController extends BaseController {
 
@@ -56,9 +58,22 @@ public class MemberApiController extends BaseController {
         }
     }
 
+    @PostMapping("/bangbang/check/nickname/update")
+    public ResponseEntity<Boolean> checkNick2(@RequestParam("nick_name")String nick_name,
+                                              @RequestParam("id")Long id){
+        try {
+            boolean checked = memberService.checkNick2(nick_name, id);
+            return ResponseEntity.status(HttpStatus.OK).body(checked);
+        } catch (CustomExceptions.Exception e) {
+            return handleApiException(e, HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return handleApiException(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
-    // 회원 아이디 체크
+
+    // 회원 아이디 찾기 체크
     @PostMapping("/bangbang/find-id/check")
     public ResponseEntity<?> find_id(@RequestParam("nickname")String nickname,
                                      @RequestParam("phone")String phone)
@@ -75,7 +90,7 @@ public class MemberApiController extends BaseController {
         }
     }
 
-    // 회원 비밀번호 체크
+    // 회원 비밀번호 찾기 체크
     @PostMapping("/bangbang/find-Pwd/check")
     public ResponseEntity<?> find_pwd(@RequestParam("personId")String personId, @RequestParam("nickname")String nickname,
                                       @RequestParam("phone")String phone)
@@ -90,6 +105,17 @@ public class MemberApiController extends BaseController {
         } catch (CustomExceptions.Exception e) {
             return handleApiException(e, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    // 회원정보 수정
+    @PostMapping("/user/{id}/update")
+    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody AllUserInfoDto allUserInfoDto, HttpSession httpSession){
+            try {
+                memberService.update(allUserInfoDto, id, httpSession);
+                return ResponseEntity.status(HttpStatus.OK).body("회원수정 완료");
+            } catch (Exception e){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원수정 실패");
+            }
     }
 
 

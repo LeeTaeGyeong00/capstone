@@ -1,6 +1,8 @@
 package com.example.bangbang_gotgot.article.dto;
 
+
 import com.example.bangbang_gotgot.article.entity.Article;
+import com.example.bangbang_gotgot.member.entity.User;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -34,10 +36,11 @@ public class ArticleDto {
     private String endTime2;
 
 
-    public static Article makeArticle(ArticleDto board) {
+    public static Article makeArticle(ArticleDto board, User user) {
         return new Article(
                 board.getId(),
                 board.getTitle(),
+                user,
                 board.getWriter(),
                 board.getContent(),
                 LocalDateTime.now(),

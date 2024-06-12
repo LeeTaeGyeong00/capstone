@@ -2,11 +2,12 @@ package com.example.bangbang_gotgot.member.dto;
 
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
+import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Getter
+@Data
 public class MemberDto {
     private Long id;
     private String person_id;
