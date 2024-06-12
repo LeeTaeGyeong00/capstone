@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,7 @@ public class ArticleService {
     }
 
     // 글 작성 처리
+    @Transactional
     public Article write(ArticleDto board, User user) {
         String start = board.getStartTime1() + ":" + board.getStartTime2();
         board.setStartTime1(start);
@@ -77,6 +79,7 @@ public class ArticleService {
 
 
     // 관리자 글 작성 사진:  DB 저장
+    @Transactional
     public void writeBoard(MultipartFile file, List<MultipartFile> multiFiles, Article article) throws IOException {
 
         if (multiFiles.get(0).isEmpty()){ // 파일이 한개일 떄
@@ -138,6 +141,128 @@ public class ArticleService {
 
         }
 
+
+    }
+
+    // 게시판 수정: 게시글 찾기
+    public Article findArticle(Long id) {
+        Article article = articleRepository.findById(id).orElse(null);
+        return article;
+    }
+
+    // 게시판 수정
+    @Transactional
+    public Article updateArticle(ArticleDto articleDto, User user, Long id) {
+        Article article = articleRepository.findById(id).orElse(null);
+        if (article == null || !Objects.equals(article.getUserId().getId(), user.getId())) {
+            return null;
+        }
+        String start = articleDto.getStartTime1() + ":" + articleDto.getStartTime2();
+        String end = articleDto.getEndTime1() + ":" + articleDto.getEndTime2();
+
+        article.setTitle(articleDto.getTitle());
+        article.setWriter(articleDto.getWriter());
+        article.setContent(articleDto.getContent());
+        article.setAddress1(articleDto.getAddress1());
+        article.setAddress2(articleDto.getAddress2());
+        article.setAddress3(articleDto.getAddress3());
+        article.setPhoneNumber(articleDto.getPhoneNumber());
+        article.setModDate(LocalDateTime.now());
+        article.setStartTime(start);
+        article.setEndTime(end);
+
+
+        Article savedArticle = articleRepository.save(article);
+
+        return savedArticle;
+    }
+
+    // 게시판 수정: 사진
+    @Transactional
+    public String updateBoard(MultipartFile file, List<MultipartFile> multiFiles, Article article, Long id) throws IOException {
+
+        List<ArticleFile> boardDTOS = articleFileRepository.findByArticleId(id);
+        if (boardDTOS == null) {
+            return null;
+        }
+        // 파일 삭제
+        String folderPath = "C:/springboot_img/"; // 해당 폴더 경로
+
+        for (ArticleFile articleFile : boardDTOS) {
+            try {
+                Path filePath = Paths.get(folderPath, articleFile.getStoredFileName()); // 파일 경로 생성
+                Files.deleteIfExists(filePath); // 파일 삭제
+                System.out.println("파일 삭제 성공");
+            } catch (IOException e) {
+                // 파일 삭제 실패 시 처리
+                e.printStackTrace();
+            }
+        }
+
+        articleFileRepository.deleteAll(boardDTOS);
+
+        if (multiFiles.get(0).isEmpty()){ // 파일이 한개일 떄
+            // 파일의 이름 가져옴
+            String originalFilename = file.getOriginalFilename();
+
+            // 서버 저장용 이름을 만듬
+            String storedFileName = System.currentTimeMillis() + "_" + originalFilename;
+
+            // 해당 경로에 파일 저장
+            String savePath = "C:/springboot_img/" + storedFileName;
+            file.transferTo(new File(savePath));
+
+            // 해당 데이터 save 처리
+            ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilename, storedFileName);
+            articleFileRepository.save(articleFile);
+
+            return "board";
+
+        } else{ // 다중 파일 처리
+
+            // 파일의 이름 가져옴
+            List<String> originalFilenames = new ArrayList<>();
+
+            originalFilenames.add(file.getOriginalFilename());
+            for (MultipartFile file1 : multiFiles) {
+                originalFilenames.add(file1.getOriginalFilename());
+            }
+
+            // 서버 저장용 이름을 만듬
+            List<String> storedFileNames = new ArrayList<>();
+
+            String firstFile = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            storedFileNames.add(firstFile);
+            for (MultipartFile file1 : multiFiles) {
+                storedFileNames.add(UUID.randomUUID() + "_" + file1.getOriginalFilename());
+            }
+
+            // 해당 경로에 파일 저장
+            try {
+                String savePath = "C:/springboot_img/" + firstFile;
+                file.transferTo(new File(savePath));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            for (int i = 0; i < storedFileNames.size()-1;i++) {
+                try {
+                    String savePath = "C:/springboot_img/" + storedFileNames.get(i+1);
+                    multiFiles.get(i).transferTo(new File(savePath));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // 해당 데이터 save 처리
+            for (int i = 0 ; i < originalFilenames.size(); i++) {
+                ArticleFile articleFile = ArticleFile.toBoardFileEntity(article, originalFilenames.get(i), storedFileNames.get(i));
+                articleFileRepository.save(articleFile);
+            }
+
+            return "board";
+
+        }
 
     }
 
@@ -265,7 +390,5 @@ public class ArticleService {
         return articleFiles;
 
     }
-
-
 
 }
