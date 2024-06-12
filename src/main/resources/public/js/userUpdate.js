@@ -118,14 +118,16 @@ function checkNickProceed() {
 
         // 보낼 JSON 데이터 생성
         var jsonData = {
-            "nick_name": document.querySelector("#nick_name").value
+            "nick_name": document.querySelector("#nick_name").value,
+            "id" : document.querySelector("#id").value
         };
 
         // Ajax 요청
         $.ajax({
             type: "POST",
-            url: "/bangbang/check/nickname",  // Spring Boot 어플리케이션의 URL로 변경
-            data: jsonData,
+            url: "/bangbang/check/nickname/update",  // Spring Boot 어플리케이션의 URL로 변경
+            data:  $.param(jsonData), // @RequestParam으로 받기
+            contentType: "application/x-www-form-urlencoded",
             success: function (response) {
                 if (response === true) {
 
@@ -152,13 +154,15 @@ function checkNickProceed() {
 
             // 보낼 JSON 데이터 생성
             var jsonData2 = {
-                "nick_name": document.querySelector("#textNick").value
+                "nick_name": document.querySelector("#textNick").value,
+                "id" : document.querySelector("#id2").value
             };
 
             $.ajax({
                 type: "POST",
-                url: "/bangbang/check/nickname",  // Spring Boot 어플리케이션의 URL로 변경
-                data: jsonData2,
+                url: "/bangbang/check/nickname/update",  // Spring Boot 어플리케이션의 URL로 변경
+                data:  $.param(jsonData2), // @RequestParam으로 받기
+                contentType: "application/x-www-form-urlencoded",
                 success: function (response) {
                     if (response === true) {
 

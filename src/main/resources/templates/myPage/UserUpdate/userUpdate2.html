@@ -57,7 +57,7 @@
             </div>
             <div class="join_control_box">
                 <button type="submit" id="signUp-back" class="Prev-step step_btn">이 전</button>
-                <form action="/bangbang/auth/sign-in" method="post" name="myform">
+                <form th:action="@{/user/{id}/update(id=${user.id})}" method="post" name="myform">
                     <input type="hidden" id="id" th:value="${user.id}">
                     <input type="hidden" id="user-id" th:value="${user.person_id}">
                     <input type="hidden"id="user-passwd" th:value="${user.passwd}">
@@ -73,7 +73,7 @@
 
 </div>
 
- <script type="text/javascript" src="/js/signUp2.js"></script>
+ <script type="text/javascript" src="/js/userUpdate2.js"></script>
 
 
     </body>

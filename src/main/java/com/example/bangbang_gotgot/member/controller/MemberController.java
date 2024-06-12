@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -107,7 +109,15 @@ public class MemberController {
         return "myPage/UserUpdate/userUpdate2";
     }
 
-    // 회원정보 수정 완료
+    // 회원 삭제
+    @GetMapping("/user/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        User user = memberService.delete(id);
+        if (user == null) {
+            return "error/404";
+        }
+        return "redirect:/";
+    }
 
 
 

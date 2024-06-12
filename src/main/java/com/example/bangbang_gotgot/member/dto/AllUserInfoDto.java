@@ -1,6 +1,9 @@
 package com.example.bangbang_gotgot.member.dto;
 
+import com.example.bangbang_gotgot.member.entity.User;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 public class AllUserInfoDto {
@@ -16,4 +19,6 @@ public class AllUserInfoDto {
     private int old;
 
     private String phone_num;
+
+
 }

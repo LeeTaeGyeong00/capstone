@@ -82,6 +82,8 @@
             </div>
 
             <form class="join_form" th:action="@{/bangbang/user/{id}/update(id=${user.id})}" method="post" name="myform">
+
+                <input type="hidden" id="id" th:value="${user.id}">
                 <div class="form_id">
                     <span class="form_item"> 아이디</span> <br>
                     <input type="text" class="joinInput" name="person_id" id="user-id" th:value="${user.person_id}" readonly>
@@ -93,7 +95,7 @@
                 </div>
                 <div class="form_pw">
                     <span class="form_item"> 비밀번호</span><br>
-                    <input type="password" class="joinInput" name="passwd" id="user-passwd" th:value="${user.passwd}" placeholder="비밀번호를 입력해주세요.">
+                    <input type="password" class="joinInput" name="passwd" id="user-passwd"  placeholder="원하는 비밀번호를 입력해주세요.">
                 </div>
                 <div class="form_pwChk">
                     <span class="form_item"> 비밀번호 확인</span><br>
@@ -129,6 +131,7 @@
 
         <div class="form-group mb-4">
             <input type="text" class="form-control" id="textNick"><br>
+            <input type="hidden" id="id2" th:value="${user.id}">
             <p id="textNickCheck"></p>
         </div>
 

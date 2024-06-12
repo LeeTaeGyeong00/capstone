@@ -2,18 +2,21 @@ package com.example.bangbang_gotgot.member.service;
 
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
 import com.example.bangbang_gotgot.member.dto.LoginRequest;
-import com.example.bangbang_gotgot.member.dto.MemberDto;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -77,6 +80,24 @@ public class MemberService {
     public boolean checkNick(String nickName) {
         boolean existId = userRepository.existsByNickname(nickName);
         if(existId){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean checkNick2(String nickName, Long id) {
+        boolean existId = userRepository.existsByNickname(nickName);
+        if(existId){
+            User user = userRepository.findById(id).orElse(null);
+            System.out.println(user.getNick_name());
+            System.out.println(nickName);
+            if (user == null){
+                return false;
+            }
+            if(user.getNick_name().equals(nickName)){
+                return true;
+            }
             return false;
         } else {
             return true;
@@ -185,8 +206,54 @@ public class MemberService {
 //        return myPageResponse;
 //    }
 
+    // 회원 찾기
     public User findUser(Long id) {
         User user = userRepository.findById(id).orElse(null);
         return user;
     }
+
+    // 회원 수정
+    @Transactional
+    public ResponseEntity<String> update(AllUserInfoDto allUserInfoDto, Long id, HttpSession httpSession) {
+
+        User target = userRepository.findById(id).orElse(null);
+
+        if(target == null || !id.equals(allUserInfoDto.getId())){
+            //400, 잘못된 요청 응답
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원수정 실패");
+        }
+
+        // 사용자 정보 업데이트
+        target.setPerson_id(allUserInfoDto.getPerson_id());
+        target.setPasswd(bCryptPasswordEncoder.encode(allUserInfoDto.getPasswd()));
+        target.setLast_passwd_changed(LocalDateTime.now());
+        target.setNick_name(allUserInfoDto.getNick_name());
+        target.setOld(allUserInfoDto.getOld());
+        target.setPhone_num(allUserInfoDto.getPhone_num());
+
+        userRepository.save(target);
+
+        httpSession.setAttribute("user",target);
+
+        return ResponseEntity.ok("회원수정 성공");
+    }
+
+    // 회원 삭제
+    @Transactional
+    public User delete(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+
+        if (user == null){
+            return null;
+        }
+
+        // 해당 게시글 리뷰 전부 삭제
+
+        // 해당 게시글 전부 삭제
+
+        // 회원 삭제
+        userRepository.delete(user);
+        return user;
+    }
+
 }

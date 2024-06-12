@@ -251,7 +251,7 @@
     <section class="user_profil act">
         <div class="tit_box">
             <h3>계정정보 설정</h3>
-            <button>편집하기</button>
+            <a th:href="@{/bangbang/user/{id}/update(id=${user.id})}"><button>편집하기</button></a>
         </div>
         <table>
             <tr>
@@ -274,7 +274,7 @@
             </tr>
             <tr>
                 <th>계정 탈퇴</th>
-                <td><button class="withdrawal">탈퇴</button></td>
+                <td><button class="withdrawal" onclick="confirmWithdrawal()">탈퇴</button></td>
             </tr>
         </table>
     </section>
@@ -425,6 +425,18 @@
         userProfileLink.addEventListener("click", () => activateSection(userProfileSection));
         userReviewLink.addEventListener("click", () => activateSection(userReviewSection));
         userSaveLink.addEventListener("click", () => activateSection(userSaveSection));
+
+        // 회원 탈퇴
+        function confirmWithdrawal() {
+            var input = prompt("회원탈퇴를 입력하세요:");
+
+            if (input === "회원탈퇴") {
+                var url = "/user/" + userId + "/delete";
+                window.location.href = url;
+            } else {
+                alert("다시 입력하세요.");
+            }
+        }
     });
 </script>
 </body>

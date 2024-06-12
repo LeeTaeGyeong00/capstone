@@ -13,6 +13,7 @@ commentCreateBtn.addEventListener("click",function () {
 
     // 보낼 JSON 데이터 생성
     var jsonData = {
+        id: document.querySelector("#id").value,
         person_id: document.querySelector("#user-id").value,
         passwd: document.querySelector("#user-passwd").value,
         nick_name: document.querySelector("#nick-name").value,
