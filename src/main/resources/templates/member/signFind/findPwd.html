@@ -31,19 +31,28 @@
         #timerDisplay,#replaceInput {
             color: red;
         }
+        .PwCol{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         #numCheckBtn{
-            transform: translateX(-60px);
-            width: 40px;
+            width: 50px;
             line-height: 30px;
             color: #fff;
             background: #F55E08;
+            position: absolute;
+            bottom: 510px;
+            right: 887px;
         }
         #numCheckedOk{
-            transform: translateX(-64px);
-            width: 40px;
+            width: 50px;
             line-height: 30px;
             color: #fff;
             background: #F55E08;
+            position: absolute;
+            bottom: 435px;
+            right: 887px;
         }
     </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -76,11 +85,11 @@
         <div class="content">
             <div class="login_wrap">
                 <h2 class="guideLogin">비밀번호 찾기</h2>
-                <form id="myForm" method="post" action="/bangbang/find-pwd">
-                    <input type="text" name="personId" id="personId" placeholder="아이디 입력" class="login_input login_C"><br>
-                    <input type="text" name="nickname" id="nickname" placeholder="닉네임 입력" class="login_input login_C"><br>
-                    <input type="text" name="phone" id="phone" placeholder="전화번호 입력" class="login_input login_C"><input type="button" id="numCheckBtn" value="전송"><br>
-                    <input type="text" name="phone2" id="phone2" placeholder="인증번호 확인" class="login_input login_C"> <span id="timerDisplay"></span> <input type="button" id="numCheckedOk" value="확인"><br>
+                <form id="myForm" method="post" action="/bangbang/find-pwd" class="PwCol">
+                    <input type="text" name="personId" id="personId" placeholder="아이디 입력" class="login_input login_C">
+                    <input type="text" name="nickname" id="nickname" placeholder="닉네임 입력" class="login_input login_C">
+                    <input type="text" name="phone" id="phone" placeholder="전화번호 입력" class="login_input login_C"><input type="button" id="numCheckBtn" value="전송">
+                    <input type="text" name="phone2" id="phone2" placeholder="인증번호 확인" class="login_input login_C"> <span id="timerDisplay"></span> <input type="button" id="numCheckedOk" value="확인">
                     <span id="replaceInput" class="login_C"></span><br>
 
                     <button type="submit" id="nextPwdBefore" class="btn_login login_C">비밀번호 찾기</button>
@@ -204,44 +213,44 @@
     // })
     //
     //
-
-    let check = 2
-    // 전제 검증
-        nextPwdBefore.addEventListener("click", function (event) {
-
-        event.preventDefault()
-
-
-        var jasonData = {
-            "personId" : document.querySelector("#personId").value,
-            "nickname" : document.querySelector("#nickname").value,
-            "phone" : document.querySelector("#phone").value
-        }
-
-        // api 구현하기
-        $.ajax({
-            type: "POST",
-            url: "/bangbang/find-Pwd/check",
-            data: jasonData, // @RequestParam 일때는 이렇게 받는다
-            success: function (response) {
-                console.log("성공")
-
-                if (check === 0){
-                    alert("전화번호 인증 확인")
-
-                } else if (check === 2){
-                    var form = document.getElementById("myForm");
-                    form.submit();
-                }
-
-            },
-            error: function (error) {
-                console.log("실패")
-                alert("아이디, 닉네임, 전화번호가 일치하지 않습니다.")
-            }
-        })
-
-    })
+    //
+    // let check = 2
+    // // 전제 검증
+    //     nextPwdBefore.addEventListener("click", function (event) {
+    //
+    //     event.preventDefault()
+    //
+    //
+    //     var jasonData = {
+    //         "personId" : document.querySelector("#personId").value,
+    //         "nickname" : document.querySelector("#nickname").value,
+    //         "phone" : document.querySelector("#phone").value
+    //     }
+    //
+    //     // api 구현하기
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/bangbang/find-Pwd/check",
+    //         data: jasonData, // @RequestParam 일때는 이렇게 받는다
+    //         success: function (response) {
+    //             console.log("성공")
+    //
+    //             if (check === 0){
+    //                 alert("전화번호 인증 확인")
+    //
+    //             } else if (check === 2){
+    //                 var form = document.getElementById("myForm");
+    //                 form.submit();
+    //             }
+    //
+    //         },
+    //         error: function (error) {
+    //             console.log("실패")
+    //             alert("아이디, 닉네임, 전화번호가 일치하지 않습니다.")
+    //         }
+    //     })
+    //
+    // })
 
 </script>
 
