@@ -7,8 +7,12 @@ import com.example.bangbang_gotgot.article.entity.ArticleFile;
 import com.example.bangbang_gotgot.article.repository.ArticleFileRepository;
 import com.example.bangbang_gotgot.article.repository.ArticleRepository;
 import com.example.bangbang_gotgot.article.specification.ArticleSpecifications;
+import com.example.bangbang_gotgot.member.entity.Like;
 import com.example.bangbang_gotgot.member.entity.User;
+import com.example.bangbang_gotgot.member.repository.LikeRepository;
+import com.example.bangbang_gotgot.member.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -33,6 +37,7 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
     private final ArticleFileRepository articleFileRepository;
+    private final LikeRepository likeRepository;
 
     // 게시글 랭킹(조회수) 리턴(메인)
     public List<Article> articleRanking() {
@@ -63,7 +68,6 @@ public class ArticleService {
     }
 
     // 글 작성 처리
-    @Transactional
     public Article write(ArticleDto board, User user) {
         String start = board.getStartTime1() + ":" + board.getStartTime2();
         board.setStartTime1(start);
@@ -79,7 +83,6 @@ public class ArticleService {
 
 
     // 관리자 글 작성 사진:  DB 저장
-    @Transactional
     public void writeBoard(MultipartFile file, List<MultipartFile> multiFiles, Article article) throws IOException {
 
         if (multiFiles.get(0).isEmpty()){ // 파일이 한개일 떄
@@ -390,5 +393,37 @@ public class ArticleService {
         return articleFiles;
 
     }
+    //마이페이지 작성한 article 조회
+    @Transactional(readOnly = true)
+    public List<Article> getArticlesByUserId(User userId) {
+        return articleRepository.findByUserId(userId);
+    }
 
+//    //좋아요
+//    @Transactional
+//    public void likeArticle(Long userId, Long articleId) throws Exception {
+//        if (likeRepository.existsByUserNoIdAndArticleNoId(userId, articleId)) {
+//            throw new Exception("User has already liked this article");
+//        }
+//
+//        User user = userRepository.findById(userId)
+//                .orElseThrow(() -> new Exception("User not found"));
+//        Article article = articleRepository.findById(articleId)
+//                .orElseThrow(() -> new Exception("Article not found"));
+//
+//        Like like = new Like();
+//        like.setUserNo(user);
+//        like.setArticleNo(article);
+//
+//        article.setLikes(article.getLikes() + 1);
+//
+//        likeRepository.save(like);
+//        articleRepository.save(article);
+//    }
+    public Article findArticleById(Long articleId) {
+        return articleRepository.findById(articleId).orElse(null);
+    }
+    public void saveLike(Like like) {
+        likeRepository.save(like);
+    }
 }

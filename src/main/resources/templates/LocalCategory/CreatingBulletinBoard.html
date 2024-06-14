@@ -69,16 +69,19 @@
 <!--CBB Contents Start-->
 <div class="CBB-wrap">
   <div class="editor-container">
-    <div class="bar">
-      <div class="CBB-buttons">
-        <button class="save-button">닫기</button>
-        <button class="publish-button">저장</button>
+    <form id="reviewForm" method="post">
+      <div class="bar">
+        <div class="CBB-buttons">
+          <button type="button" class="save-button">닫기</button>
+          <button type="button" class="publish-button" onclick="submitReview()">저장</button>
+        </div>
       </div>
-    </div>
-    <div class="editor">
-      <input type="text" placeholder="제목" >
-      <textarea placeholder="내용을 입력해보세요!"></textarea>
-    </div>
+      <div class="editor">
+        <input type="hidden" id="articleId" name="articleId" th:value="${article.id}">
+        <input type="text" name="title" placeholder="제목을 입력하세요">
+        <textarea name="content" placeholder="내용을 입력해보세요!"></textarea>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -101,7 +104,39 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<script>
+  function submitReview() {
+    const form = document.getElementById('reviewForm');
+    const formData = new FormData(form);
+    const review = {
+      title: formData.get('title'),
+      content: formData.get('content'),
+      articleId: formData.get('articleId')
+    };
 
+    fetch('/review-write-post/' + review.articleId, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    })
+            .then(response => {
+              if (response.ok) {
+                // 저장이 성공하면 게시판 상세 페이지로 이동
+                window.location.href = '/board/detail/' + review.articleId;
+              } else {
+                // 실패 처리
+                console.error('Failed to save review');
+                // 실패 메시지를 출력하거나 사용자에게 알림을 줄 수 있음
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              // 오류 처리
+            });
+  }
+</script>
 <div th:include="layout/footer :: #footer"></div>
 </body>
 

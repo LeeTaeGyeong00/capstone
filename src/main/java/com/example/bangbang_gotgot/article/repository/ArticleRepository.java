@@ -1,6 +1,7 @@
 package com.example.bangbang_gotgot.article.repository;
 
 import com.example.bangbang_gotgot.article.entity.Article;
+import com.example.bangbang_gotgot.member.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -17,6 +18,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<Article> findByAddress2(String district, Pageable pageable);
     Page<Article> findByAddress2OrderByViewDesc(String district, Pageable pageable);
     Page<Article> findByAddress2OrderByLikesDesc(String district, Pageable pageable);
-
+    List<Article> findByUserId(User userId);
     List<Article> findTop8ByOrderByViewDesc();
 }

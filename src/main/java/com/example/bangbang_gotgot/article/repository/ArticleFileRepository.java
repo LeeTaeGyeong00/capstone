@@ -11,4 +11,5 @@ public interface ArticleFileRepository extends JpaRepository<ArticleFile, Long> 
     @Query(value = "select * from article_file where article_id = :articleId", nativeQuery = true)
     List<ArticleFile> findByArticleId(@Param("articleId") Long articleId);
 
+
 }

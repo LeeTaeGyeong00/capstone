@@ -4,8 +4,12 @@ import com.example.bangbang_gotgot.article.dto.ArticleDto;
 import com.example.bangbang_gotgot.article.dto.BoardDTO;
 import com.example.bangbang_gotgot.article.entity.Article;
 import com.example.bangbang_gotgot.article.entity.ArticleFile;
+import com.example.bangbang_gotgot.article.entity.Review;
 import com.example.bangbang_gotgot.article.service.ArticleService;
+import com.example.bangbang_gotgot.article.service.ReviewService;
+import com.example.bangbang_gotgot.member.entity.Like;
 import com.example.bangbang_gotgot.member.entity.User;
+import com.example.bangbang_gotgot.member.repository.LikeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +41,8 @@ import java.util.stream.Collectors;
 public class ArticleController {
 
     private final ArticleService articleService;
-
+    private final LikeRepository likeRepository;
+    private final ReviewService reviewService;
 
     // 관리자 게시글 쓰기
     @GetMapping("/restaurant_write")
@@ -111,12 +118,6 @@ public class ArticleController {
     }
 
 
-    // 리뷰 쓰기
-    @GetMapping("/review-write/{id}")
-    public String review(@PathVariable Long id, Model model) {
-        model.addAttribute("id",id);
-        return "LocalCategory/CreatingBulletinBoard";
-    }
 
 
     // 게시글 상세페이지
@@ -124,7 +125,7 @@ public class ArticleController {
     private String key;
 
     @GetMapping("/detail/{id}")
-    public String datail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    public String detail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         Article article = articleService.findIdList(id ,request, response);
         User sessionUser = (User) session.getAttribute("user");
         List<BoardDTO> boardDTO = articleService.findFile(id);
@@ -132,15 +133,46 @@ public class ArticleController {
         User user = sessionUser != null ? sessionUser : new User();
         System.out.println(user.getId());
         System.out.println(article.getUserId().getId());
+        // 리뷰 조회
+        List<Review> reviews = reviewService.findReviewsByArticleId(id);
 
         model.addAttribute("user", sessionUser != null ? sessionUser : new User());
         model.addAttribute("article",article);
         model.addAttribute("key",key);
         model.addAttribute("imagefiles",boardDTO);
+        model.addAttribute("reviews", reviews);
         return "contact";
     }
 
+    // 게시글 좋아요
+    @PostMapping("/like/{articleId}")
+    public String likeArticle(@PathVariable Long articleId, HttpSession session) {
+        // 세션에서 현재 로그인한 사용자의 정보 가져오기
+        User sessionUser = (User) session.getAttribute("user");
+        if (sessionUser == null) {
+            // 로그인되지 않은 사용자일 경우 로그인 페이지로 리다이렉트
+            return "redirect:/login";
+        }
 
+        // 사용자가 좋아요를 누른 게시물과 사용자 정보를 이용하여 Like 객체 생성
+        Like like = new Like();
+        like.setUserNo(sessionUser);
+        like.setArticleNo(articleService.findArticleById(articleId)); // ArticleService를 통해 게시물 조회
+
+        // 생성한 Like 객체를 저장
+        likeRepository.save(like);
+
+        log.info("Like saved for articleId: {}", articleId);
+        // 좋아요를 누른 게시물 상세 페이지로 리다이렉트
+        return "redirect:/board/detail/" + articleId;
+    }
+    // 리뷰 쓰기
+    @GetMapping("/review-write/{id}")
+    public String review(@PathVariable Long id, Model model) {
+        Article article = articleService.findArticleById(id);
+        model.addAttribute("article", article);
+        return "LocalCategory/CreatingBulletinBoard";
+    }
     // 게시글 목록 (검색 + 콤보박스)
     @GetMapping("/list")
     public String list(Model model,

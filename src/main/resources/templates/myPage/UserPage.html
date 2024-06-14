@@ -283,44 +283,20 @@
     <!--User_review start-->
     <section class="User_review">
         <div class="tit_box">
-            <h3>내가 쓴 리뷰글(3)</h3>
+            <h3>내가 쓴 글</h3>
             <button>삭제하기</button>
         </div>
         <div class="modal-R-content">
             <div class="modal_reviews">
-                <div class="modal-review">
+                <div th:each="article : ${articles}" class="modal-review">
                     <div class="md-rv-titles">
                         <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
+                            <h2 th:text="${article.title}">게시물 제목</h2>
+                            <p class="rv-date" th:text="${article.address1} + ' ' + ${article.address2} + ' ' + ${article.address3}">게시물 주소</p>                        </div>
                         <h3>작성일자</h3>
-                        <p class="rv-date">yyyy년 mm월 dd일</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>작성일자</h3>
-                        <p class="rv-date">yyyy년 mm월 dd일</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>작성일자</h3>
-                        <p class="rv-date">yyyy년 mm월 dd일</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <p class="rv-date" th:text="${#temporals.format(article.regDate, 'yyyy년 MM월 dd일')}">yyyy년 mm월 dd일</p>
+                        <p th:text="${article.content}">게시물 내용...</p>
+                        <a th:href="@{/board/detail/{id}(id=${article.id})}" class="btn btn-primary">상세보기</a>
                     </div>
                 </div>
             </div>

@@ -78,6 +78,10 @@
                     </span>
 <!--                    <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>-->
                     <div class="item heart"><i class="fa fa-heart" aria-hidden="true"></i> 좋아요</div>
+                    <div class="item bmark"><i class="fa fa-eye" aria-hidden="true"></i> 즐겨찾기</div>
+                <form th:action="@{/board/like/{articleId}(articleId=${article.id})}" method="post">
+                    <button type="submit">좋아요</button>
+                </form>
                     <div class="item share"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</div>
                 </div>
                 <div class="col-lg-12">
@@ -116,20 +120,21 @@
                                     </tr>
                                 </table>
                             </div>
-
                         </div>
                         <div class="right_section">
                             <div class="right_section_content">
-                                <div class="review">
-                                    <h3>사용자 1 &gt;</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod te incididuntLorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                                <div th:if="${#lists.isEmpty(reviews)}">
+                                    <p>아직 리뷰가 없어요! 당신이 첫번째 손님일 수도 있어요 :)</p>
                                 </div>
-                                <div class="review">
-                                    <h3>사용자 2 &gt;</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod te incididuntLorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                                <div th:each="review : ${reviews}">
+                                    <div class="review">
+                                        <h3 th:text="${review.userId.nick_name}"></h3>
+                                        <p th:text="${review.title}"></p>
+                                        <p th:text="${review.content}"></p>
+                                    </div>
                                 </div>
                                 <div class="more_reviews">
-                                    <button button id="moreButton">더보기 &gt;</button>
+                                    <button id="moreButton">더보기 &gt;</button>
                                 </div>
                             </div>
                             <div class="btn_rsv_wrap">
@@ -237,26 +242,19 @@
             </div>
         </div>
         <div class="modal_reviews">
-            <div class="modal-review">
-                <h3>닉네임</h3>
-                <div>
-                    <p class="rv-date">yyyy년 mm월 dd일</p>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            <div th:if="${#lists.isEmpty(reviews)}">
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>아직 리뷰가 없어요! 당신이 첫번째 손님일 수도 있어요 :)</p>
             </div>
-            <div class="modal-review">
-                <h3>닉네임</h3>
-                <div>
-                    <p class="rv-date">yyyy년 mm월 dd일</p>
+            <div class = "modal-review" th:each="review : ${reviews}">
+                <div class="review">
+                    <h3 th:text="${review.userId.nick_name}"></h3>
+                    <p th:text="${review.title}"></p>
+                    <p th:text="${review.content}"></p>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-            </div>
-            <div class="modal-review">
-                <h3>닉네임</h3>
-                <div>
-                    <p class="rv-date">yyyy년 mm월 dd일</p>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
             </div>
         </div>
     </div>

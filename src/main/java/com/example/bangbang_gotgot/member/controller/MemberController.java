@@ -1,5 +1,7 @@
 package com.example.bangbang_gotgot.member.controller;
 
+import com.example.bangbang_gotgot.article.entity.Article;
+import com.example.bangbang_gotgot.article.service.ArticleService;
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
 import com.example.bangbang_gotgot.member.dto.LoginRequest;
 import com.example.bangbang_gotgot.member.dto.LoginResponse;
@@ -16,12 +18,14 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
+    private final ArticleService articleService;
 
     // 회원가입
     @GetMapping("/bangbang/auth/sign-in")
@@ -44,22 +48,6 @@ public class MemberController {
         return "member/login";
     }
 
-//    @PostMapping("/bangbang/auth/login")
-//    public String login(@ModelAttribute LoginRequest loginRequest, HttpServletRequest request, Model model) {
-//        try {
-//            User user = memberService.login(loginRequest);
-//
-//            HttpSession session = request.getSession(true);
-//            session.setAttribute("user", user);
-//
-//            return "redirect:/";
-//        } catch (Exception e) {
-//            model.addAttribute("error", "Invalid username or password");
-//            model.addAttribute("loginRequest", new LoginRequest());
-//            return "member/login";
-//        }
-//    }
-
     @PostMapping("/bangbang/auth/login")
     public String login(@ModelAttribute MemberDto memberDto, HttpServletRequest request, Model model) {
         try {
@@ -81,7 +69,6 @@ public class MemberController {
             return "member/login";
         }
     }
-
 
     // 마이페이지
     @GetMapping("/bangbang/myPage")
@@ -154,5 +141,20 @@ public class MemberController {
     }
 
 
+    //마이페이지
+    @GetMapping("/user/info")
+    public String getUserInfo(HttpSession session, Model model) {
+        // 세션에서 사용자 정보 가져오기
+        Object sessionUser = session.getAttribute("user");
 
+        // 세션에 사용자 정보가 없으면 회원가입 페이지로 리다이렉트
+        if (sessionUser == null) {
+            return "redirect:/bangbang/auth/sign-up";
+        }
+
+        // 세션에 저장된 사용자 정보를 모델에 추가하여 페이지에 전달
+        model.addAttribute("user", sessionUser);
+
+        return "myPage/myPage";
+    }
 }
