@@ -32,18 +32,27 @@
             color: red;
         }
         #numCheckBtn{
-            transform: translateX(-64px);
-            width: 40px;
+            width: 50px;
             line-height: 30px;
             color: #fff;
             background: #F55E08;
+            position: absolute;
+            top: 50%;
+            transform: translate(-150%, -50%);
         }
         #numCheckedOk{
-            transform: translateX(-64px);
-            width: 40px;
+            width: 50px;
             line-height: 30px;
             color: #fff;
             background: #F55E08;
+            position: absolute;
+            top: 50%;
+            transform: translate(-150%, -50%);
+        }
+        .fIItemWrap{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -76,12 +85,13 @@
             <div class="login_wrap">
                 <h2 class="guideLogin">아이디 찾기</h2>
                 <form  id="myForm" method="post" action="/bangbang/find-id">
-                    <input type="text" name="nickname" id="nickname" placeholder="닉네임 입력" class="login_input login_C"><br>
-                    <input type="text" name="phone" id="phone" placeholder="전화번호 입력" class="login_input login_C"> <input type="button" id="numCheckBtn" value="전송"><br>
-                    <input type="text" name="phone2" id="phone2" placeholder="인증번호 확인" class="login_input login_C"> <span id="timerDisplay"></span><input type="button" id="numCheckedOk" value="확인"><br>
-                    <span id="replaceInput" class="login_C"></span><br>
-
-                    <button type="submit" id="nextIdBefore" class="btn_login login_C">아이디 찾기</button>
+                    <div class="fIItemWrap">
+                        <div class="fIItem"><input type="text" name="nickname" id="nickname" placeholder="닉네임 입력" class="login_input login_C"></div>
+                        <div class="fIItem"><input type="text" name="phone" id="phone" placeholder="전화번호 입력" class="login_input login_C"> <input type="button" id="numCheckBtn" value="전송"></div>
+                        <div class="fIItem"><input type="text" name="phone2" id="phone2" placeholder="인증번호 확인" class="login_input login_C"> <span id="timerDisplay"></span><input type="button" id="numCheckedOk" value="확인"></div>
+                        <span id="replaceInput" class="login_C"></span><br>
+                        <button type="submit" id="nextIdBefore" class="btn_login login_C">아이디 찾기</button>
+                    </div>
                 </form>
             </div>
         </div>
