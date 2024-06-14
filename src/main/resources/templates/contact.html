@@ -76,6 +76,7 @@
                     <span th:if="${article.userId.id == user.id}">
                         <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>
                     </span>
+<!--                    <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>-->
                     <div class="item heart"><i class="fa fa-heart" aria-hidden="true"></i> 좋아요</div>
                     <div class="item share"><i class="fa fa-share-alt" aria-hidden="true"></i> 공유</div>
                 </div>

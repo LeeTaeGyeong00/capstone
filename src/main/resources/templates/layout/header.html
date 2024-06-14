@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -70,14 +70,18 @@
         <input class="search-txt" type="text" name="searchKeyword">
         <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass" style="color:#ff8033 "></i></button>
     </form>
-    <div class="map nav-btn">
-        <button class="map-btn" type="button"><i class="fa-solid fa-location-dot" style="color:rgba(0,0,0,0.7) "></i></button>
-    </div>
     <div class="menu nav-btn">
         <a href="/board/list"><button class="menu-btn" type="button"><i class="fa-solid fa-bars"style="color:rgba(0,0,0,0.7) "></i></button> </a>
     </div>
     <div class="user nav-btn">
-        <a href="/bangbang/auth/sign-up"><button class="user-btn" type="button"><i class="fa-regular fa-circle-user" style="color:rgba(0,0,0,0.7) "></i></button></a>
+        <button class="user-btn" type="button"><i class="fa-regular fa-circle-user" style="color:rgba(0,0,0,0.7) "></i></button>
+        <div class="popup-list">
+            <ul>
+                <a href="/bangbang/auth/sign-up" th:if="${session.user == null}"><li>로그인</li></a>
+                <a href="" th:if="${session.user != null}"> <li>로그아웃</li></a><br>
+                <a href="/bangbang/myPage" th:if="${session.user != null}"> <li>마이페이지</li></a>
+            </ul>
+        </div>
     </div>
 </header>
 

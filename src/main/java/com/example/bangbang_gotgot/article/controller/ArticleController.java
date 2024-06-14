@@ -57,8 +57,8 @@ public class ArticleController {
         Article article = articleService.write(articleDto, user);
         articleService.writeBoard(file, multiFiles, article);
 
-//        model.addAttribute("message", "글 작성이 완료되었습니다.");
-//        model.addAttribute("searchUrl", "/board/list");
+        model.addAttribute("message", "글 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl", "/board/list");
 
         return "redirect:/board/list";
     }
@@ -67,6 +67,7 @@ public class ArticleController {
     @GetMapping("/update/{id}/store")
     public String updateStore(@PathVariable Long id, Model model) {
         Article article = articleService.findArticle(id);
+        List<BoardDTO> boardDTO = articleService.findFile(id);
         if (article == null) {
             return "redirect:/bangbang/auth/sign-up";
         }
@@ -77,6 +78,7 @@ public class ArticleController {
         model.addAttribute("article", article);
         model.addAttribute("startTime",startTime);
         model.addAttribute("endTime",endTime);
+        model.addAttribute("imagefiles",boardDTO);
         return "LocalCategory/RestaurantUpdate";
     }
 

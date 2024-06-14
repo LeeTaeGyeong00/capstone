@@ -453,7 +453,7 @@ body {
 /*** Login Page Start***/
 .logo h1 {
     display: block;
-    width: 349px; height: 140px;
+    width: 349px; height: 155px;
     background-image: url(../img/logo-img.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -535,6 +535,10 @@ input[type="checkbox"]:checked {
     border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 0px 20px;
 }
+.fIItem{
+    position: relative;
+}
+
 .btn_login {
     font-family: 'BMJUA', 'sans-serif';
     font-size: 20px;
@@ -594,6 +598,8 @@ header.main_header {
         border: 1px solid #F55E08;
         border-radius: 30px;
         width: 100%; height: 59px;
+        padding: 20px;
+        font-size: 20px;
     }
     .search-btn{
         position: absolute;
@@ -603,6 +609,47 @@ header.main_header {
     .nav-btn{
         margin: 15px;
     }
+    .user {
+        position: relative;
+        display: inline-block;
+    }
+
+    .popup-list {
+        visibility: hidden; /* 요소를 보이지 않게 설정 */
+        position: absolute;
+        top: 100%; /* 부모 요소의 아래쪽에 위치 */
+        left: 50%;
+        background-color: white;
+        border-radius: 5px;
+        width: 115px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        z-index: 1;
+        opacity: 0; /* 투명도 설정 */
+        transform: translate(-50%, -10px); /* 리스트 위치를 약간 위로 이동 */
+        transition: opacity 0.3s, transform 0.3s; /* 애니메이션 추가 */
+
+        li{
+            padding-top: 10px;
+            color:#000;
+
+            :first-child{
+                padding-top: 0;
+            }
+        }
+        li:first-child{
+            padding-top: 0;
+        }
+    }
+
+    .user:hover .popup-list {
+        visibility: visible; /* 요소를 보이게 설정 */
+        opacity: 1; /* 투명도 변경 */
+        transform: translate(-50%, 0px); /* 원래 위치로 이동 */
+    }
+
     button{
         width: 40px; height: 40px;
         border-style: none;
@@ -869,6 +916,11 @@ input{
 
 .tab-name {
     display: flex;
+    h3{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 .notice-item{
     line-height: 45px;
