@@ -65,6 +65,7 @@
                     </div>
                 </div>
 
+                <input type="hidden" id="articleId" th:value="${article.id}">
                 <input type="hidden" id="address2" th:value="${article.address2}">
                 <input type="hidden" id="address3" th:value="${article.address3}">
                 <input type="hidden" id="key" th:value="${key}">
@@ -229,15 +230,17 @@
     <div class="modal-R-content">
         <span class="close">&times;</span>
         <div class="md-rv-titles">
-            <img src="https://via.placeholder.com/75" alt="샘플이미지">
+<!--            <img src="https://via.placeholder.com/75" alt="샘플이미지">-->
+            <th:block th:if="${imagefiles.get(0).articleId >= 151}">
+                <img th:src="@{|/upload/${imagefiles.get(0).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 75px; height: 75px;'">
+            </th:block>
+            <th:block th:if="${imagefiles.get(0).articleId < 151}">
+                <img th:src="@{|/fruitables-1.0.0/${imagefiles.get(0).storedFileName}|}" alt="음식점 안내 사진" th:style="'width: 75px; height: 75px;'">
+            </th:block>
             <div class="md-rv-title">
-                <h2>가게이름</h2>
+                <h2 th:text="${article.title}"></h2>
                 <div class="md-rv-title-item">
-                    <p>가게 주소</p>
-                    <select  class="viewType">
-                        <option value="relevance">관련성순</option>
-                        <option value="recency">최신순</option>
-                    </select>
+                    <p><span th:text="${article.address1}"></span> <span th:text="${article.address2}"></span> <span th:text="${article.address3}"></span></p>
                 </div>
             </div>
         </div>
@@ -249,7 +252,7 @@
                 <br>
                 <p>아직 리뷰가 없어요! 당신이 첫번째 손님일 수도 있어요 :)</p>
             </div>
-            <div class = "modal-review" th:each="review : ${reviews}">
+                <div class = "modal-review" id="review1" th:each="review : ${reviews}">
                 <div class="review">
                     <h3 th:text="${review.userId.nick_name}"></h3>
                     <p th:text="${review.title}"></p>
@@ -259,6 +262,29 @@
         </div>
     </div>
 </div>
+
+<!--<script>-->
+<!--    function selectBoxChange(){-->
+<!--        var review = document.querySelector("#viewType").value-->
+<!--        var articleid = document.querySelector("#articleId").value-->
+
+<!--        $.ajax({-->
+<!--            type: "get",-->
+<!--            url: "/board/detail/"+ articleid,-->
+<!--            data : {"option" : review},-->
+<!--            success: function(response) {-->
+
+<!--                var newReviews = $(response).find('.modal_reviews');-->
+<!--                $('.modal_reviews').html(newReviews);-->
+
+<!--            },-->
+<!--            error: function(xhr, status, error) {-->
+<!--                console.log(error);-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+
+<!--</script>-->
 
 <script>
     // Modal for Reviews

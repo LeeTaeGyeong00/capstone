@@ -237,14 +237,13 @@
         <dl class="user_control_box">
             <dt>내 정보</dt>
             <dd class="name_box">
-                <h5>닉네임</h5>
-                <p><i>@</i> 2,000 포인트</p>
+                <h5>회원: <span th:text="${user.nick_name}"></span></h5><br><br>
             </dd>
             <dd id="User_profile" class="interior">회원정보</dd>
             <dd><a th:href="@{/bangbang/user/{id}/update(id=${user.id})}">개인정보 수정</a></dd>
             <dd id="User_review" class="interior">내가 쓴 리뷰</dd>
             <dd id="User_save" class="interior">찜한식당</dd>
-            <dd><a href="#">식당 게시판 작성하기</a></dd>
+            <dd><a href="/board/restaurant_write">식당 게시판 작성하기</a></dd>
         </dl>
     </nav>
     <!--User_profile start-->
@@ -260,22 +259,22 @@
             </tr>
             <tr>
                 <th>아이디</th>
-                <td th:text="${user.person_id}">123@123.com</td>
+                <td th:text="${user.person_id}"></td>
             </tr>
             <tr>
             <tr>
                 <th>비밀번호</th>
-                <td><a th:href="@{/bangbang/auth/change-password}" class="btn btn-link">변경</a></td>
+                <td><a href="/bangbang/find-pwd" class="btn btn-link">변경</a></td>
             </tr>
             </tr>
             <tr>
                 <th>닉네임</th>
-                <td th:text="${user.nick_name}">닉네임 <button>변경</button></td>
+                <td th:text="${user.nick_name}"><button>변경</button></td>
             </tr>
-            <tr>
-                <th>계정 탈퇴</th>
-                <td><button class="withdrawal" onclick="confirmWithdrawal()">탈퇴</button></td>
-            </tr>
+<!--            <tr>-->
+<!--                <th>계정 탈퇴</th>-->
+<!--                <td><button class="withdrawal" onclick="confirmWithdrawal()">탈퇴</button></td>-->
+<!--            </tr>-->
         </table>
     </section>
     <!--User_profile end-->

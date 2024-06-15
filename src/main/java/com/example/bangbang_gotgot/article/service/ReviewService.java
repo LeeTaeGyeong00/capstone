@@ -45,6 +45,7 @@ public class ReviewService {
     }
 
     public List<Review> findReviewsByArticleId(Long articleId) {
-        return reviewRepository.findByArticleId(articleId);
+        return reviewRepository.findByArticleIdOrderByIdDesc(articleId);
     }
+
 }

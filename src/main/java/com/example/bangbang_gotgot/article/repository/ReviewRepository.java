@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    List<Review> findByArticleId(Long articleId);
+    List<Review> findByArticleIdOrderByIdDesc(Long articleId);
+
+    List<Review> findByArticleIdOrderByIdAsc(Long articleId);
 }

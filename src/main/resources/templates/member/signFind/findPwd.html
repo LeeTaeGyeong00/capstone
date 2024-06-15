@@ -126,95 +126,93 @@
 
 <script>
 
-    //     let check = 0
-    //
-    //     var numCheckBtn = document.querySelector("#numCheckBtn") // 문자 전송 버튼
-    //     var timerDisplay = document.getElementById("timerDisplay"); // 남은 시간 표시
-    //     var nextPwdBefore = document.querySelector("#nextPwdBefore"); // 비밀번호 찾기 버튼
-    //     var numCheckedOk = document.querySelector("#numCheckedOk") // 인증번호 확인 버튼
-    //     var replaceInput = document.getElementById("replaceInput") // 인증번호가 일치 정보 알려줌
-    //
-    //
-    //
-    // // 전화번호 검증
-    // numCheckBtn.addEventListener("click", function () {
-    //
-    //
-    // var jasonData = {
-    //     "phone_num" : document.querySelector("#phone").value
-    // }
-    //
-    // // @RequestBody로 받으려면 application/x-www-form-urlencoded에러가 남 해결하려면...
-    // // data: JSON.stringify(jasonData),
-    // // contentType: "application/json",
-    // $.ajax({
-    //     type: "post",
-    //     url: "/sms-certification/send",
-    //     data: JSON.stringify(jasonData),
-    //     contentType: "application/json",
-    //     success: function (response) {
-    //         console.log("성공")
-    //
-    //         // 3분 타이머 설정
-    //         var endTime = new Date().getTime() + 180000; // 현재 시간에 3분(180000ms)을 더한 시간을 구함
-    //
-    // // 매 초마다 남은 시간 갱신
-    // var timerInterval = setInterval(function () {
-    //     var now = new Date().getTime();
-    //     var distance = endTime - now;
-    //
-    //     // 타이머 종료 시간에 도달하면 타이머를 멈추고 메시지를 출력
-    //     if (distance <= 0) {
-    //         check = 0
-    //         clearInterval(timerInterval);
-    //         replaceInput.textContent = ""
-    //         timerDisplay.textContent = " ";
-    //     } else {
-    //         // 남은 시간을 분과 초로 변환하여 표시
-    //         var minutes = Math.floor(distance / (1000 * 60));
-    //         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    //         timerDisplay.textContent = minutes + ":" + seconds + " ";
-    //     }
-    //             }, 1000); // 1초마다 갱신
-    //
-    //         },
-    //         error: function (error) {
-    //             console.log("실패")
-    //         }
-    //     })
-    //
-    // })
-    //
-    //     //전화번호 검증 확인
-    //     numCheckedOk.addEventListener("click", function () {
-    //
-    //         var jasonData = {
-    //             "phone_num" : document.querySelector("#phone").value,
-    //             "certificationNumber" : document.querySelector("#phone2").value
-    //         }
-    //
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/sms-certification/confirm",
-    //         data: JSON.stringify(jasonData),
-    //         contentType: "application/json",
-    //         success: function (response) {
-    //             console.log("성공")
-    //             check = 2
-    //             replaceInput.textContent = "인증 확인 되었습니다."
-    //             replaceInput.style.color = "green";
-    //         },
-    //         error: function (error) {
-    //             console.log("실패")
-    //             replaceInput.textContent = "인증번호가 일치하지 않습니다."
-    //             replaceInput.style.color = "red";
-    //         }
-    //     })
-    // })
-    //
-    //
+        let check2 = 0
 
-    let check = 2
+        var numCheckBtn = document.querySelector("#numCheckBtn") // 문자 전송 버튼
+        var timerDisplay = document.getElementById("timerDisplay"); // 남은 시간 표시
+        var nextPwdBefore = document.querySelector("#nextPwdBefore"); // 비밀번호 찾기 버튼
+        var numCheckedOk = document.querySelector("#numCheckedOk") // 인증번호 확인 버튼
+        var replaceInput = document.getElementById("replaceInput") // 인증번호가 일치 정보 알려줌
+
+
+
+    // 전화번호 검증
+    numCheckBtn.addEventListener("click", function () {
+
+
+    var jasonData = {
+        "phone_num" : document.querySelector("#phone").value
+    }
+
+    // @RequestBody로 받으려면 application/x-www-form-urlencoded에러가 남 해결하려면...
+    // data: JSON.stringify(jasonData),
+    // contentType: "application/json",
+    $.ajax({
+        type: "post",
+        url: "/sms-certification/send",
+        data: JSON.stringify(jasonData),
+        contentType: "application/json",
+        success: function (response) {
+            console.log("성공")
+
+            // 3분 타이머 설정
+            var endTime = new Date().getTime() + 180000; // 현재 시간에 3분(180000ms)을 더한 시간을 구함
+
+    // 매 초마다 남은 시간 갱신
+    var timerInterval = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+
+        // 타이머 종료 시간에 도달하면 타이머를 멈추고 메시지를 출력
+        if (distance <= 0) {
+            check2 = 0
+            clearInterval(timerInterval);
+            replaceInput.textContent = ""
+            timerDisplay.textContent = " ";
+        } else {
+            // 남은 시간을 분과 초로 변환하여 표시
+            var minutes = Math.floor(distance / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            timerDisplay.textContent = minutes + ":" + seconds + " ";
+        }
+                }, 1000); // 1초마다 갱신
+
+            },
+            error: function (error) {
+                console.log("실패")
+            }
+        })
+
+    })
+
+        //전화번호 검증 확인
+        numCheckedOk.addEventListener("click", function () {
+
+            var jasonData = {
+                "phone_num" : document.querySelector("#phone").value,
+                "certificationNumber" : document.querySelector("#phone2").value
+            }
+
+        $.ajax({
+            type: "POST",
+            url: "/sms-certification/confirm",
+            data: JSON.stringify(jasonData),
+            contentType: "application/json",
+            success: function (response) {
+                console.log("성공")
+                check2 = 2
+                replaceInput.textContent = "인증 확인 되었습니다."
+                replaceInput.style.color = "green";
+            },
+            error: function (error) {
+                console.log("실패")
+                replaceInput.textContent = "인증번호가 일치하지 않습니다."
+                replaceInput.style.color = "red";
+            }
+        })
+    })
+
+
     // 전제 검증
         nextPwdBefore.addEventListener("click", function (event) {
 
@@ -235,10 +233,10 @@
             success: function (response) {
                 console.log("성공")
 
-                if (check === 0){
+                if (check2 === 0){
                     alert("전화번호 인증 확인")
 
-                } else if (check === 2){
+                } else if (check2 === 2){
                     var form = document.getElementById("myForm");
                     form.submit();
                 }
