@@ -132,7 +132,7 @@ public class ArticleController {
 
         User user = sessionUser != null ? sessionUser : new User();
         System.out.println(user.getId());
-        System.out.println(article.getUserId().getId());
+        System.out.println(article.getUser().getId());
         // 리뷰 조회
         List<Review> reviews = reviewService.findReviewsByArticleId(id);
 
@@ -156,7 +156,7 @@ public class ArticleController {
 
         // 사용자가 좋아요를 누른 게시물과 사용자 정보를 이용하여 Like 객체 생성
         Like like = new Like();
-        like.setUserNo(sessionUser);
+        like.setUser(sessionUser);
         like.setArticleNo(articleService.findArticleById(articleId)); // ArticleService를 통해 게시물 조회
 
         // 생성한 Like 객체를 저장

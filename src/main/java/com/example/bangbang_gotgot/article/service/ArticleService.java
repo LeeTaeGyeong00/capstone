@@ -157,7 +157,7 @@ public class ArticleService {
     @Transactional
     public Article updateArticle(ArticleDto articleDto, User user, Long id) {
         Article article = articleRepository.findById(id).orElse(null);
-        if (article == null || !Objects.equals(article.getUserId().getId(), user.getId())) {
+        if (article == null || !Objects.equals(article.getUser().getId(), user.getId())) {
             return null;
         }
         String start = articleDto.getStartTime1() + ":" + articleDto.getStartTime2();
@@ -393,33 +393,8 @@ public class ArticleService {
         return articleFiles;
 
     }
-    //마이페이지 작성한 article 조회
-    @Transactional(readOnly = true)
-    public List<Article> getArticlesByUserId(User userId) {
-        return articleRepository.findByUserId(userId);
-    }
 
-//    //좋아요
-//    @Transactional
-//    public void likeArticle(Long userId, Long articleId) throws Exception {
-//        if (likeRepository.existsByUserNoIdAndArticleNoId(userId, articleId)) {
-//            throw new Exception("User has already liked this article");
-//        }
-//
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new Exception("User not found"));
-//        Article article = articleRepository.findById(articleId)
-//                .orElseThrow(() -> new Exception("Article not found"));
-//
-//        Like like = new Like();
-//        like.setUserNo(user);
-//        like.setArticleNo(article);
-//
-//        article.setLikes(article.getLikes() + 1);
-//
-//        likeRepository.save(like);
-//        articleRepository.save(article);
-//    }
+
     public Article findArticleById(Long articleId) {
         return articleRepository.findById(articleId).orElse(null);
     }

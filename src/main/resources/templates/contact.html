@@ -73,7 +73,7 @@
                     <span th:if="${user.id != null}">
                         <a href="/board/restaurant_write"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</div></a>
                     </span>
-                    <span th:if="${article.userId.id == user.id}">
+                    <span th:if="${article.user.id == user.id}">
                         <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>
                     </span>
 <!--                    <a th:href="@{/board/update/{id}/store(id=${article.id})}"><div class="item write"><i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</div></a>-->
@@ -128,7 +128,7 @@
                                 </div>
                                 <div th:each="review : ${reviews}">
                                     <div class="review">
-                                        <h3 th:text="${review.userId.nick_name}"></h3>
+                                        <h3 th:text="${review.user.nick_name}"></h3>
                                         <p th:text="${review.title}"></p>
                                         <p th:text="${review.content}"></p>
                                     </div>
@@ -251,7 +251,7 @@
             </div>
             <div class = "modal-review" th:each="review : ${reviews}">
                 <div class="review">
-                    <h3 th:text="${review.userId.nick_name}"></h3>
+                    <h3 th:text="${review.user.nick_name}"></h3>
                     <p th:text="${review.title}"></p>
                     <p th:text="${review.content}"></p>
                 </div>

@@ -1,11 +1,13 @@
 package com.example.bangbang_gotgot.member.controller;
 
 import com.example.bangbang_gotgot.article.entity.Article;
+import com.example.bangbang_gotgot.article.entity.Review;
 import com.example.bangbang_gotgot.article.service.ArticleService;
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
 import com.example.bangbang_gotgot.member.dto.LoginRequest;
 import com.example.bangbang_gotgot.member.dto.LoginResponse;
 import com.example.bangbang_gotgot.member.dto.MemberDto;
+import com.example.bangbang_gotgot.member.entity.Like;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,6 +29,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final ArticleService articleService;
+    private static final Logger logger = Logger.getLogger(MemberController.class.getName());
 
     // 회원가입
     @GetMapping("/bangbang/auth/sign-in")
@@ -72,14 +76,46 @@ public class MemberController {
 
     // 마이페이지
     @GetMapping("/bangbang/myPage")
-    public String myPage(Model model,HttpSession session) {
+    public String myPage(Model model, HttpSession session) {
         Object sessionUser = session.getAttribute("user");
         if (sessionUser == null) {
+            logger.warning("Session user is null. Redirecting to sign-up page.");
             return "redirect:/bangbang/auth/sign-up";
         }
-        model.addAttribute("user", sessionUser);
-        return "myPage/UserPage";
+
+        if (!(sessionUser instanceof User)) {
+            logger.warning("Session user is not of type User. Redirecting to sign-up page.");
+            return "redirect:/bangbang/auth/sign-up";
+        }
+
+        User user = (User) sessionUser;
+        Long userId = user.getId();
+        if (userId == null) {
+            logger.warning("User ID is null. Redirecting to sign-up page.");
+            return "redirect:/bangbang/auth/sign-up";
+        }
+
+        try {
+            logger.info("Fetching user articles");
+            System.out.println(userId);
+            List<Article> userArticles = memberService.getUserArticles(userId);
+            logger.info("Fetching user reviews");
+            List<Review> userReviews = memberService.getUserReviews(userId);
+            logger.info("Fetching user likes");
+            List<Like> userLikes = memberService.getUserLikes(userId);
+
+            model.addAttribute("user", user);
+            model.addAttribute("articles", userArticles);
+            model.addAttribute("reviews", userReviews);
+            model.addAttribute("likes", userLikes);
+
+            return "myPage/UserPage";
+        } catch (Exception e) {
+            logger.severe("Error fetching user data: " + e.getMessage());
+            return "errorPage"; // or an appropriate error page
+        }
     }
+
 
     // 회원정보 수정
     @GetMapping("/bangbang/user/{id}/update")
@@ -141,20 +177,5 @@ public class MemberController {
     }
 
 
-    //마이페이지
-    @GetMapping("/user/info")
-    public String getUserInfo(HttpSession session, Model model) {
-        // 세션에서 사용자 정보 가져오기
-        Object sessionUser = session.getAttribute("user");
 
-        // 세션에 사용자 정보가 없으면 회원가입 페이지로 리다이렉트
-        if (sessionUser == null) {
-            return "redirect:/bangbang/auth/sign-up";
-        }
-
-        // 세션에 저장된 사용자 정보를 모델에 추가하여 페이지에 전달
-        model.addAttribute("user", sessionUser);
-
-        return "myPage/myPage";
-    }
 }
