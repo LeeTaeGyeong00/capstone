@@ -17,9 +17,9 @@ repositories {
 
 dependencies {
     // spring에서 redis에 대한 의존성
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 // spring에서 redis를 session storage로 사용하기 위한 의존성
-//    implementation 'org.springframework.session:spring-session-data-redis'
+    implementation 'org.springframework.session:spring-session-data-redis'
     implementation 'net.nurigo:sdk:4.3.0' // sms인증
     implementation 'commons-io:commons-io:2.6' // 파일 관련 처리
     developmentOnly 'org.springframework.boot:spring-boot-devtools' // 라이브 리로드

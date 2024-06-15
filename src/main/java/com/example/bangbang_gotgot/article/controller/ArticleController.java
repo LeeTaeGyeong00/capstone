@@ -125,7 +125,8 @@ public class ArticleController {
     private String key;
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    public String detail(@PathVariable Long id, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session,
+                         @RequestParam(value = "option", required = false)String option) {
         Article article = articleService.findIdList(id ,request, response);
         User sessionUser = (User) session.getAttribute("user");
         List<BoardDTO> boardDTO = articleService.findFile(id);
@@ -133,14 +134,16 @@ public class ArticleController {
         User user = sessionUser != null ? sessionUser : new User();
         System.out.println(user.getId());
         System.out.println(article.getUserId().getId());
-        // 리뷰 조회
-        List<Review> reviews = reviewService.findReviewsByArticleId(id);
 
+
+        // 리뷰 조회
+        List<Review> review = reviewService.findReviewsByArticleId(id);
+
+        model.addAttribute("reviews", review);
         model.addAttribute("user", sessionUser != null ? sessionUser : new User());
         model.addAttribute("article",article);
         model.addAttribute("key",key);
         model.addAttribute("imagefiles",boardDTO);
-        model.addAttribute("reviews", reviews);
         return "contact";
     }
 
@@ -166,6 +169,7 @@ public class ArticleController {
         // 좋아요를 누른 게시물 상세 페이지로 리다이렉트
         return "redirect:/board/detail/" + articleId;
     }
+
     // 리뷰 쓰기
     @GetMapping("/review-write/{id}")
     public String review(@PathVariable Long id, Model model) {
@@ -173,6 +177,33 @@ public class ArticleController {
         model.addAttribute("article", article);
         return "LocalCategory/CreatingBulletinBoard";
     }
+
+    // 리뷰 보여주기
+//    @GetMapping("/review")
+//    public String showReview(@RequestParam(value = "option", required = false)String option,
+//                             @RequestParam(value = "articleId", required = false) Long articleId, Model model) {
+//
+//        System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq        "+articleId);
+//
+//        List<Review> review = null;
+//        if (option == null) {
+//            review = reviewService.findReviewsByArticleId(articleId);
+//            System.out.println(review);
+//        } else {
+//            if (option.equals("1")) {
+//                review = reviewService.findReviewsByArticleId(articleId);
+//                System.out.println(review);
+//            } else {
+//                review = reviewService.reviewOld(articleId);
+//                System.out.println(review);
+//            }
+//        }
+//
+//        model.addAttribute("reviews", review);
+//        return "contact";
+//    }
+
+
     // 게시글 목록 (검색 + 콤보박스)
     @GetMapping("/list")
     public String list(Model model,
