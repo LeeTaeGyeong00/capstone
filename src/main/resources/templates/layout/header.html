@@ -78,7 +78,7 @@
         <div class="popup-list">
             <ul>
                 <a href="/bangbang/auth/sign-up" th:if="${session.user == null}"><li>로그인</li></a>
-                <a href="" th:if="${session.user != null}"> <li>로그아웃</li></a><br>
+                <a href="/bangbang/auth/logout" th:if="${session.user != null}"> <li>로그아웃</li></a><br>
                 <a href="/bangbang/myPage" th:if="${session.user != null}"> <li>마이페이지</li></a>
             </ul>
         </div>
