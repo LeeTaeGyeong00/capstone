@@ -70,6 +70,13 @@ public class MemberController {
         }
     }
 
+    // 로그아웃
+    @GetMapping("/bangbang/auth/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:/";
+    }
+
     // 마이페이지
     @GetMapping("/bangbang/myPage")
     public String myPage(Model model,HttpSession session) {
