@@ -1,9 +1,13 @@
 package com.example.bangbang_gotgot.member.service;
 
+import com.example.bangbang_gotgot.article.entity.Review;
+import com.example.bangbang_gotgot.article.repository.ReviewRepository;
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
 import com.example.bangbang_gotgot.member.dto.LoginRequest;
+import com.example.bangbang_gotgot.member.entity.Like;
 import com.example.bangbang_gotgot.member.entity.Role;
 import com.example.bangbang_gotgot.member.entity.User;
+import com.example.bangbang_gotgot.member.repository.LikeRepository;
 import com.example.bangbang_gotgot.member.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +30,10 @@ public class MemberService {
     private final UserRepository userRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final ReviewRepository reviewRepository;
+
+    private final LikeRepository likeRepository;
 
     @Transactional
     public User login(LoginRequest loginRequest) throws Exception {
@@ -256,6 +265,23 @@ public class MemberService {
         // 회원 삭제
         userRepository.delete(user);
         return user;
+    }
+    public List<Review> getUserReviews(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found: " + userId));
+        try {
+            return reviewRepository.findByUser(user);
+        } catch (Exception e) {
+            throw new RuntimeException("Error fetching reviews for user " + userId + ": " + e.getMessage(), e);
+        }
+    }
+
+    public List<Like> getUserLikes(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found: " + userId));
+        try {
+            return likeRepository.findByUser(user);
+        } catch (Exception e) {
+            throw new RuntimeException("Error fetching likes for user " + userId + ": " + e.getMessage(), e);
+        }
     }
 
 }

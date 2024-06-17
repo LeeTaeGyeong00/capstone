@@ -29,7 +29,7 @@ public class Article {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @Column(name="writer")
     private String writer;
@@ -96,7 +96,7 @@ public class Article {
         return new Article(
                 article.getId(),
                 article.getTitle(),
-                article.getUserId(),
+                article.getUser(),
                 article.getWriter(),
                 article.getContent(),
                 article.getWorkTime(),

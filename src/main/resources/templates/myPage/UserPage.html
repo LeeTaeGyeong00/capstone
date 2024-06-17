@@ -241,8 +241,9 @@
             </dd>
             <dd id="User_profile" class="interior">회원정보</dd>
             <dd><a th:href="@{/bangbang/user/{id}/update(id=${user.id})}">개인정보 수정</a></dd>
-            <dd id="User_review" class="interior">내가 쓴 리뷰</dd>
+            <dd id="User_article" class="interior">내가 쓴 게시판</dd>
             <dd id="User_save" class="interior">찜한식당</dd>
+            <dd id="User_review" class="interior">리뷰내용</dd>
             <dd><a href="/board/restaurant_write">식당 게시판 작성하기</a></dd>
         </dl>
     </nav>
@@ -280,10 +281,10 @@
     <!--User_profile end-->
 
     <!--User_review start-->
-    <section class="User_review">
+    <section class="User_article">
         <div class="tit_box">
             <h3>내가 쓴 글</h3>
-            <button>삭제하기</button>
+
         </div>
         <div class="modal-R-content">
             <div class="modal_reviews">
@@ -307,69 +308,44 @@
     <section class="User_save">
         <div class="tit_box">
             <h3>찜한 가게</h3>
-            <button>삭제하기</button>
+
         </div>
         <div class="modal-R-content">
             <div class="modal_reviews">
-                <div class="modal-review">
+                <div th:each="like : ${likes}" class="modal-review">
                     <div class="md-rv-titles">
                         <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>영업시간</h3>
-                        <p class="rv-date">open 3 p.m / close 11 p.m</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>영업시간</h3>
-                        <p class="rv-date">open 3 p.m / close 11 p.m</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>영업시간</h3>
-                        <p class="rv-date">open 3 p.m / close 11 p.m</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>영업시간</h3>
-                        <p class="rv-date">open 3 p.m / close 11 p.m</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    </div>
-                </div>
-                <div class="modal-review">
-                    <div class="md-rv-titles">
-                        <div class="md-rv-title">
-                            <h2>가게이름</h2>
-                            <p class="rv-date">가게 주소</p>
-                        </div>
-                        <h3>영업시간</h3>
-                        <p class="rv-date">open 3 p.m / close 11 p.m</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                            <h2 th:text="${like.articleNo.title}">게시물 제목</h2>
+                            <p class="rv-date" th:text="${like.articleNo.address1} + ' ' + ${like.articleNo.address2} + ' ' + ${like.articleNo.address3}">게시물 주소</p>                        </div>
+                        <h3>작성일자</h3>
+                        <p class="rv-date" th:text="${#temporals.format(like.articleNo.regDate, 'yyyy년 MM월 dd일')}">yyyy년 mm월 dd일</p>
+                        <p th:text="${like.articleNo.content}">게시물 내용...</p>
+                        <a th:href="@{/board/detail/{id}(id=${like.articleNo})}" class="btn btn-primary">상세보기</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--User_save end-->
+    <section class="User_review">
+        <div class="tit_box">
+            <h3>리뷰 목록</h3>
+
+        </div>
+        <div class="modal-R-content">
+            <div class="modal_reviews">
+                <div th:each="review : ${reviews}" class="modal-review">
+                    <div class="md-rv-titles">
+                        <div class="md-rv-title">
+                            <h1 th:text="${review.article.title}">게시물 제목</h1>
+                            <h2 th:text="${review.title}">게시물 제목</h2>
+                            <p th:text="${review.content}">가게 주소</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <div th:include="layout/footer :: #footer"></div>
@@ -379,16 +355,18 @@
     document.addEventListener("DOMContentLoaded", function() {
         // 각 메뉴 아이템을 변수로 저장
         const userProfileLink = document.getElementById("User_profile");
+        const userArticleLink = document.getElementById("User_article");
         const userReviewLink = document.getElementById("User_review");
         const userSaveLink = document.getElementById("User_save");
 
         // 각 섹션을 변수로 저장
         const userProfileSection = document.querySelector(".user_profil");
         const userReviewSection = document.querySelector(".User_review");
+        const userArticleSection = document.querySelector(".User_article");
         const userSaveSection = document.querySelector(".User_save");
 
         // 모든 섹션을 배열로 저장
-        const allSections = [userProfileSection, userReviewSection, userSaveSection];
+        const allSections = [userProfileSection, userArticleSection, userReviewSection, userSaveSection];
 
         // 섹션을 활성화하고 나머지를 비활성화하는 함수
         function activateSection(section) {
@@ -399,6 +377,7 @@
         // 각 메뉴 아이템에 클릭 이벤트 추가
         userProfileLink.addEventListener("click", () => activateSection(userProfileSection));
         userReviewLink.addEventListener("click", () => activateSection(userReviewSection));
+        userArticleLink.addEventListener("click", () => activateSection(userArticleSection));
         userSaveLink.addEventListener("click", () => activateSection(userSaveSection));
 
         // 회원 탈퇴

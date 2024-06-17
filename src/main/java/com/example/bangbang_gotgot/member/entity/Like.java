@@ -18,8 +18,8 @@ public class Like {
     private Long likeNo;
 
     @ManyToOne
-    @JoinColumn(name = "member_no", updatable = false)
-    private User userNo;
+    @JoinColumn(name = "user_id", updatable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "article_no", updatable = false)

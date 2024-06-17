@@ -18,6 +18,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<Article> findByAddress2(String district, Pageable pageable);
     Page<Article> findByAddress2OrderByViewDesc(String district, Pageable pageable);
     Page<Article> findByAddress2OrderByLikesDesc(String district, Pageable pageable);
-    List<Article> findByUserId(User userId);
+    List<Article> findByUser(User user);
     List<Article> findTop8ByOrderByViewDesc();
+
 }

@@ -1,11 +1,13 @@
 package com.example.bangbang_gotgot.member.controller;
 
 import com.example.bangbang_gotgot.article.entity.Article;
+import com.example.bangbang_gotgot.article.entity.Review;
 import com.example.bangbang_gotgot.article.service.ArticleService;
 import com.example.bangbang_gotgot.member.dto.AllUserInfoDto;
 import com.example.bangbang_gotgot.member.dto.LoginRequest;
 import com.example.bangbang_gotgot.member.dto.LoginResponse;
 import com.example.bangbang_gotgot.member.dto.MemberDto;
+import com.example.bangbang_gotgot.member.entity.Like;
 import com.example.bangbang_gotgot.member.entity.User;
 import com.example.bangbang_gotgot.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -80,11 +82,18 @@ public class MemberController {
     // 마이페이지
     @GetMapping("/bangbang/myPage")
     public String myPage(Model model,HttpSession session) {
-        Object sessionUser = session.getAttribute("user");
+        User sessionUser = (User) session.getAttribute("user");
         if (sessionUser == null) {
             return "redirect:/bangbang/auth/sign-up";
         }
+        Long userId = sessionUser.getId();
+        List<Article> myArticles = articleService.getArticlesByUserId(userId);
+        List<Review> userReviews = memberService.getUserReviews(userId);
+        List<Like> userLikes = memberService.getUserLikes(userId);
         model.addAttribute("user", sessionUser);
+        model.addAttribute("articles", myArticles);
+        model.addAttribute("reviews", userReviews);
+        model.addAttribute("likes",userLikes);
         return "myPage/UserPage";
     }
 

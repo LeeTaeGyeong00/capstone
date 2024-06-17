@@ -31,13 +31,15 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
-public class ArticleService {
+public class ArticleService{
 
     private final ArticleRepository articleRepository;
     private final ArticleFileRepository articleFileRepository;
     private final LikeRepository likeRepository;
+    private final UserRepository userRepository;
 
     // 게시글 랭킹(조회수) 리턴(메인)
     public List<Article> articleRanking() {
@@ -157,7 +159,7 @@ public class ArticleService {
     @Transactional
     public Article updateArticle(ArticleDto articleDto, User user, Long id) {
         Article article = articleRepository.findById(id).orElse(null);
-        if (article == null || !Objects.equals(article.getUserId().getId(), user.getId())) {
+        if (article == null || !Objects.equals(article.getUser().getId(), user.getId())) {
             return null;
         }
         String start = articleDto.getStartTime1() + ":" + articleDto.getStartTime2();
@@ -395,8 +397,10 @@ public class ArticleService {
     }
     //마이페이지 작성한 article 조회
     @Transactional(readOnly = true)
-    public List<Article> getArticlesByUserId(User userId) {
-        return articleRepository.findByUserId(userId);
+    public List<Article> getArticlesByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user ID: " + userId));
+        return articleRepository.findByUser(user);
     }
 
 //    //좋아요
